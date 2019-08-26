@@ -1,0 +1,19 @@
+server:
+  port: 8500
+spring:
+  application:
+    name: user
+  datasource:
+    url: jdbc:mysql://localhost:3306/remo_article?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis-plus:
+  # important！！！！！  @MapperScan记得扫描mapper所在包
+  # 如果是放在src/main/java目录下 classpath:/com/yourpackage/*/mapper/*Mapper.xml
+  # 如果是放在resource目录 classpath:/mapper/*Mapper.xml
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  type-aliases-package: com.article.entity
+  configuration:
+    #开启DB驼峰命名
+    map-underscore-to-camel-case: true
