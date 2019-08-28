@@ -14,8 +14,8 @@ mybatis-plus:
   # 如果是放在resource目录 classpath:/mapper/*Mapper.xml
   mapper-locations: classpath:/mapper/*Mapper.xml
   type-aliases-package: com.article.pojo.entity
-  configuration:
-    #开启DB驼峰命名
-    map-underscore-to-camel-case: true
+#  configuration:
+#    #开启DB驼峰命名
+#    map-underscore-to-camel-case: true
 common:
   swagger-open: true

@@ -23,12 +23,13 @@ public class Article implements Serializable {
     /**
      * 主键，自增
      */
-    private Integer id;
+    @TableId(value = "id",type = IdType.AUTO)
+    private Long id;
 
     /**
      * 文章id
      */
-    @TableId(value = "articleId", type = IdType.AUTO)
+    @TableField("articleId")
     private Long articleId;
 
     /**
