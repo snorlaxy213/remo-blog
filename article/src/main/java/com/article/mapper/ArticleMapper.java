@@ -1,8 +1,7 @@
 package com.article.mapper;
 
-import com.article.entity.Article;
+import com.article.pojo.entity.Article;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import org.springframework.stereotype.Component;
 
 /**
  * <p>

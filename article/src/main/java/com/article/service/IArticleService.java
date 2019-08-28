@@ -1,7 +1,10 @@
 package com.article.service;
 
-import com.article.entity.Article;
+import com.article.pojo.dto.ArticleDto;
+import com.article.pojo.entity.Article;
 import com.baomidou.mybatisplus.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,13 @@ import com.baomidou.mybatisplus.service.IService;
  * @since 2019-08-26
  */
 public interface IArticleService extends IService<Article> {
+
+    List<ArticleDto> listArticles();
+
+    ArticleDto getArticle(Long id);
+
+    boolean insertArticle(ArticleDto articleDto);
+
+    boolean updateArticle(ArticleDto articleDto);
 
 }
