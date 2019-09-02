@@ -1,5 +1,6 @@
 package com.article.config;
 
+import com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean;
 import org.dozer.DozerBeanMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,4 +29,5 @@ public class CommonConfig {
         dozerBeanMapper.setMappingFiles(mappingFiles);
         return dozerBeanMapper;
     }
+
 }

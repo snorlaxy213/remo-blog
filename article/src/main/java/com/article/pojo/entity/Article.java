@@ -3,6 +3,7 @@ package com.article.pojo.entity;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.FieldFill;
 import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 
@@ -29,7 +30,7 @@ public class Article implements Serializable {
     /**
      * 文章id
      */
-    @TableField("articleId")
+    @TableField(value = "articleId", fill = FieldFill.INSERT)
     private Long articleId;
 
     /**
