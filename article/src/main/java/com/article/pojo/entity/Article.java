@@ -3,6 +3,7 @@ package com.article.pojo.entity;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.Version;
 import com.baomidou.mybatisplus.enums.FieldFill;
 import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
@@ -138,5 +139,6 @@ public class Article implements Serializable {
     /**
      * 乐观锁
      */
+    @Version
     private Integer version;
 }

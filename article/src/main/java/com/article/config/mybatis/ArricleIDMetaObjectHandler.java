@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
+/**
+ * 字段自动填充（自定义十位数字）
+ */
 @Component
 public class ArricleIDMetaObjectHandler extends MetaObjectHandler {
 
@@ -16,6 +19,7 @@ public class ArricleIDMetaObjectHandler extends MetaObjectHandler {
      */
     @Override
     public void insertFill(MetaObject metaObject) {
+        //自动填充articleId（文章ID）
         Object articleId = getFieldValByName("articleId",metaObject);
         if (articleId == null) {
             setFieldValByName("articleId", getRandomCode(), metaObject);

@@ -65,8 +65,14 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         article.setArticleCategories(articleDto.getArticleCategories());
         article.setUpdateDate(articleDto.getUpdateDate());
         article.setArticleTabloid(articleDto.getArticleTabloid());
+        article.setVersion(articleDto.getVersion());
         this.initPo(article,false);
         boolean flag = this.updateById(article);
+        if(flag){
+            System.out.println("Update successfully");
+        }else{
+            System.out.println("Update failed due to modified by others");
+        }
         return flag;
     }
 
