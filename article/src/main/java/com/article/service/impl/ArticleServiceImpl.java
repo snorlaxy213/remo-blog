@@ -3,22 +3,28 @@ package com.article.service.impl;
 import com.article.pojo.dto.ArticleDto;
 import com.article.pojo.entity.Article;
 import com.article.service.IArticleService;
+import com.article.utils.constant.FormatConstant;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.article.mapper.ArticleMapper;
 import org.dozer.Mapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.SimpleFormatter;
 
 /**
  * <p>
- *  服务实现类
+ *  文章服务实现
  * </p>
  *
  * @author vino
@@ -26,6 +32,8 @@ import java.util.List;
  */
 @Service
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements IArticleService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ArticleServiceImpl.class);
 
     @Autowired
     Mapper dozerMapper;
@@ -58,20 +66,31 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Transactional(rollbackFor = Exception.class)
     public boolean updateArticle(ArticleDto articleDto) {
         Article article = this.selectById(articleDto.getId());
+
+        //文章标题
         article.setArticleTitle(articleDto.getArticleTitle());
+        //文章内容
         article.setArticleContent(articleDto.getArticleContent());
+        //文章标签
         article.setArticleTags(articleDto.getArticleTags());
+        //文章类型
         article.setArticleType(articleDto.getArticleType());
+        //文章分类
         article.setArticleCategories(articleDto.getArticleCategories());
-        article.setUpdateDate(articleDto.getUpdateDate());
+        //更新文章日期
+        article.setUpdateDate(FormatConstant.yyyyMMdd.format(new Date()));
+        //文章摘要
         article.setArticleTabloid(articleDto.getArticleTabloid());
+        //乐观锁
         article.setVersion(articleDto.getVersion());
+
         this.initPo(article,false);
         boolean flag = this.updateById(article);
+        //记录日志
         if(flag){
-            System.out.println("Update successfully");
+            LOGGER.info("Update successfully");
         }else{
-            System.out.println("Update failed due to modified by others");
+            LOGGER.info("Update failed due to modified by others");
         }
         return flag;
     }
