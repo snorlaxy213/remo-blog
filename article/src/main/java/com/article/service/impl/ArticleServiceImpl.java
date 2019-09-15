@@ -7,20 +7,16 @@ import com.article.utils.constant.FormatConstant;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.article.mapper.ArticleMapper;
+import org.apache.log4j.Logger;
 import org.dozer.Mapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.SimpleFormatter;
 
 /**
  * <p>
@@ -33,7 +29,8 @@ import java.util.logging.SimpleFormatter;
 @Service
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements IArticleService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ArticleServiceImpl.class);
+//    private static final Logger LOGGER = LoggerFactory.getLogger(ArticleServiceImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(ArticleServiceImpl.class);
 
     @Autowired
     Mapper dozerMapper;

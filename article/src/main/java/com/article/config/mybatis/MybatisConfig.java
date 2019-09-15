@@ -1,8 +1,16 @@
 package com.article.config.mybatis;
 
 import com.baomidou.mybatisplus.plugins.OptimisticLockerInterceptor;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+
+import javax.annotation.Resource;
+import javax.sql.DataSource;
 
 /**
  * Mybatis-plus 配置
@@ -12,6 +20,9 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class MybatisConfig {
+
+    @Resource(name = "remoRoutingDataSource")
+    private DataSource remoRoutingDataSource;
 
     /**
      * 乐观锁实现配置：
@@ -27,5 +38,26 @@ public class MybatisConfig {
     @Bean
     public OptimisticLockerInterceptor optimisticLockerInterceptor() {
         return new OptimisticLockerInterceptor();
+    }
+
+    /**
+     * 事务配置(1)
+     *
+     */
+    @Bean
+    public SqlSessionFactory sqlSessionFactory() throws Exception {
+        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        sqlSessionFactoryBean.setDataSource(remoRoutingDataSource);
+        sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
+        return sqlSessionFactoryBean.getObject();
+    }
+
+    /**
+     * 事务配置(2)
+     *
+     */
+    @Bean
+    public PlatformTransactionManager platformTransactionManager() {
+        return new DataSourceTransactionManager(remoRoutingDataSource);
     }
 }
