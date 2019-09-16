@@ -4,10 +4,10 @@ import com.article.pojo.dto.ArticleDto;
 import com.article.pojo.entity.Article;
 import com.article.service.IArticleService;
 import com.article.utils.constant.FormatConstant;
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.article.mapper.ArticleMapper;
-import org.apache.log4j.Logger;
 import org.dozer.Mapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +29,11 @@ import java.util.List;
 @Service
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements IArticleService {
 
-//    private static final Logger LOGGER = LoggerFactory.getLogger(ArticleServiceImpl.class);
-    private static final Logger LOGGER = Logger.getLogger(ArticleServiceImpl.class);
-
     @Autowired
     Mapper dozerMapper;
 
     @Override
+    @DS("slave")
     public List<ArticleDto> listArticles() {
         List<Article> articles = this.selectList(new EntityWrapper<>());
         List<ArticleDto> articleDtos = new ArrayList<>();
@@ -44,6 +42,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     }
 
     @Override
+    @DS("slave")
     public ArticleDto getArticle(Long id) {
         Article article = this.selectById(id);
         return dozerMapper.map(article, ArticleDto.class);
@@ -85,9 +84,9 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         boolean flag = this.updateById(article);
         //记录日志
         if(flag){
-            LOGGER.info("Update successfully");
+            System.out.println("Update successfully");
         }else{
-            LOGGER.info("Update failed due to modified by others");
+            System.out.println("Update failed due to modified by others");
         }
         return flag;
     }

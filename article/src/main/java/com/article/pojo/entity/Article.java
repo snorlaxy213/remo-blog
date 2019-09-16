@@ -3,6 +3,7 @@ package com.article.pojo.entity;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.annotations.Version;
 import com.baomidou.mybatisplus.enums.FieldFill;
 import com.baomidou.mybatisplus.enums.IdType;
@@ -19,6 +20,7 @@ import java.io.Serializable;
  * @since 2019-08-26
  */
 @Data
+@TableName("article")
 public class Article implements Serializable {
 
     private static final long serialVersionUID = 8365686186585051797L;
