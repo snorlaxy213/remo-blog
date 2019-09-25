@@ -1,19 +1,22 @@
 package com.article.controller;
 
 
+import com.article.exception.exception.BusinessException;
+import com.article.exception.exception.ParamException;
 import com.article.pojo.dto.ArticleDto;
+import com.article.pojo.dto.SimpleArticleDto;
 import com.article.pojo.vo.ResponseVo;
+import com.article.pojo.vo.query.ListArticleQuery;
 import com.article.service.IArticleService;
 import com.article.utils.ResponseUtil;
+import com.article.validation.group.Insert;
+import com.article.validation.group.Update;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,16 +38,24 @@ public class ArticleController {
 
     @ApiOperation(value = "insertArticle")
     @PostMapping("insertArticle")
-    public ResponseVo insertArticle(@RequestBody ArticleDto articleDto) {
-        boolean flag = articleService.insertArticle(articleDto);
-        return ResponseUtil.initSuccessResponse(flag);
+    public ResponseVo insertArticle(@Validated(Insert.class) @RequestBody ArticleDto articleDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ResponseUtil.initFailResponse(bindingResult);
+        } else {
+            boolean flag = articleService.insertArticle(articleDto);
+            return ResponseUtil.initSuccessResponse(flag);
+        }
     }
 
     @ApiOperation(value = "updateArticle")
     @PostMapping("updateArticle")
-    public ResponseVo updateArticle(@RequestBody ArticleDto articleDto) {
-        boolean flag = articleService.updateArticle(articleDto);
-        return ResponseUtil.initSuccessResponse(flag);
+    public ResponseVo updateArticle(@Validated(Update.class) @RequestBody ArticleDto articleDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ResponseUtil.initFailResponse(bindingResult);
+        } else {
+            boolean flag = articleService.updateArticle(articleDto);
+            return ResponseUtil.initSuccessResponse(flag);
+        }
     }
 
     @ApiOperation(value = "getArticle")
@@ -54,11 +65,20 @@ public class ArticleController {
         return ResponseUtil.initSuccessResponse(articleDto);
     }
 
-    @ApiOperation(value = "listArticle")
-    @GetMapping("listArticle")
-    public ResponseVo listArticle() {
-        List<ArticleDto> articles = articleService.listArticles();
+    @ApiOperation(value = "listArticles")
+    @PostMapping("listArticles")
+    public ResponseVo listArticles(@RequestBody ListArticleQuery query) throws ParamException, BusinessException {
+        List<ArticleDto> articles = articleService.listArticles(query);
         return ResponseUtil.initSuccessResponse(articles);
     }
+
+    @ApiOperation(value = "listSimpleArticles")
+    @GetMapping("listSimpleArticles")
+    public ResponseVo listSimpleArticles() {
+        List<SimpleArticleDto> simpleArticleDtos = articleService.listSimpleArticles();
+        return ResponseUtil.initSuccessResponse(simpleArticleDtos);
+    }
+
+
 
 }

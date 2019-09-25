@@ -11,6 +11,6 @@ import java.text.SimpleDateFormat;
 public class FormatConstant {
 
     public static final SimpleDateFormat yyyyMMdd = new SimpleDateFormat("yyyy-MM-dd");
-
+    public static final SimpleDateFormat yyyyMM = new SimpleDateFormat("yyyy-MM");
 
 }

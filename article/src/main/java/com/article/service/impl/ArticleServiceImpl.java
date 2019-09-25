@@ -1,19 +1,24 @@
 package com.article.service.impl;
 
+import com.article.exception.exception.ParamException;
+import com.article.mapper.ArticleMapper;
 import com.article.pojo.dto.ArticleDto;
+import com.article.pojo.dto.FieldErrorDto;
+import com.article.pojo.dto.SimpleArticleDto;
 import com.article.pojo.entity.Article;
+import com.article.pojo.vo.query.ListArticleQuery;
 import com.article.service.IArticleService;
 import com.article.utils.constant.FormatConstant;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.article.mapper.ArticleMapper;
 import org.dozer.Mapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,13 +37,41 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Autowired
     Mapper dozerMapper;
 
+    /**
+     * 根据ListArticleQuery的参数查询Articles，
+     * @param query
+     * @return
+     */
     @Override
     @DS("slave")
-    public List<ArticleDto> listArticles() {
-        List<Article> articles = this.selectList(new EntityWrapper<>());
+    public List<ArticleDto> listArticles(ListArticleQuery query) {
+        EntityWrapper<Article> wrapper = new EntityWrapper<>();
+        if (query.getArticleType() != null) {
+            wrapper.eq("articleType", query.getArticleType());
+        }
+        if (query.getArticleTags() != null) {
+            wrapper.eq("articleTags", query.getArticleTags());
+        }
+        if (query.getArticleCategories() != null) {
+            wrapper.eq("articleCategories", query.getArticleCategories());
+        }
+        if (query.getPublishDate() != null) {
+            wrapper.eq("publishDate", query.getPublishDate());
+        }
+
+        List<Article> articles = this.selectList(wrapper);
         List<ArticleDto> articleDtos = new ArrayList<>();
         articles.forEach(article -> articleDtos.add(dozerMapper.map(article,ArticleDto.class)));
         return articleDtos;
+    }
+
+    @Override
+    @DS("slave")
+    public List<SimpleArticleDto> listSimpleArticles(){
+        List<Article> articles = this.selectList(new EntityWrapper<>());
+        List<SimpleArticleDto> simpleArticleDtos = new ArrayList<>();
+        articles.forEach(article -> simpleArticleDtos.add(dozerMapper.map(article,SimpleArticleDto.class)));
+        return simpleArticleDtos;
     }
 
     @Override
@@ -51,6 +84,20 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Override
     @Transactional(rollbackFor = Exception.class)
     public boolean insertArticle(ArticleDto articleDto) {
+        //validation
+        List<FieldErrorDto> fieldErrorDtos = new ArrayList<>();
+        try {
+            FormatConstant.yyyyMM.parse(articleDto.getPublishDate());
+        } catch (ParseException e) {
+            FieldErrorDto fieldErrorDto = new FieldErrorDto("publishDate","date format error");
+            fieldErrorDtos.add(fieldErrorDto);
+        }
+
+        if (!fieldErrorDtos.isEmpty()) {
+            throw new ParamException(fieldErrorDtos);
+        }
+
+        //service business
         Article article = new Article();
         BeanUtils.copyProperties(articleDto, article);
         this.initPo(article,true);
@@ -61,6 +108,20 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Override
     @Transactional(rollbackFor = Exception.class)
     public boolean updateArticle(ArticleDto articleDto) {
+        //validation
+        List<FieldErrorDto> fieldErrorDtos = new ArrayList<>();
+        try {
+            FormatConstant.yyyyMM.parse(articleDto.getUpdateDate());
+        } catch (ParseException e) {
+            FieldErrorDto fieldErrorDto = new FieldErrorDto("publishDate","date format error");
+            fieldErrorDtos.add(fieldErrorDto);
+        }
+
+        if (!fieldErrorDtos.isEmpty()) {
+            throw new ParamException(fieldErrorDtos);
+        }
+
+        //service business
         Article article = this.selectById(articleDto.getId());
 
         //文章标题

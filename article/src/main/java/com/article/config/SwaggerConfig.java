@@ -1,6 +1,5 @@
 package com.article.config;
 
-import com.google.common.base.Predicates;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +11,6 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Spring Boot通过@ConditionalOnProperty来控制Configuration是否生效
@@ -29,7 +27,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @since 2019-08-26
  */
 @Configuration
-@EnableSwagger2
 @ConditionalOnProperty(prefix = "common", name = "swagger-open", havingValue = "true")
 public class SwaggerConfig {
 

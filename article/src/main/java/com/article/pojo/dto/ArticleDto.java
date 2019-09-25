@@ -1,17 +1,21 @@
 package com.article.pojo.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.article.validation.group.Update;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ArticleDto {
+
+    @NotNull(groups = Update.class)
     private Integer id;
 
     /**
@@ -22,6 +26,7 @@ public class ArticleDto {
     /**
      * 作者
      */
+    @NotEmpty
     private String author;
 
     /**
@@ -32,11 +37,13 @@ public class ArticleDto {
     /**
      * 文章标题
      */
+    @NotEmpty
     private String articleTitle;
 
     /**
      * 文章内容
      */
+    @NotEmpty
     private String articleContent;
 
     /**
@@ -47,6 +54,7 @@ public class ArticleDto {
     /**
      * 文章类型
      */
+    @NotEmpty
     private String articleType;
 
     /**
@@ -56,16 +64,17 @@ public class ArticleDto {
 
     /**
      * 发布文章日期
-     * @JsonFormat,格式化传入的Date数据
+     * @JsonFormat,注解@JsonFormat主要是后台到前台的时间格式的转换
+     * @DataFormAT,注解@DataFormAT主要是前后到后台的时间格式的转换
      */
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT-8")
+//    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT-8")
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String publishDate;
 
     /**
      * 更新文章日期
-     * @JsonFormat,格式化传入的Date数据
+     *
      */
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT-8")
     private String updateDate;
 
     /**

@@ -14,7 +14,7 @@ import java.util.Random;
 public class ArricleIDMetaObjectHandler extends MetaObjectHandler {
 
     /**
-     * field insert fill data automatically
+     * field Insert fill data automatically
      * @param metaObject
      */
     @Override
@@ -27,7 +27,7 @@ public class ArricleIDMetaObjectHandler extends MetaObjectHandler {
     }
 
     /**
-     * field update fill data automatically
+     * field Update fill data automatically
      * @param metaObject
      */
     @Override

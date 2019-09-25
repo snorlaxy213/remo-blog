@@ -1,7 +1,9 @@
 package com.article.service;
 
 import com.article.pojo.dto.ArticleDto;
+import com.article.pojo.dto.SimpleArticleDto;
 import com.article.pojo.entity.Article;
+import com.article.pojo.vo.query.ListArticleQuery;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;
@@ -16,7 +18,9 @@ import java.util.List;
  */
 public interface IArticleService extends IService<Article> {
 
-    List<ArticleDto> listArticles();
+    List<ArticleDto> listArticles(ListArticleQuery query);
+
+    List<SimpleArticleDto> listSimpleArticles();
 
     ArticleDto getArticle(Long id);
 
