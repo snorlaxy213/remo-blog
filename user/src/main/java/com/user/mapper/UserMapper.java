@@ -18,6 +18,6 @@ public interface UserMapper{
     @Select("select * from sys_user user where user.user_id = #{id}")
     User findById(Long id);
 
-    @Select("select role_id from sys_user_role user_role where user_role = #{id}")
+    @Select("select role_id from sys_user_role user_role where user_role.user_id = #{id}")
     List<Long> findRoleById(Long id);
 }
