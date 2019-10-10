@@ -1,11 +1,11 @@
 package com.user.constant.factory;
 
-import com.user.util.ToolUtil;
+import com.user.common.util.ToolUtil;
 import com.user.constant.cache.Cache;
 import com.user.constant.cache.CacheKey;
 import com.user.mapper.RoleMapper;
 import com.user.pojo.po.Role;
-import com.user.util.SpringContextHolder;
+import com.user.common.util.SpringContextHolder;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;

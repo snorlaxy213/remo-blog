@@ -7,7 +7,7 @@ import com.user.pojo.po.User;
 import com.user.shiro.ShiroKit;
 import com.user.shiro.ShiroUser;
 import com.user.shiro.service.UserAuthService;
-import com.user.util.SpringContextHolder;
+import com.user.common.util.SpringContextHolder;
 import org.apache.shiro.authc.CredentialsException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.crypto.hash.Md5Hash;
@@ -37,7 +37,7 @@ public class UserAuthServiceImpl implements UserAuthService {
 
     @Override
     public User user(String account) {
-        User user = userMapper.findByAccount(account);
+        User user = userMapper.findByUsername(account);
 
         // 账号不存在
         if (null == user) {

@@ -24,9 +24,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * <p>
  *  文章服务实现
- * </p>
  *
  * @author vino
  * @since 2019-08-26
@@ -38,7 +36,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     Mapper dozerMapper;
 
     /**
-     * 根据ListArticleQuery的参数查询Articles，
+     * 根据ListArticleQuery的参数查询Articles
      * @param query
      * @return
      */

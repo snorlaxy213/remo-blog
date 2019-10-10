@@ -1,6 +1,6 @@
 package com.user.shiro;
 
-import com.user.util.ToolUtil;
+import com.user.common.util.ToolUtil;
 import com.user.pojo.po.User;
 import com.user.shiro.service.UserAuthService;
 import com.user.shiro.service.impl.UserAuthServiceImpl;
