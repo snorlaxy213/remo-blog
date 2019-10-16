@@ -5,13 +5,31 @@ spring:
     url: jdbc:mysql://localhost:3306/remo_user?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
     username: root
     password: admin
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: admin
+    jedis:
+      pool:
+        #连接池中的最小空闲连接
+        min-idle: 8
+        #连接池中的最大空闲连接，默认值是8
+        max-idle: 500
+        #连接池最大连接数（负值表示没有限制）
+        max-active: 2000
+        #连接池最大阻塞等待时间（负值表示没有限制）
+        max-wait: 10000
+    #Redis服务器连接超时的时间（0代表不超时）
+    timeout: 0
+
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.user.pojo.po
   configuration:
     #开启DB驼峰命名
     map-underscore-to-camel-case: true
+
 ---
 server:
   port: 9101

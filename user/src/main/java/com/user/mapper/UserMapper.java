@@ -1,5 +1,6 @@
 package com.user.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.user.pojo.po.User;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
@@ -7,13 +8,13 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public interface UserMapper{
+public interface UserMapper extends BaseMapper<User> {
 
     @Select("select * from sys_user")
     List<User> findAll();
 
-    @Select("select * from sys_user user where user.account = #{username}")
-    User findByUsername(String username);
+    @Select("select * from sys_user user where user.account = #{account}")
+    User findByAccount(String account);
 
     @Select("select * from sys_user user where user.user_id = #{id}")
     User findById(Long id);

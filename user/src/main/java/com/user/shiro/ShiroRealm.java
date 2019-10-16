@@ -1,22 +1,24 @@
 package com.user.shiro;
 
-import com.user.common.util.ToolUtil;
+import com.user.common.domain.RemoConstant;
+import com.user.common.service.RedisService;
+import com.user.manager.UserManager;
 import com.user.pojo.po.User;
-import com.user.shiro.service.UserAuthService;
-import com.user.shiro.service.impl.UserAuthServiceImpl;
+import com.user.util.HttpContextUtil;
+import com.user.util.IPUtil;
+import com.user.util.RemoUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.authc.credential.CredentialsMatcher;
-import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.HashSet;
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Set;
 
 /**
@@ -27,59 +29,60 @@ import java.util.Set;
  */
 public class ShiroRealm extends AuthorizingRealm {
 
+    @Autowired
+    private UserManager userManager;
+
+    @Autowired
+    private RedisService redisService;
+
     /**
      * 权限认证
      */
     @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        UserAuthService shiroFactory = UserAuthServiceImpl.me();
-        ShiroUser shiroUser = (ShiroUser) principals.getPrimaryPrincipal();
-        List<Long> roleList = shiroUser.getRoleList();
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection token) {
+        String username = JWTUtil.getUsername(token.toString());
 
-        Set<String> permissionSet = new HashSet<>();
-        Set<String> roleNameSet = new HashSet<>();
+        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
 
-        for (Long roleId : roleList) {
-            List<String> permissions = shiroFactory.findPermissionsByRoleId(roleId);
-            if (permissions != null) {
-                for (String permission : permissions) {
-                    if (ToolUtil.isNotEmpty(permission)) {
-                        permissionSet.add(permission);
-                    }
-                }
-            }
-            String roleName = shiroFactory.findRoleNameByRoleId(roleId);
-            roleNameSet.add(roleName);
-        }
-        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-        info.addStringPermissions(permissionSet);
-        info.addRoles(roleNameSet);
-        return info;
+        // 获取用户角色集
+        Set<String> roleSet = userManager.getUserRoles(username);
+        simpleAuthorizationInfo.setRoles(roleSet);
+        return simpleAuthorizationInfo;
     }
 
-    /**
-     * 登录认证
-     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        UserAuthService shiroFactory = UserAuthServiceImpl.me();
         //获取基于用户名和密码的令牌
         //实际上这个token是从LoginController里面currentUser.login(token)传过来的
-        UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
-        User user = shiroFactory.user(token.getUsername());
-        ShiroUser shiroUser = shiroFactory.shiroUser(user);
-        return shiroFactory.info(shiroUser, user, super.getName());
-    }
+        String token = (String) authenticationToken.getCredentials();
 
-    /**
-     * 设置认证加密方式
-     */
-    @Override
-    public void setCredentialsMatcher(CredentialsMatcher credentialsMatcher) {
-        HashedCredentialsMatcher md5CredentialsMatcher = new HashedCredentialsMatcher();
-        md5CredentialsMatcher.setHashAlgorithmName(ShiroKit.hashAlgorithmName);
-        md5CredentialsMatcher.setHashIterations(ShiroKit.hashIterations);
-        super.setCredentialsMatcher(md5CredentialsMatcher);
+        // 从 redis里获取这个 token
+        HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
+        String ip = IPUtil.getIpAddr(request);
+
+        String encryptToken = RemoUtil.encryptToken(token);
+        String encryptTokenInRedis = null;
+        try {
+            encryptTokenInRedis = redisService.get(RemoConstant.TOKEN_CACHE_PREFIX + encryptToken + "." + ip);
+        } catch (Exception ignore) {
+        }
+        // 如果找不到，说明已经失效
+        if (StringUtils.isBlank(encryptTokenInRedis))
+            throw new AuthenticationException("token已经过期");
+
+        String username = JWTUtil.getUsername(token);
+
+        if (StringUtils.isBlank(username))
+            throw new AuthenticationException("token校验不通过");
+
+        // 通过用户名查询用户信息
+        User user = userManager.getUser(username);
+
+        if (user == null)
+            throw new AuthenticationException("用户名或密码错误");
+        if (!JWTUtil.verify(token, username, user.getPassword()))
+            throw new AuthenticationException("token校验不通过");
+        return new SimpleAuthenticationInfo(token, token, "febs_shiro_realm");
     }
 
 }

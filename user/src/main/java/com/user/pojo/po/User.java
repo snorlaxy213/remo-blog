@@ -1,10 +1,7 @@
 package com.user.pojo.po;
 
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableName;
-import com.baomidou.mybatisplus.enums.FieldFill;
-import com.baomidou.mybatisplus.enums.IdType;
+
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -24,10 +21,28 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1553854489109140483L;
 
     /**
+     * 性别
+     */
+    public static final String SEX_MALE = "0";
+
+    public static final String SEX_FEMALE = "1";
+
+    public static final String SEX_UNKNOW = "2";
+
+    // 默认密码
+    public static final String DEFAULT_PASSWORD = "1234qwer";
+
+    /**
      * id
      */
     @TableId(value = "user_id", type = IdType.ID_WORKER)
     private Long userId;
+
+    /**
+     * 头像
+     */
+    @TableField("avatar")
+    private String avatar;
 
     /**
      * 账户
@@ -40,12 +55,6 @@ public class User implements Serializable {
      */
     @TableField("name")
     private String name;
-
-    /**
-     * md5密码盐
-     */
-    @TableField("salt")
-    private String salt;
 
     /**
      * 移动号码
@@ -83,12 +92,6 @@ public class User implements Serializable {
      */
     @TableField("brief")
     private String brief;
-
-    /**
-     * 头像
-     */
-    @TableField("avatar")
-    private String avatar;
 
     /**
      * 角色id(多个逗号隔开)

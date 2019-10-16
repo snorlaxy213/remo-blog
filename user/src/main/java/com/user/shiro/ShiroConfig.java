@@ -1,6 +1,5 @@
-package com.user.config.web;
+package com.user.shiro;
 
-import com.user.shiro.ShiroRealm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.beans.factory.annotation.Qualifier;

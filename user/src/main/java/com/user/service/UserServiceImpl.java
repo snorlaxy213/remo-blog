@@ -1,9 +1,10 @@
 package com.user.service;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.user.constant.BusinessConstants;
 import com.user.constant.ViewConstants;
-import com.user.mapper.UserMapper;
 import com.user.exception.exception.BusinessException;
+import com.user.mapper.UserMapper;
 import com.user.pojo.dto.UserDto;
 import com.user.pojo.po.User;
 import com.user.pojo.vo.LoginVo;
@@ -20,15 +21,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 用户模块业务
- *
- * @author Jules
- * @date 2019/5/28
- */
 @Service
 @Transactional(readOnly = true, rollbackFor = Exception.class)
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Autowired
     UserMapper userMapper;
@@ -67,5 +62,10 @@ public class UserServiceImpl implements UserService {
     public UserDto findById(Long id) {
         User user = userMapper.findById(id);
         return dozer.map(user, UserDto.class);
+    }
+
+    @Override
+    public User findUserByAccount(String account) {
+        return userMapper.findByAccount(account);
     }
 }

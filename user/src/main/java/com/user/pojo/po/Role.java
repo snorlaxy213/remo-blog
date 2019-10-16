@@ -1,21 +1,12 @@
 package com.user.pojo.po;
 
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableName;
-import com.baomidou.mybatisplus.enums.FieldFill;
-import com.baomidou.mybatisplus.enums.IdType;
+
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Role实体类
- *
- * @author Jules
- * @date 2019/7/9
- */
 @Data
 @TableName("sys_role")
 public class Role implements Serializable {
