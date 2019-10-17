@@ -44,7 +44,7 @@ public class CacheInitRunner implements ApplicationRunner {
             log.info("缓存用户数据 ······");
             List<User> list = this.userService.list();
             for (User user : list) {
-                userManager.loadUserRedisCache(user);
+                userManager.loadUserRedisCache(user.getAccount());
             }
         } catch (Exception e) {
             log.error("缓存初始化失败，{}", e.getMessage());
@@ -52,10 +52,11 @@ public class CacheInitRunner implements ApplicationRunner {
             log.error("| |_   / /\\  | | | |");
             log.error("|_|   /_/--\\ |_| |_|__");
             log.error("                        ");
-            log.error("FEBS启动失败              ");
-            if (e instanceof RedisConnectException)
+            log.error("Remo启动失败              ");
+            if (e instanceof RedisConnectException) {
                 log.error("Redis连接异常，请检查Redis连接配置并确保Redis服务已启动");
-            // 关闭 FEBS
+            }
+            // 关闭 Remo
             context.close();
         }
     }

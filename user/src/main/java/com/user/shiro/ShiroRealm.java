@@ -3,6 +3,7 @@ package com.user.shiro;
 import com.user.common.domain.RemoConstant;
 import com.user.common.service.RedisService;
 import com.user.manager.UserManager;
+import com.user.pojo.dto.UserDto;
 import com.user.pojo.po.User;
 import com.user.util.HttpContextUtil;
 import com.user.util.IPUtil;
@@ -67,22 +68,26 @@ public class ShiroRealm extends AuthorizingRealm {
         } catch (Exception ignore) {
         }
         // 如果找不到，说明已经失效
-        if (StringUtils.isBlank(encryptTokenInRedis))
+        if (StringUtils.isBlank(encryptTokenInRedis)) {
             throw new AuthenticationException("token已经过期");
+        }
 
         String username = JWTUtil.getUsername(token);
 
-        if (StringUtils.isBlank(username))
+        if (StringUtils.isBlank(username)) {
             throw new AuthenticationException("token校验不通过");
+        }
 
         // 通过用户名查询用户信息
-        User user = userManager.getUser(username);
+        UserDto userDto = userManager.getUser(username);
 
-        if (user == null)
+        if (userDto == null) {
             throw new AuthenticationException("用户名或密码错误");
-        if (!JWTUtil.verify(token, username, user.getPassword()))
+        }
+        if (!JWTUtil.verify(token, username, userDto.getPassword())) {
             throw new AuthenticationException("token校验不通过");
-        return new SimpleAuthenticationInfo(token, token, "febs_shiro_realm");
+        }
+        return new SimpleAuthenticationInfo(token, token, "remo_shiro_realm");
     }
 
 }

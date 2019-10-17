@@ -2,9 +2,8 @@ package com.user.manager;
 
 
 import com.user.common.service.CacheService;
+import com.user.pojo.dto.RoleDto;
 import com.user.pojo.dto.UserDto;
-import com.user.pojo.po.Role;
-import com.user.pojo.po.User;
 import com.user.service.RoleService;
 import com.user.service.UserService;
 import com.user.util.RemoUtil;
@@ -15,9 +14,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * 封装一些和 User相关的业务操作
- */
 @Service
 public class UserManager {
 
@@ -36,36 +32,37 @@ public class UserManager {
      * @param username 用户名
      * @return 用户基本信息
      */
-    public User getUser(String username) {
+    public UserDto getUser(String username) {
         return RemoUtil.selectCacheByTemplate(
                 () -> this.cacheService.getUser(username),
-                () -> this.userService.findUserByAccount(username));
+                () -> this.userService.findByUsername(username));
     }
 
     /**
      * 通过用户名获取用户角色集合
      *
-     * @param account 用户名
+     * @param username 用户名
      * @return 角色集合
      */
-    public Set<String> getUserRoles(String account) {
-        List<Role> roleList = RemoUtil.selectCacheByTemplate(
-                () -> this.cacheService.getRoles(account),
-                () -> this.roleService.listUserRoles(account));
-        return roleList.stream().map(Role::getName).collect(Collectors.toSet());
+    public Set<String> getUserRoles(String username) {
+        List<RoleDto> roleList = RemoUtil.selectCacheByTemplate(
+                () -> this.cacheService.getRoles(username),
+                () -> this.roleService.listUserRoles(username));
+        return roleList.stream().map(RoleDto::getName).collect(Collectors.toSet());
     }
-
 
     /**
      * 将用户相关信息添加到 Redis缓存中
      *
-     * @param user user
+     * @param username username
      */
-    public void loadUserRedisCache(User user) throws Exception {
+    public void loadUserRedisCache(String username) throws Exception {
         // 缓存用户
-        cacheService.saveUser(user.getAccount());
+        cacheService.saveUser(username);
         // 缓存用户角色
-        cacheService.saveRoles(user.getAccount());
+        cacheService.saveRoles(username);
+        // 缓存用户权限
+        cacheService.savePermissions(username);
     }
 
     /**
@@ -73,11 +70,11 @@ public class UserManager {
      *
      * @param userIds userIds
      */
-    public void loadUserPermissionRoleRedisCache(List<Long> userIds) throws Exception {
+    public void loadUserRoleRedisCache(List<Long> userIds) throws Exception {
         for (Long userId : userIds) {
             UserDto userDto = userService.findById(userId);
             // 缓存用户角色
-            cacheService.saveRoles(userDto.getAccount());
+            cacheService.saveRoles(userDto.getUsername());
         }
     }
 
@@ -90,8 +87,8 @@ public class UserManager {
         for (Long userId : userIds) {
             UserDto userDto = userService.findById(userId);
             if (userDto != null) {
-                cacheService.deleteUser(userDto.getAccount());
-                cacheService.deleteRoles(userDto.getAccount());
+                cacheService.deleteUser(userDto.getUsername());
+                cacheService.deleteRoles(userDto.getUsername());
             }
         }
     }

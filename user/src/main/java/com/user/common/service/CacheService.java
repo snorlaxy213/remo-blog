@@ -1,6 +1,8 @@
 package com.user.common.service;
 
 
+import com.user.pojo.dto.RoleDto;
+import com.user.pojo.dto.UserDto;
 import com.user.pojo.po.Role;
 import com.user.pojo.po.User;
 
@@ -19,7 +21,7 @@ public interface CacheService {
      * @param username 用户名
      * @return User
      */
-    User getUser(String username) throws Exception;
+    UserDto getUser(String username) throws Exception;
 
     /**
      * 从缓存中获取用户角色
@@ -27,7 +29,7 @@ public interface CacheService {
      * @param username 用户名
      * @return 角色集
      */
-    List<Role> getRoles(String username) throws Exception;
+    List<RoleDto> getRoles(String username) throws Exception;
 
     /**
      * 缓存用户信息，只有当用户信息是查询出来的，完整的，才应该调用这个方法
@@ -35,7 +37,7 @@ public interface CacheService {
      *
      * @param user 用户信息
      */
-    void saveUser(User user) throws Exception;
+    void saveUser(UserDto user) throws Exception;
 
     /**
      * 缓存用户信息
@@ -52,6 +54,13 @@ public interface CacheService {
     void saveRoles(String username) throws Exception;
 
     /**
+     * 缓存用户权限信息
+     *
+     * @param username 用户名
+     */
+    void savePermissions(String username) throws Exception;
+
+    /**
      * 删除用户信息
      *
      * @param username 用户名
@@ -64,5 +73,12 @@ public interface CacheService {
      * @param username 用户名
      */
     void deleteRoles(String username) throws Exception;
+
+    /**
+     * 删除用户权限信息
+     *
+     * @param username 用户名
+     */
+    void deletePermissions(String username) throws Exception;
 
 }

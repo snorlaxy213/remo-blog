@@ -1,13 +1,12 @@
 package com.user.service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.user.constant.BusinessConstants;
+import com.user.constant.BusinessConstant;
 import com.user.constant.ViewConstants;
 import com.user.exception.exception.BusinessException;
 import com.user.mapper.UserMapper;
 import com.user.pojo.dto.UserDto;
 import com.user.pojo.po.User;
-import com.user.pojo.vo.LoginVo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -32,25 +31,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     Mapper dozer;
 
     @Override
-    public UserDto login(LoginVo loginVo) {
-        UserDto userDto;
-        try {
-            String account = loginVo.getUserName();
-            String password = loginVo.getPassword();
-            UsernamePasswordToken token = new UsernamePasswordToken(account, password);
-            Subject currentUser = SecurityUtils.getSubject();
-            currentUser.login(token);
-            User user = userMapper.findByAccount(account);
-            userDto = dozer.map(user, UserDto.class);
-        } catch (UnknownAccountException e) {
-            throw new BusinessException(BusinessConstants.ERROR_RESULT_CODE, ViewConstants.USER_NOT_EXIST);
-        } catch (IncorrectCredentialsException e) {
-            throw new BusinessException(BusinessConstants.ERROR_RESULT_CODE, ViewConstants.PASSWORD_ERROR);
-        }
-        return userDto;
-    }
-
-    @Override
     public List<UserDto> findAll() {
         List<User> users = userMapper.findAll();
         List<UserDto> userDtos = new ArrayList<>();
@@ -60,12 +40,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public UserDto findById(Long id) {
-        User user = userMapper.findById(id);
-        return dozer.map(user, UserDto.class);
+        return dozer.map(userMapper.findById(id), UserDto.class);
     }
 
     @Override
-    public User findUserByAccount(String account) {
-        return userMapper.findByAccount(account);
+    public UserDto findByUsername(String username) {
+        return dozer.map(userMapper.findByAccount(username), UserDto.class);
     }
 }

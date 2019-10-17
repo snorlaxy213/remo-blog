@@ -13,8 +13,8 @@ public interface UserMapper extends BaseMapper<User> {
     @Select("select * from sys_user")
     List<User> findAll();
 
-    @Select("select * from sys_user user where user.account = #{account}")
-    User findByAccount(String account);
+    @Select("select * from sys_user user where user.account = #{username}")
+    User findByAccount(String username);
 
     @Select("select * from sys_user user where user.user_id = #{id}")
     User findById(Long id);

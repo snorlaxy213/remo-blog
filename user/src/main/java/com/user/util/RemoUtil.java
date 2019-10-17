@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.user.common.domain.RemoConstant;
 import com.user.common.function.CacheSelector;
 import com.user.common.service.CacheService;
+import com.user.pojo.dto.UserDto;
 import com.user.pojo.po.User;
 import com.user.service.UserService;
 import com.user.shiro.JWTUtil;
@@ -48,13 +49,13 @@ public class RemoUtil {
      *
      * @return 用户信息
      */
-    public static User getCurrentUser() {
+    public static UserDto getCurrentUser() {
         String token = (String) SecurityUtils.getSubject().getPrincipal();
         String username = JWTUtil.getUsername(token);
         UserService userService = SpringContextUtil.getBean(UserService.class);
         CacheService cacheService = SpringContextUtil.getBean(CacheService.class);
 
-        return selectCacheByTemplate(() -> cacheService.getUser(username), () -> userService.findUserByAccount(username));
+        return selectCacheByTemplate(() -> cacheService.getUser(username), () -> userService.findByUsername(username));
     }
 
     /**
@@ -88,27 +89,4 @@ public class RemoUtil {
             return null;
         }
     }
-
-    /**
-     * 驼峰转下划线
-     *
-     * @param value 待转换值
-     * @return 结果
-     */
-    public static String camelToUnderscore(String value) {
-        if (StringUtils.isBlank(value))
-            return value;
-        String[] arr = StringUtils.splitByCharacterTypeCamelCase(value);
-        if (arr.length == 0)
-            return value;
-        StringBuilder result = new StringBuilder();
-        IntStream.range(0, arr.length).forEach(i -> {
-            if (i != arr.length - 1)
-                result.append(arr[i]).append(StringPool.UNDERSCORE);
-            else
-                result.append(arr[i]);
-        });
-        return StringUtils.lowerCase(result.toString());
-    }
-
 }

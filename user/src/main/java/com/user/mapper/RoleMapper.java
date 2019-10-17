@@ -10,6 +10,6 @@ import java.util.List;
 @Component
 public interface RoleMapper extends BaseMapper<Role> {
 
-    List<Role> listUserRoles(@Param("account") String account);
+    List<Role> listUserRoles(@Param("username") String username);
 
 }

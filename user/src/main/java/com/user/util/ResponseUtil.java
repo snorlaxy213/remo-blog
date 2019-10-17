@@ -1,6 +1,6 @@
 package com.user.util;
 
-import com.user.constant.BusinessConstants;
+import com.user.constant.BusinessConstant;
 import com.user.pojo.dto.FieldErrorDto;
 import com.user.pojo.vo.ResponseVo;
 import org.springframework.validation.BindingResult;
@@ -18,33 +18,33 @@ import java.util.List;
 public class ResponseUtil {
     public static ResponseVo initSuccessResultVO() {
         ResponseVo responseVo = new ResponseVo();
-        responseVo.setRespCode(BusinessConstants.SUCCESS_RESULT_CODE);
+        responseVo.setRespCode(BusinessConstant.SUCCESS_RESULT_CODE);
         return responseVo;
     }
 
     public static ResponseVo initSuccessResultVO(Object data) {
         ResponseVo responseVo = new ResponseVo();
-        responseVo.setRespCode(BusinessConstants.SUCCESS_RESULT_CODE);
+        responseVo.setRespCode(BusinessConstant.SUCCESS_RESULT_CODE);
         responseVo.setData(data);
         return responseVo;
     }
 
     public static ResponseVo initErrorResultVO() {
         ResponseVo responseVo = new ResponseVo();
-        responseVo.setRespCode(BusinessConstants.ERROR_RESULT_CODE);
+        responseVo.setRespCode(BusinessConstant.ERROR_RESULT_CODE);
         return responseVo;
     }
 
     public static ResponseVo initErrorResultVO(String msg) {
         ResponseVo responseVo = new ResponseVo();
-        responseVo.setRespCode(BusinessConstants.ERROR_RESULT_CODE);
+        responseVo.setRespCode(BusinessConstant.ERROR_RESULT_CODE);
         responseVo.setErrMsg(msg);
         return responseVo;
     }
 
     public static ResponseVo initErrorResultVO(BindingResult bindingResult, String errMsg) {
         ResponseVo responseVo = new ResponseVo();
-        responseVo.setRespCode(BusinessConstants.ERROR_RESULT_CODE);
+        responseVo.setRespCode(BusinessConstant.ERROR_RESULT_CODE);
         responseVo.setErrMsg(errMsg);
         List<FieldErrorDto> list = new ArrayList<>();
         bindingResult.getAllErrors().forEach(error -> {
@@ -61,7 +61,7 @@ public class ResponseUtil {
 
     public static ResponseVo initErrorResultVO(List<FieldErrorDto> fieldErrorDtos, String errMsg) {
         ResponseVo responseVo = new ResponseVo();
-        responseVo.setRespCode(BusinessConstants.ERROR_RESULT_CODE);
+        responseVo.setRespCode(BusinessConstant.ERROR_RESULT_CODE);
         responseVo.setErrMsg(errMsg);
         responseVo.setData(fieldErrorDtos);
         return responseVo;

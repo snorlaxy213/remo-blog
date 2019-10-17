@@ -14,7 +14,7 @@ public class ActiveUser implements Serializable {
     private static final long serialVersionUID = 2055229953429884344L;
 
     // 唯一编号
-    private String id = RandomStringUtils.randomAlphanumeric(20);
+    private String id = RandomStringUtils.randomNumeric(10);
     // 用户名
     private String username;
     // ip地址

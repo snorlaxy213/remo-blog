@@ -5,20 +5,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.user.common.domain.ActiveUser;
 import com.user.common.domain.RemoConstant;
 import com.user.common.service.RedisService;
-import com.user.constant.BusinessConstants;
+import com.user.constant.BusinessConstant;
 import com.user.exception.exception.BusinessException;
 import com.user.manager.UserManager;
-import com.user.pojo.po.User;
-import com.user.pojo.vo.LoginVo;
+import com.user.pojo.dto.UserDto;
 import com.user.pojo.vo.ResponseVo;
 import com.user.properties.RemoProperties;
 import com.user.shiro.JWTToken;
 import com.user.shiro.JWTUtil;
 import com.user.util.*;
+import com.user.validation.groups.Login;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,39 +48,38 @@ public class LoginController {
 
     @ApiOperation(value = "login", notes = "check if userName and password is correct")
     @PostMapping("login")
-    public ResponseVo login(@RequestBody LoginVo loginVo, HttpServletRequest request)  throws Exception {
-        String account = loginVo.getUserName();
-        String password = loginVo.getPassword();
-
-        account = StringUtils.lowerCase(account);
-        password = MD5Util.encrypt(account, password);
-
+    public ResponseVo login(@Validated(Login.class) @RequestBody UserDto loginDto, HttpServletRequest request)  throws Exception {
+        String username = StringUtils.lowerCase(loginDto.getUsername());
+        String password = MD5Util.encrypt(username, loginDto.getPassword());
         final String errorMessage = "用户名或密码错误";
-        User user = this.userManager.getUser(account);
 
-        if (user == null)
-            throw new BusinessException(BusinessConstants.ERROR_RESULT_CODE,errorMessage);
-        if (!StringUtils.equals(user.getPassword(), password))
-            throw new BusinessException(BusinessConstants.ERROR_RESULT_CODE,errorMessage);
+        UserDto userDto = this.userManager.getUser(username);
 
-        String token = RemoUtil.encryptToken(JWTUtil.sign(account, password));
+        if (userDto == null){
+            throw new BusinessException(BusinessConstant.ERROR_RESULT_CODE,errorMessage);
+        }
+        if (!StringUtils.equals(userDto.getPassword(), password)) {
+            throw new BusinessException(BusinessConstant.ERROR_RESULT_CODE, errorMessage);
+        }
+
+        String token = RemoUtil.encryptToken(JWTUtil.sign(username, password));
         LocalDateTime expireTime = LocalDateTime.now().plusSeconds(properties.getShiro().getJwtTimeOut());
         String expireTimeStr = DateUtil.formatFullTime(expireTime);
         JWTToken jwtToken = new JWTToken(token, expireTimeStr);
 
-        String userId = this.saveTokenToRedis(user, jwtToken, request);
-        user.setUserId(Long.valueOf(userId));
+        String userId = this.saveTokenToRedis(userDto, jwtToken, request);
+        userDto.setUserId(Long.valueOf(userId));
 
-        Map<String, Object> userInfo = this.generateUserInfo(jwtToken, user);
+        Map<String, Object> userInfo = this.generateUserInfo(jwtToken, userDto);
         return ResponseUtil.initSuccessResultVO(userInfo);
     }
 
-    private String saveTokenToRedis(User user, JWTToken token, HttpServletRequest request) throws Exception {
+    private String saveTokenToRedis(UserDto user, JWTToken token, HttpServletRequest request) throws Exception {
         String ip = IPUtil.getIpAddr(request);
 
         // 构建在线用户
         ActiveUser activeUser = new ActiveUser();
-        activeUser.setUsername(user.getAccount());
+        activeUser.setUsername(user.getUsername());
         activeUser.setIp(ip);
         activeUser.setToken(token.getToken());
 
@@ -94,26 +94,23 @@ public class LoginController {
     /**
      * 生成前端需要的用户信息，包括：
      * 1. token
-     * 2. Vue Router
-     * 3. 用户角色
-     * 4. 用户权限
-     * 5. 前端系统个性化配置信息
+     * 2. 用户角色
      *
      * @param token token
-     * @param user  用户信息
+     * @param userDto  用户信息
      * @return UserInfo
      */
-    private Map<String, Object> generateUserInfo(JWTToken token, User user) {
-        String account = user.getAccount();
-        Map<String, Object> userInfo = new HashMap<>();
+    private Map<String, Object> generateUserInfo(JWTToken token, UserDto userDto) {
+        String username = userDto.getUsername();
+        Map<String, Object> userInfo = new HashMap<>(5);
         userInfo.put("token", token.getToken());
         userInfo.put("expireTime", token.getExpireAt());
 
-        Set<String> roles = this.userManager.getUserRoles(account);
+        Set<String> roles = this.userManager.getUserRoles(username);
         userInfo.put("roles", roles);
 
-        user.setPassword("it's a secret");
-        userInfo.put("user", user);
+        userDto.setPassword(null);
+        userInfo.put("user", userDto);
         return userInfo;
     }
 }

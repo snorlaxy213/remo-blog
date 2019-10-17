@@ -5,10 +5,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.user.common.domain.RemoConstant;
 import com.user.common.service.CacheService;
 import com.user.common.service.RedisService;
-import com.user.mapper.UserMapper;
-import com.user.pojo.po.Role;
-import com.user.pojo.po.User;
+import com.user.constant.BusinessConstant;
+import com.user.constant.ViewConstants;
+import com.user.exception.exception.BusinessException;
+import com.user.pojo.dto.RoleDto;
+import com.user.pojo.dto.UserDto;
+import com.user.pojo.po.Menu;
+import com.user.service.MenuService;
 import com.user.service.RoleService;
+import com.user.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +30,10 @@ public class CacheServiceImpl implements CacheService {
     private RoleService roleService;
 
     @Autowired
-    private UserMapper userMapper;
+    private UserService userService;
+
+    @Autowired
+    MenuService menuService;
 
     @Autowired
     private ObjectMapper mapper;
@@ -36,57 +44,71 @@ public class CacheServiceImpl implements CacheService {
     }
 
     @Override
-    public User getUser(String account) throws Exception {
-        String userString = this.redisService.get(RemoConstant.USER_CACHE_PREFIX + account);
-        if (StringUtils.isBlank(userString))
-            throw new Exception();
-        else
-            return this.mapper.readValue(userString, User.class);
+    public UserDto getUser(String username) throws Exception {
+        String userString = this.redisService.get(RemoConstant.USER_CACHE_PREFIX + username);
+        if (StringUtils.isBlank(userString)){
+            throw new BusinessException(BusinessConstant.ERROR_RESULT_CODE, ViewConstants.WRONG_INPUT);
+        } else {
+            return this.mapper.readValue(userString, UserDto.class);
+        }
     }
 
     @Override
-    public List<Role> getRoles(String account) throws Exception {
-        String roleListString = this.redisService.get(RemoConstant.USER_ROLE_CACHE_PREFIX + account);
+    public List<RoleDto> getRoles(String username) throws Exception {
+        String roleListString = this.redisService.get(RemoConstant.USER_ROLE_CACHE_PREFIX + username);
         if (StringUtils.isBlank(roleListString)) {
-            throw new Exception();
+            throw new BusinessException(BusinessConstant.ERROR_RESULT_CODE, ViewConstants.WRONG_INPUT);
         } else {
-            JavaType type = mapper.getTypeFactory().constructParametricType(List.class, Role.class);
+            JavaType type = mapper.getTypeFactory().constructParametricType(List.class, RoleDto.class);
             return this.mapper.readValue(roleListString, type);
         }
     }
 
     @Override
-    public void saveUser(User user) throws Exception {
-        String account = user.getAccount();
-        this.deleteUser(account);
-        redisService.set(RemoConstant.USER_CACHE_PREFIX + account, mapper.writeValueAsString(user));
+    public void saveUser(UserDto user) throws Exception {
+        String username = user.getUsername();
+        this.deleteUser(username);
+        redisService.set(RemoConstant.USER_CACHE_PREFIX + username, mapper.writeValueAsString(user));
     }
 
     @Override
-    public void saveUser(String account) throws Exception {
-        User user = userMapper.findByAccount(account);
-        this.deleteUser(account);
-        redisService.set(RemoConstant.USER_CACHE_PREFIX + account, mapper.writeValueAsString(user));
+    public void saveUser(String username) throws Exception {
+        UserDto user = userService.findByUsername(username);
+        this.deleteUser(username);
+        redisService.set(RemoConstant.USER_CACHE_PREFIX + username, mapper.writeValueAsString(user));
     }
 
     @Override
-    public void saveRoles(String account) throws Exception {
-        List<Role> roleList = this.roleService.listUserRoles(account);
-        if (!roleList.isEmpty()) {
-            this.deleteRoles(account);
-            redisService.set(RemoConstant.USER_ROLE_CACHE_PREFIX + account, mapper.writeValueAsString(roleList));
+    public void saveRoles(String username) throws Exception {
+        List<RoleDto> roles = this.roleService.listUserRoles(username);
+        if (!roles.isEmpty()) {
+            this.deleteRoles(username);
+            redisService.set(RemoConstant.USER_ROLE_CACHE_PREFIX + username, mapper.writeValueAsString(roles));
         }
     }
 
     @Override
-    public void deleteUser(String account) throws Exception {
-        account = account.toLowerCase();
-        redisService.del(RemoConstant.USER_CACHE_PREFIX + account);
+    public void savePermissions(String username) throws Exception {
+        List<Menu> permissionList = this.menuService.findUserPermissions(username);
+        if (!permissionList.isEmpty()) {
+            this.deletePermissions(username);
+            redisService.set(RemoConstant.USER_PERMISSION_CACHE_PREFIX + username, mapper.writeValueAsString(permissionList));
+        }
+    }
+
+    @Override
+    public void deleteUser(String username) throws Exception {
+        redisService.del(RemoConstant.USER_CACHE_PREFIX + username.toLowerCase());
     }
 
     @Override
     public void deleteRoles(String username) throws Exception {
+        redisService.del(RemoConstant.USER_ROLE_CACHE_PREFIX + username.toLowerCase());
+    }
+
+    @Override
+    public void deletePermissions(String username) throws Exception {
         username = username.toLowerCase();
-        redisService.del(RemoConstant.USER_ROLE_CACHE_PREFIX + username);
+        redisService.del(RemoConstant.USER_PERMISSION_CACHE_PREFIX + username);
     }
 }
