@@ -30,6 +30,13 @@ mybatis-plus:
     #开启DB驼峰命名
     map-underscore-to-camel-case: true
 
+remo:
+  shiro:
+    # 后端免认证接口 url
+    anonUrl: /login,/swagger-resources/**,/webjars/**,/v2/**,/swagger-ui.html/**
+    # token有效期，单位秒
+    jwtTimeOut: 3600
+
 ---
 server:
   port: 9101

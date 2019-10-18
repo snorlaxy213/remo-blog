@@ -121,9 +121,9 @@ public class RedisServiceImpl implements RedisService {
     }
 
     @Override
-    public String set(String key, String value, Long milliscends) throws RedisConnectException {
+    public String set(String key, String value, Long milliseconds) throws RedisConnectException {
         String result = this.set(key.toLowerCase(), value);
-        this.pexpire(key, milliscends);
+        this.pexpire(key, milliseconds);
         return result;
     }
 

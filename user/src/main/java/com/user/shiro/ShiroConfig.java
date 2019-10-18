@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.HashMap;
+import javax.servlet.Filter;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -32,28 +33,31 @@ public class ShiroConfig {
      */
     @Bean
     public ShiroFilterFactoryBean shirFilter(@Qualifier("securityManager") DefaultWebSecurityManager manager) {
-        ShiroFilterFactoryBean factoryBean = new ShiroFilterFactoryBean();
-        factoryBean.setSecurityManager(manager);
+        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+        shiroFilterFactoryBean.setSecurityManager(manager);
 
-        Map<String, String> filterMap = new HashMap();
-        //注销登录,配置退出过滤器,其中的具体的退出代码Shiro已经替我们实现了
-        filterMap.put("/logout", "logout");
+        // 在 Shiro过滤器链上加入 JWTFilter
+        LinkedHashMap<String, Filter> filters = new LinkedHashMap<>();
+        filters.put("jwt", new JWTFilter());
+        shiroFilterFactoryBean.setFilters(filters);
+
+        Map<String, String> filterMap = new LinkedHashMap();
         //swagger接口权限 开放
-        filterMap.put("/swagger-ui.html", "anon");
-        filterMap.put("/webjars/**", "anon");
-        filterMap.put("/v2/**", "anon");
-        filterMap.put("/swagger-resources/**", "anon");
+//        filterMap.put("/swagger-ui.html", "anon");
+//        filterMap.put("/webjars/**", "anon");
+//        filterMap.put("/v2/**", "anon");
+//        filterMap.put("/swagger-resources/**", "anon");
         //<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
         //<!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
-        filterMap.put("/**", "authc");
+        filterMap.put("/**", "jwt");
 
 
         //配置拦截Url
-        factoryBean.setFilterChainDefinitionMap(filterMap);
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
         //不配置此属性login请求会转发到login.jsp
-        factoryBean.setLoginUrl("/login");
+        shiroFilterFactoryBean.setLoginUrl("/login");
 
-        return factoryBean;
+        return shiroFilterFactoryBean;
     }
 
     @Bean("securityManager")

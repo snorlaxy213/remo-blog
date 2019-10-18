@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 @Configuration
-@ConfigurationProperties(prefix = "febs")
+@ConfigurationProperties(prefix = "remo")
 public class RemoProperties {
 
     private ShiroProperties shiro = new ShiroProperties();
