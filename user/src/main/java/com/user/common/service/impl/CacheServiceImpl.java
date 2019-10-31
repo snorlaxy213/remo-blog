@@ -10,8 +10,8 @@ import com.user.constant.ViewConstants;
 import com.user.exception.exception.BusinessException;
 import com.user.pojo.dto.RoleDto;
 import com.user.pojo.dto.UserDto;
-import com.user.pojo.po.Menu;
-import com.user.service.MenuService;
+import com.user.pojo.po.Permission;
+import com.user.service.PermissionService;
 import com.user.service.RoleService;
 import com.user.service.UserService;
 import org.apache.commons.lang3.StringUtils;
@@ -33,7 +33,7 @@ public class CacheServiceImpl implements CacheService {
     private UserService userService;
 
     @Autowired
-    MenuService menuService;
+    PermissionService permissionService;
 
     @Autowired
     private ObjectMapper mapper;
@@ -89,7 +89,7 @@ public class CacheServiceImpl implements CacheService {
 
     @Override
     public void savePermissions(String username) throws Exception {
-        List<Menu> permissionList = this.menuService.findUserPermissions(username);
+        List<Permission> permissionList = this.permissionService.findUserPermissions(username);
         if (!permissionList.isEmpty()) {
             this.deletePermissions(username);
             redisService.set(RemoConstant.USER_PERMISSION_CACHE_PREFIX + username, mapper.writeValueAsString(permissionList));

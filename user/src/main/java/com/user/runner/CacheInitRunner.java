@@ -44,7 +44,7 @@ public class CacheInitRunner implements ApplicationRunner {
             log.info("缓存用户数据 ······");
             List<User> list = this.userService.list();
             for (User user : list) {
-                userManager.loadUserRedisCache(user.getAccount());
+                userManager.loadUserRedisCache(user.getUsername());
             }
         } catch (Exception e) {
             log.error("缓存初始化失败，{}", e.getMessage());

@@ -11,41 +11,28 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
-@TableName("sys_menu")
-public class Menu implements Serializable {
+@TableName("sys_permission")
+public class Permission implements Serializable {
 
     private static final long serialVersionUID = 7187628714679791771L;
 
-    public static final String TYPE_MENU = "0";
+    @TableId(value = "permission_id", type = IdType.ID_WORKER)
+    private Long permissionId;
 
-    public static final String TYPE_BUTTON = "1";
-
-    @TableId(value = "menu_id", type = IdType.ID_WORKER)
-    private Long menuId;
-
-    @TableField("parent_id")
-    private Long parentId;
-
-    @TableField("menu_name")
-    private String menuName;
+    @TableField("permission_name")
+    private String permissionName;
 
     @TableField("path")
     private String path;
 
-    @TableField("component")
-    private String component;
-
-    @TableField("perms")
-    private String perms;
-
-    @TableField("icon")
-    private String icon;
-
     @TableField("type")
     private String type;
 
+    @TableField("parent_id")
+    private Long parentId;
+
     @TableField("order_num")
-    private Double orderNum;
+    private Integer orderNum;
 
     /**
      * 乐观锁

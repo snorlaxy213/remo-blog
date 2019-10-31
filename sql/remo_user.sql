@@ -11,11 +11,30 @@
  Target Server Version : 80013
  File Encoding         : 65001
 
- Date: 30/10/2019 00:09:29
+ Date: 01/11/2019 01:10:38
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for sys_permission
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_permission`;
+CREATE TABLE `sys_permission`  (
+  `permission_id` bigint(20) NOT NULL,
+  `permission_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `type` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `parent_id` bigint(20) NULL DEFAULT NULL,
+  `order_num` int(11) NULL DEFAULT NULL,
+  `version` int(11) NULL DEFAULT NULL COMMENT '乐观锁',
+  `create_time` datetime(6) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_user` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '创建用户',
+  `update_time` datetime(6) NULL DEFAULT NULL COMMENT '修改时间',
+  `update_user` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '修改用户',
+  PRIMARY KEY (`permission_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -40,12 +59,21 @@ CREATE TABLE `sys_role`  (
 INSERT INTO `sys_role` VALUES (1, 'admin', 'admin', '1', 1, '2019-07-24 23:00:37.000000', 'admin', '2019-07-24 23:00:44.000000', 'admin');
 
 -- ----------------------------
+-- Table structure for sys_role_permission
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_role_permission`;
+CREATE TABLE `sys_role_permission`  (
+  `role_id` int(20) NOT NULL,
+  `permission_id` int(20) NULL DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for sys_user
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user`  (
   `user_id` bigint(20) NOT NULL COMMENT '主键id',
-  `account` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '账户',
+  `username` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '账户',
   `name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '姓名',
   `phone` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '移动号码',
   `email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '电子邮件',
@@ -73,8 +101,8 @@ INSERT INTO `sys_user` VALUES (1, 'admin', 'admin ', '16620375709', '1658895307@
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_role`;
 CREATE TABLE `sys_user_role`  (
-  `user_id` int(11) NULL DEFAULT NULL,
-  `role_id` int(11) NULL DEFAULT NULL
+  `user_id` int(20) NULL DEFAULT NULL,
+  `role_id` int(20) NULL DEFAULT NULL
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
