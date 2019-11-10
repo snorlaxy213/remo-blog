@@ -8,9 +8,9 @@ import com.user.common.service.RedisService;
 import com.user.constant.BusinessConstant;
 import com.user.constant.ViewConstants;
 import com.user.exception.exception.BusinessException;
+import com.user.pojo.dto.PermissionDto;
 import com.user.pojo.dto.RoleDto;
 import com.user.pojo.dto.UserDto;
-import com.user.pojo.po.Permission;
 import com.user.service.PermissionService;
 import com.user.service.RoleService;
 import com.user.service.UserService;
@@ -65,6 +65,17 @@ public class CacheServiceImpl implements CacheService {
     }
 
     @Override
+    public List<PermissionDto> getPermissions(String username) throws Exception {
+        String permissionListString = this.redisService.get(RemoConstant.USER_PERMISSION_CACHE_PREFIX + username);
+        if (StringUtils.isBlank(permissionListString)) {
+            throw new Exception();
+        } else {
+            JavaType type = mapper.getTypeFactory().constructParametricType(List.class, PermissionDto.class);
+            return this.mapper.readValue(permissionListString, type);
+        }
+    }
+
+    @Override
     public void saveUser(UserDto user) throws Exception {
         String username = user.getUsername();
         this.deleteUser(username);
@@ -89,10 +100,10 @@ public class CacheServiceImpl implements CacheService {
 
     @Override
     public void savePermissions(String username) throws Exception {
-        List<Permission> permissionList = this.permissionService.findUserPermissions(username);
-        if (!permissionList.isEmpty()) {
+        List<PermissionDto> permissions = this.permissionService.findUserPermissions(username);
+        if (!permissions.isEmpty()) {
             this.deletePermissions(username);
-            redisService.set(RemoConstant.USER_PERMISSION_CACHE_PREFIX + username, mapper.writeValueAsString(permissionList));
+            redisService.set(RemoConstant.USER_PERMISSION_CACHE_PREFIX + username, mapper.writeValueAsString(permissions));
         }
     }
 

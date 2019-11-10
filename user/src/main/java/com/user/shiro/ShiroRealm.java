@@ -4,7 +4,6 @@ import com.user.common.domain.RemoConstant;
 import com.user.common.service.RedisService;
 import com.user.manager.UserManager;
 import com.user.pojo.dto.UserDto;
-import com.user.pojo.po.User;
 import com.user.util.HttpContextUtil;
 import com.user.util.IPUtil;
 import com.user.util.RemoUtil;
@@ -48,6 +47,11 @@ public class ShiroRealm extends AuthorizingRealm {
         // 获取用户角色集
         Set<String> roleSet = userManager.getUserRoles(username);
         simpleAuthorizationInfo.setRoles(roleSet);
+
+        // 获取用户权限集
+        Set<String> permissionSet = userManager.getUserPermissions(username);
+        simpleAuthorizationInfo.setStringPermissions(permissionSet);
+
         return simpleAuthorizationInfo;
     }
 

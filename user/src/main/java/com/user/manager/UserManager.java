@@ -2,8 +2,10 @@ package com.user.manager;
 
 
 import com.user.common.service.CacheService;
+import com.user.pojo.dto.PermissionDto;
 import com.user.pojo.dto.RoleDto;
 import com.user.pojo.dto.UserDto;
+import com.user.service.PermissionService;
 import com.user.service.RoleService;
 import com.user.service.UserService;
 import com.user.util.RemoUtil;
@@ -21,10 +23,13 @@ public class UserManager {
     private CacheService cacheService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private RoleService roleService;
 
     @Autowired
-    private UserService userService;
+    private PermissionService permissionService;
 
     /**
      * 通过用户名获取用户基本信息
@@ -49,6 +54,19 @@ public class UserManager {
                 () -> this.cacheService.getRoles(username),
                 () -> this.roleService.listUserRoles(username));
         return roleList.stream().map(RoleDto::getName).collect(Collectors.toSet());
+    }
+
+    /**
+     * 通过用户名获取用户权限集合
+     *
+     * @param username 用户名
+     * @return 权限集合
+     */
+    public Set<String> getUserPermissions(String username) {
+        List<PermissionDto> roleList = RemoUtil.selectCacheByTemplate(
+                () -> this.cacheService.getPermissions(username),
+                () -> this.permissionService.findUserPermissions(username));
+        return roleList.stream().map(PermissionDto::getPermissionName).collect(Collectors.toSet());
     }
 
     /**

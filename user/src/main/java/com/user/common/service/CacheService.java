@@ -1,10 +1,9 @@
 package com.user.common.service;
 
 
+import com.user.pojo.dto.PermissionDto;
 import com.user.pojo.dto.RoleDto;
 import com.user.pojo.dto.UserDto;
-import com.user.pojo.po.Role;
-import com.user.pojo.po.User;
 
 import java.util.List;
 
@@ -30,6 +29,14 @@ public interface CacheService {
      * @return 角色集
      */
     List<RoleDto> getRoles(String username) throws Exception;
+
+    /**
+     * 从缓存中获取用户权限
+     *
+     * @param username 用户名
+     * @return 权限集
+     */
+    List<PermissionDto> getPermissions(String username) throws Exception;
 
     /**
      * 缓存用户信息，只有当用户信息是查询出来的，完整的，才应该调用这个方法

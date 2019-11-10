@@ -1,5 +1,6 @@
 package com.user.service;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.user.mapper.RoleMapper;
 import com.user.pojo.dto.RoleDto;
 import com.user.pojo.po.Role;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class RoleServiceImpl implements RoleService {
+public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
 
     @Autowired
     private RoleMapper roleMapper;
