@@ -37,14 +37,6 @@
             <version>8.0.13</version>
         </dependency>
 
-        <!-- lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.4</version>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- jwt -->
         <dependency>
             <groupId>com.auth0</groupId>
