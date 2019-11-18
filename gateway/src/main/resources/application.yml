@@ -1,0 +1,22 @@
+server:
+  port: 8766
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: user
+          uri: http://localhost:9101
+          predicates:
+            - Path=/user/**
+          filters:
+            - StripPrefix=1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
+    instances:
+      prefer-ip-address: true

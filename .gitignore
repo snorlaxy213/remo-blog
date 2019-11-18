@@ -1,5 +1,2 @@
-/user/target/
-/article/target/
-/common/target/
-/eureka/target/
-/log/target/
+/**/target/
+
