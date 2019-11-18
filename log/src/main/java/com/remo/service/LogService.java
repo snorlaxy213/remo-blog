@@ -1,6 +1,6 @@
-package service;
+package com.remo.service;
 
-import po.SysLog;
+import com.remo.po.SysLog;
 
 public interface LogService {
 

@@ -8,7 +8,8 @@ spring:
       primary: master
       datasource:
         master:
-          url: jdbc:mysql://localhost:3306/remo_article?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+          url: jdbc:mysql://192.168.101.153:3306/remo_article?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+#          url: jdbc:mysql://localhost:3306/remo_article?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
           username: root
           password: admin
           driver-class-name: com.mysql.cj.jdbc.Driver
@@ -35,3 +36,7 @@ eureka:
       defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
     instances:
       prefer-ip-address: true
+
+feign:
+  hystrix:
+    enabled: true

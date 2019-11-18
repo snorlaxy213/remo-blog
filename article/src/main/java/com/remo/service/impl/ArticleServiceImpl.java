@@ -1,5 +1,7 @@
 package com.remo.service.impl;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.remo.exception.exception.ParamException;
 import com.remo.mapper.ArticleMapper;
 import com.remo.pojo.dto.ArticleDto;
@@ -9,9 +11,6 @@ import com.remo.pojo.entity.Article;
 import com.remo.pojo.vo.query.ListArticleQuery;
 import com.remo.service.IArticleService;
 import com.remo.utils.constant.FormatConstant;
-import com.baomidou.dynamic.datasource.annotation.DS;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.dozer.Mapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +40,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
      * @return
      */
     @Override
-    @DS("slave")
+//    @DS("slave")
     public List<ArticleDto> listArticles(ListArticleQuery query) {
         EntityWrapper<Article> wrapper = new EntityWrapper<>();
         if (query.getArticleType() != null) {
@@ -64,7 +63,6 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     }
 
     @Override
-    @DS("slave")
     public List<SimpleArticleDto> listSimpleArticles(){
         List<Article> articles = this.selectList(new EntityWrapper<>());
         List<SimpleArticleDto> simpleArticleDtos = new ArrayList<>();
@@ -73,7 +71,6 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     }
 
     @Override
-    @DS("slave")
     public ArticleDto getArticle(Long id) {
         Article article = this.selectById(id);
         return dozerMapper.map(article, ArticleDto.class);

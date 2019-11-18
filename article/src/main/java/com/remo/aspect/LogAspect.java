@@ -10,15 +10,17 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 import java.util.Date;
 
 @Aspect
+@Component
 public class LogAspect {
 
     @Autowired
-    LogServiceClient logServiceClient;
+    private LogServiceClient logServiceClient;
 
     @Pointcut("@annotation(com.remo.annotation.RemoLog)")
     public void pointcut() { }

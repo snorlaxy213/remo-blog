@@ -30,9 +30,9 @@ CREATE TABLE `sys_permission`  (
   `order_num` int(11) NULL DEFAULT NULL,
   `version` int(11) NULL DEFAULT NULL COMMENT '乐观锁',
   `create_time` datetime(6) NULL DEFAULT NULL COMMENT '创建时间',
-  `create_user` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '创建用户',
+  `create_user` varchar(45) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '创建用户',
   `update_time` datetime(6) NULL DEFAULT NULL COMMENT '修改时间',
-  `update_user` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '修改用户',
+  `update_user` varchar(45) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '修改用户',
   PRIMARY KEY (`permission_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
@@ -42,16 +42,16 @@ CREATE TABLE `sys_permission`  (
 DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role`  (
   `role_id` bigint(20) NOT NULL COMMENT '主键id',
-  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '角色名称',
-  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '提示',
-  `sort` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '序号',
+  `name` varchar(100) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '角色名称',
+  `description` varchar(255) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '提示',
+  `sort` varchar(3) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '序号',
   `version` int(11) NULL DEFAULT NULL COMMENT '乐观锁',
   `create_time` datetime(6) NULL DEFAULT NULL COMMENT '创建时间',
-  `create_user` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '创建用户',
+  `create_user` varchar(45) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '创建用户',
   `update_time` datetime(6) NULL DEFAULT NULL COMMENT '修改时间',
-  `update_user` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '修改用户',
+  `update_user` varchar(45) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '修改用户',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_role
@@ -73,23 +73,23 @@ CREATE TABLE `sys_role_permission`  (
 DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user`  (
   `user_id` bigint(20) NOT NULL COMMENT '主键id',
-  `username` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '账户',
-  `name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '姓名',
-  `phone` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '移动号码',
-  `email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '电子邮件',
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '密码',
-  `gender` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '性别(字典)',
+  `username` varchar(45) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '账户',
+  `name` varchar(45) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '姓名',
+  `phone` varchar(45) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '移动号码',
+  `email` varchar(45) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '电子邮件',
+  `password` varchar(255) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '密码',
+  `gender` varchar(1) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '性别(字典)',
   `birthday` date NULL DEFAULT NULL COMMENT '生日',
-  `brief` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '个人简介',
-  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '头像',
-  `role_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '角色id(多个逗号隔开)',
+  `brief` varchar(255) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '个人简介',
+  `avatar` varchar(255) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '头像',
+  `role_id` varchar(255) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '角色id(多个逗号隔开)',
   `create_time` datetime(6) NULL DEFAULT NULL COMMENT '创建时间',
-  `create_user` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '创建人',
+  `create_user` varchar(45) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '创建人',
   `update_time` datetime(6) NULL DEFAULT NULL COMMENT '更新时间',
-  `update_user` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '更新人',
+  `update_user` varchar(45) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '更新人',
   `version` int(11) NULL DEFAULT NULL COMMENT '乐观锁',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_user

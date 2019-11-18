@@ -1,6 +1,7 @@
 package com.remo.controller;
 
 
+import com.remo.annotation.RemoLog;
 import com.remo.exception.exception.BusinessException;
 import com.remo.exception.exception.ParamException;
 import com.remo.pojo.dto.ArticleDto;
@@ -72,13 +73,12 @@ public class ArticleController {
         return ResponseUtil.initSuccessResponse(articles);
     }
 
+    @RemoLog("listSimpleArticles")
     @ApiOperation(value = "listSimpleArticles")
     @GetMapping("listSimpleArticles")
     public ResponseVo listSimpleArticles() {
         List<SimpleArticleDto> simpleArticleDtos = articleService.listSimpleArticles();
         return ResponseUtil.initSuccessResponse(simpleArticleDtos);
     }
-
-
 
 }
