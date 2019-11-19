@@ -6,6 +6,8 @@ spring:
     name: gateway
   cloud:
     gateway:
+      #close gateway, default value is true
+      enabled: true
       routes:
         - id: user
           uri: http://localhost:9101
