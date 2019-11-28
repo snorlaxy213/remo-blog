@@ -2,7 +2,7 @@ spring:
   kafka:
     #============== kafka ===================
     # 指定kafka 代理地址，可以多个
-    bootstrap-servers: 192.168.116.129:9092
+    bootstrap-servers: 192.168.80.128:9092
     #=============== provider =======================
     producer:
       retries: 0
