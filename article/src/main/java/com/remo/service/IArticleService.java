@@ -9,9 +9,7 @@ import com.baomidou.mybatisplus.service.IService;
 import java.util.List;
 
 /**
- * <p>
  *  Article服务类
- * </p>
  *
  * @author vino
  * @since 2019-08-26

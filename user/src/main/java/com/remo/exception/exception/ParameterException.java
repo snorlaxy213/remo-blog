@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * User Parameter Exception
+ * Parameter Exception
  *
  * @author Jules
  * @date 2019/6/25

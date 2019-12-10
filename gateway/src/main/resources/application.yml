@@ -8,6 +8,7 @@ spring:
     gateway:
       #close gateway, default value is true
       enabled: true
+      ig
       routes:
         - id: user
           uri: http://localhost:9101

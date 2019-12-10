@@ -21,15 +21,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * <p>
- *  前端控制器
- * </p>
- *
- * @author vino
- * @since 2019-08-26
- */
-
 @RestController(value = "/article")
 @Api(tags = "Article")
 public class ArticleController {
