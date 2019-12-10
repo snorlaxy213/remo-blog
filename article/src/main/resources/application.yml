@@ -33,7 +33,8 @@ common:
 eureka:
   client:
     service-url:
-      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
+#      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
+      defaultZone: http://server-one:8761/eureka/
     instances:
       prefer-ip-address: true
 
