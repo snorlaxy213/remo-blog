@@ -1,7 +1,7 @@
 package com.remo.config.mybatis;
 
 
-import com.baomidou.mybatisplus.mapper.MetaObjectHandler;
+import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +11,7 @@ import java.util.Random;
  * 字段自动填充（自定义十位数字）
  */
 @Component
-public class ArricleIDMetaObjectHandler extends MetaObjectHandler {
+public class ArticleIDMetaObjectHandler implements MetaObjectHandler {
 
     /**
      * field Insert fill data automatically

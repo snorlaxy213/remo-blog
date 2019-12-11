@@ -1,7 +1,7 @@
 package com.remo.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.remo.pojo.entity.Article;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**
  * <p>

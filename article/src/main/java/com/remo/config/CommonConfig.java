@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * dozer配置
+ * SpringBoot配置
  *
  * @author Jules
  * @date 2019/8/28
@@ -19,8 +19,8 @@ public class CommonConfig {
     /**
      * dozer配置
      */
-    @Bean
-    public DozerBeanMapper mapper(){
+    @Bean("dozerBeanMapper")
+    public DozerBeanMapper dozerBeanMapper(){
         List<String> mappingFiles = Arrays.asList(
                 "dozer/dozer-mapping.xml"
         );

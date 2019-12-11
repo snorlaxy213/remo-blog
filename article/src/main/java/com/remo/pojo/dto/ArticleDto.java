@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -37,13 +38,13 @@ public class ArticleDto {
     /**
      * 文章标题
      */
-    @NotEmpty
+    @NotBlank
     private String articleTitle;
 
     /**
      * 文章内容
      */
-    @NotEmpty
+    @NotBlank
     private String articleContent;
 
     /**
@@ -54,7 +55,7 @@ public class ArticleDto {
     /**
      * 文章类型
      */
-    @NotEmpty
+    @NotBlank
     private String articleType;
 
     /**
@@ -105,5 +106,6 @@ public class ArticleDto {
     /**
      * 乐观锁
      */
+    @NotNull(groups = Update.class)
     private Integer version;
 }

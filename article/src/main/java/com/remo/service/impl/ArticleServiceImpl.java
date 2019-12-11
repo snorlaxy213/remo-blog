@@ -1,7 +1,7 @@
 package com.remo.service.impl;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.remo.exception.exception.ParamException;
 import com.remo.mapper.ArticleMapper;
 import com.remo.pojo.dto.ArticleDto;
@@ -10,13 +10,16 @@ import com.remo.pojo.dto.SimpleArticleDto;
 import com.remo.pojo.entity.Article;
 import com.remo.pojo.vo.query.ListArticleQuery;
 import com.remo.service.IArticleService;
+import com.remo.utils.ServiceUtil;
 import com.remo.utils.constant.FormatConstant;
-import org.dozer.Mapper;
+import lombok.extern.slf4j.Slf4j;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,11 +31,13 @@ import java.util.List;
  * @author vino
  * @since 2019-08-26
  */
-@Service
+@Slf4j
+@Service("articleServiceImpl")
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements IArticleService {
 
-    @Autowired
-    Mapper dozerMapper;
+    @Resource
+    @Qualifier("dozerBeanMapper")
+    DozerBeanMapper dozerMapper;
 
     /**
      * 根据ListArticleQuery的参数查询Articles
@@ -42,7 +47,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Override
 //    @DS("slave")
     public List<ArticleDto> listArticles(ListArticleQuery query) {
-        EntityWrapper<Article> wrapper = new EntityWrapper<>();
+        QueryWrapper<Article> wrapper = new QueryWrapper<>();
         if (query.getArticleType() != null) {
             wrapper.eq("articleType", query.getArticleType());
         }
@@ -56,7 +61,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
             wrapper.eq("publishDate", query.getPublishDate());
         }
 
-        List<Article> articles = this.selectList(wrapper);
+        List<Article> articles = this.list(wrapper);
         List<ArticleDto> articleDtos = new ArrayList<>();
         articles.forEach(article -> articleDtos.add(dozerMapper.map(article,ArticleDto.class)));
         return articleDtos;
@@ -64,7 +69,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
     @Override
     public List<SimpleArticleDto> listSimpleArticles(){
-        List<Article> articles = this.selectList(new EntityWrapper<>());
+        List<Article> articles = this.list();
         List<SimpleArticleDto> simpleArticleDtos = new ArrayList<>();
         articles.forEach(article -> simpleArticleDtos.add(dozerMapper.map(article,SimpleArticleDto.class)));
         return simpleArticleDtos;
@@ -72,7 +77,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
     @Override
     public ArticleDto getArticle(Long id) {
-        Article article = this.selectById(id);
+        Article article = this.getById(id);
         return dozerMapper.map(article, ArticleDto.class);
     }
 
@@ -95,9 +100,8 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         //service business
         Article article = new Article();
         BeanUtils.copyProperties(articleDto, article);
-        this.initPo(article,true);
-        boolean flag = this.insert(article);
-        return flag;
+        ServiceUtil.initEntity(article,true);
+        return this.save(article);
     }
 
     @Override
@@ -117,7 +121,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         }
 
         //service business
-        Article article = this.selectById(articleDto.getId());
+        Article article = this.getById(articleDto.getId());
 
         //文章标题
         article.setArticleTitle(articleDto.getArticleTitle());
@@ -136,10 +140,11 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         //乐观锁
         article.setVersion(articleDto.getVersion());
 
-        this.initPo(article,false);
+        ServiceUtil.initEntity(article,false);
         boolean flag = this.updateById(article);
         //记录日志
         if(flag){
+
             System.out.println("Update successfully");
         }else{
             System.out.println("Update failed due to modified by others");
@@ -147,13 +152,4 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         return flag;
     }
 
-    private void initPo(Article article,boolean isNew) {
-        if (isNew) {
-            article.setCreateTime(new Date());
-            article.setCreateUser("vino");
-        } else {
-            article.setUpdateTime(new Date());
-            article.setUpdateUser("vino");
-        }
-    }
 }

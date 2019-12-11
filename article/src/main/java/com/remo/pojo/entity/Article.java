@@ -1,25 +1,29 @@
 package com.remo.pojo.entity;
 
-import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableName;
-import com.baomidou.mybatisplus.annotations.Version;
-import com.baomidou.mybatisplus.enums.FieldFill;
-import com.baomidou.mybatisplus.enums.IdType;
-import lombok.Data;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.Version;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
- * <p>
  * 文章实体类
- * </p>
  *
  * @author vino
  * @since 2019-08-26
  */
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@Accessors(chain = true)
 @TableName("article")
 public class Article implements Serializable {
 
@@ -121,21 +125,25 @@ public class Article implements Serializable {
     /**
      * 创建时间
      */
+    @TableField("createTime")
     private Date createTime;
 
     /**
      * 创建人
      */
+    @TableField("createUser")
     private String createUser;
 
     /**
      * 更新时间
      */
+    @TableField("updateTime")
     private Date updateTime;
 
     /**
      * 更新人
      */
+    @TableField("updateUser")
     private String updateUser;
 
     /**
