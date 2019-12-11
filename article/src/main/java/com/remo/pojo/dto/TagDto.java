@@ -8,6 +8,7 @@ import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @Setter
@@ -36,4 +37,9 @@ public class TagDto {
      */
     @NotNull(groups = Insert.class)
     private Integer orderSeq;
+
+    /**
+     * articleDtos
+     */
+    List<ArticleDto> articleDtos;
 }

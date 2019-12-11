@@ -9,6 +9,7 @@ import lombok.Setter;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @Setter
@@ -108,4 +109,9 @@ public class ArticleDto {
      */
     @NotNull(groups = Update.class)
     private Integer version;
+
+    /**
+     * TagDtos
+     */
+    List<TagDto> tagDtos;
 }
