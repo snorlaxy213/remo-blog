@@ -5,4 +5,12 @@
     <!-- 开启二级缓存 -->
     <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
 
+    <insert id="addResolutionWithArticleAndTag">
+        insert into article_tag values (#{articleId}, #{tagId})
+    </insert>
+
+    <delete id="deleteResolutionByArticleId">
+        delete from article_tag where articleId = #{articleId}
+    </delete>
+
 </mapper>

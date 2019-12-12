@@ -57,4 +57,11 @@ public class TagServiceImpl extends ServiceImpl<TagMapper, Tag> implements ITagS
         ServiceUtil.initEntity(tag, false);
         return this.updateById(tag);
     }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean deleteTag(Long tagId) {
+        this.getBaseMapper().deleteResolutionByTagId(tagId);
+        return this.removeById(tagId);
+    }
 }

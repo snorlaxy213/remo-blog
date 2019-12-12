@@ -32,7 +32,7 @@ public class ArticleIDMetaObjectHandler implements MetaObjectHandler {
      */
     @Override
     public void updateFill(MetaObject metaObject) {
-        insertFill(metaObject);
+//        insertFill(metaObject);
     }
 
     /**

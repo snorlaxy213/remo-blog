@@ -16,4 +16,5 @@ public interface ITagService  extends IService<Tag> {
 
     boolean updateTag(TagDto tagDto);
 
+    boolean deleteTag(Long tagId);
 }

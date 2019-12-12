@@ -101,7 +101,13 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         Article article = new Article();
         BeanUtils.copyProperties(articleDto, article);
         ServiceUtil.initEntity(article,true);
-        return this.save(article);
+        boolean flag = this.save(article);
+
+        articleDto.getTagDtos().forEach(tagDto -> {
+            this.getBaseMapper().addResolutionWithArticleAndTag(article.getArticleId(), tagDto.getTagId());
+        });
+
+        return flag;
     }
 
     @Override
@@ -123,32 +129,29 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         //service business
         Article article = this.getById(articleDto.getId());
 
-        //文章标题
-        article.setArticleTitle(articleDto.getArticleTitle());
-        //文章内容
-        article.setArticleContent(articleDto.getArticleContent());
-        //文章标签
-        article.setArticleTags(articleDto.getArticleTags());
-        //文章类型
-        article.setArticleType(articleDto.getArticleType());
-        //文章分类
-        article.setArticleCategories(articleDto.getArticleCategories());
-        //更新文章日期
-        article.setUpdateDate(FormatConstant.yyyyMMdd.format(new Date()));
-        //文章摘要
-        article.setArticleTabloid(articleDto.getArticleTabloid());
-        //乐观锁
-        article.setVersion(articleDto.getVersion());
+        article.setArticleTitle(articleDto.getArticleTitle())
+                .setArticleContent(articleDto.getArticleContent())
+                .setArticleTags(articleDto.getArticleTags())
+                .setArticleType(articleDto.getArticleType())
+                .setArticleCategories(articleDto.getArticleCategories())
+                .setUpdateDate(FormatConstant.yyyyMMdd.format(new Date()))
+                .setArticleTabloid(articleDto.getArticleTabloid())
+                .setVersion(articleDto.getVersion());
 
         ServiceUtil.initEntity(article,false);
         boolean flag = this.updateById(article);
-        //记录日志
         if(flag){
-
-            System.out.println("Update successfully");
+            log.info("Update successfully");
         }else{
-            System.out.println("Update failed due to modified by others");
+            log.info("Update failed due to modified by others");
         }
+
+        //update article-tag relation
+        this.getBaseMapper().deleteResolutionByArticleId(article.getArticleId());
+        articleDto.getTagDtos().forEach(tagDto ->
+            this.getBaseMapper().addResolutionWithArticleAndTag(article.getArticleId(), tagDto.getTagId())
+        );
+
         return flag;
     }
 
