@@ -18,20 +18,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
-            <!-- 不加exclusions,会导致在类路径上找到的Spring MVC，此时它与Spring Cloud网关不兼容。
-            请删除spring-boot-start-web依赖项。 -->
-            <!-- spring cloud gateway是基于webflux的，
-            如果非要web支持的话需要导入spring-boot-starter-webflux而不是spring-boot-start-web。 -->
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-web</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-webflux</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- eureka-client -->

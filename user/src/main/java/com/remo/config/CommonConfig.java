@@ -22,7 +22,7 @@ public class CommonConfig {
     public Docket swagger2Config() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(new ApiInfoBuilder()
-                        .title("user interface document").description("administration user information and distribute role to user").build())
+                        .title("User API").description("administration user information and distribute role to user").build())
                 .select()
                 //这里采用包含注解的方式来确定要显示的接口
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
@@ -40,7 +40,7 @@ public class CommonConfig {
     @Bean
     public DozerBeanMapper mapper() {
         DozerBeanMapper mapper = new DozerBeanMapper();
-        mapper.setMappingFiles(Arrays.asList("dozer/UserMapping.xml"));
+        mapper.setMappingFiles(Arrays.asList("dozer/dozer-mapping.xml"));
         return mapper;
     }
 }

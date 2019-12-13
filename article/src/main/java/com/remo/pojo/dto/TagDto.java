@@ -1,7 +1,7 @@
 package com.remo.pojo.dto;
 
-import com.remo.validation.group.Insert;
-import com.remo.validation.group.Update;
+import com.remo.common.group.Insert;
+import com.remo.common.group.Update;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;

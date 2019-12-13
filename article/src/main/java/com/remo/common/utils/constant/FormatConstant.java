@@ -1,4 +1,4 @@
-package com.remo.utils.constant;
+package com.remo.common.exception.utils.constant;
 
 import java.text.SimpleDateFormat;
 

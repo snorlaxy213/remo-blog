@@ -1,4 +1,4 @@
-package com.remo.utils;
+package com.remo.common.exception.utils;
 
 import lombok.extern.slf4j.Slf4j;
 

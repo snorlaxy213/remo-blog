@@ -2,16 +2,16 @@ package com.remo.controller;
 
 
 import com.remo.annotation.RemoLog;
-import com.remo.exception.exception.BusinessException;
-import com.remo.exception.exception.ParamException;
+import com.remo.common.exception.exception.BusinessException;
+import com.remo.common.exception.exception.ParamException;
+import com.remo.common.exception.utils.ResponseUtil;
+import com.remo.common.group.Insert;
+import com.remo.common.group.Update;
 import com.remo.pojo.dto.ArticleDto;
 import com.remo.pojo.dto.SimpleArticleDto;
 import com.remo.pojo.vo.ResponseVo;
 import com.remo.pojo.vo.query.ListArticleQuery;
 import com.remo.service.IArticleService;
-import com.remo.utils.ResponseUtil;
-import com.remo.validation.group.Insert;
-import com.remo.validation.group.Update;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Qualifier;

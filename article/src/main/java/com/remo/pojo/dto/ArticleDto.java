@@ -1,6 +1,6 @@
 package com.remo.pojo.dto;
 
-import com.remo.validation.group.Update;
+import com.remo.common.group.Update;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

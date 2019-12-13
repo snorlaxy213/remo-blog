@@ -20,10 +20,10 @@ spring:
           filters:
             # StripPrefix Filter 是一个请求路径截取的功能,StripPrefix=n,n代表截取路径的个数
             - StripPrefix=1
-
 eureka:
   client:
     service-url:
-      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
+#      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
+      defaultZone: http://server-one:8761/eureka/
     instances:
       prefer-ip-address: true
