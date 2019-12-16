@@ -14,7 +14,7 @@ spring:
           enabled: true
       routes:
         - id: user
-          uri: http://localhost:9101
+          uri: http://USER:9101
           predicates:
             - Path=/user/**
           filters:
@@ -22,6 +22,7 @@ spring:
             - StripPrefix=1
 eureka:
   client:
+    enabled: true
     service-url:
 #      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
       defaultZone: http://server-one:8761/eureka/
