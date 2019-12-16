@@ -1,4 +1,4 @@
-package com.remo.properties;
+package com.remo.common.properties;
 
 public class ShiroProperties {
 

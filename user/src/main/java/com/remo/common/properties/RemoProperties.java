@@ -1,4 +1,4 @@
-package com.remo.properties;
+package com.remo.common.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

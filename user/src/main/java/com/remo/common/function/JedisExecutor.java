@@ -1,6 +1,6 @@
 package com.remo.common.function;
 
-import com.remo.common.exception.RedisConnectException;
+import com.remo.common.exception.exception.RedisConnectException;
 
 @FunctionalInterface
 public interface JedisExecutor<T, R> {

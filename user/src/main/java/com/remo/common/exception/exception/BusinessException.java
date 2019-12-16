@@ -1,4 +1,4 @@
-package com.remo.exception.exception;
+package com.remo.common.exception.exception;
 
 import lombok.Data;
 

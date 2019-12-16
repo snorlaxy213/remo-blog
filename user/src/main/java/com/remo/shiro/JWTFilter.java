@@ -1,7 +1,7 @@
 package com.remo.shiro;
 
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
-import com.remo.properties.RemoProperties;
+import com.remo.common.properties.RemoProperties;
 import com.remo.util.RemoUtil;
 import com.remo.util.SpringContextUtil;
 import lombok.extern.slf4j.Slf4j;

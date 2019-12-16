@@ -3,11 +3,9 @@ package com.remo.common.service.impl;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.remo.common.domain.RemoConstant;
+import com.remo.common.exception.exception.BusinessException;
 import com.remo.common.service.CacheService;
 import com.remo.common.service.RedisService;
-import com.remo.constant.BusinessConstant;
-import com.remo.constant.ViewConstants;
-import com.remo.exception.exception.BusinessException;
 import com.remo.pojo.dto.PermissionDto;
 import com.remo.pojo.dto.RoleDto;
 import com.remo.pojo.dto.UserDto;
@@ -47,7 +45,7 @@ public class CacheServiceImpl implements CacheService {
     public UserDto getUser(String username) throws Exception {
         String userString = this.redisService.get(RemoConstant.USER_CACHE_PREFIX + username);
         if (StringUtils.isBlank(userString)){
-            throw new BusinessException(BusinessConstant.ERROR_RESULT_CODE, ViewConstants.WRONG_INPUT);
+            throw new BusinessException(RemoConstant.ERROR_RESULT_CODE, RemoConstant.WRONG_INPUT);
         } else {
             return this.mapper.readValue(userString, UserDto.class);
         }
@@ -57,7 +55,7 @@ public class CacheServiceImpl implements CacheService {
     public List<RoleDto> getRoles(String username) throws Exception {
         String roleListString = this.redisService.get(RemoConstant.USER_ROLE_CACHE_PREFIX + username);
         if (StringUtils.isBlank(roleListString)) {
-            throw new BusinessException(BusinessConstant.ERROR_RESULT_CODE, ViewConstants.WRONG_INPUT);
+            throw new BusinessException(RemoConstant.ERROR_RESULT_CODE, RemoConstant.WRONG_INPUT);
         } else {
             JavaType type = mapper.getTypeFactory().constructParametricType(List.class, RoleDto.class);
             return this.mapper.readValue(roleListString, type);

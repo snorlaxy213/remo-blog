@@ -1,4 +1,4 @@
-package com.remo.common.exception;
+package com.remo.common.exception.exception;
 
 /**
  * Redis 连接异常

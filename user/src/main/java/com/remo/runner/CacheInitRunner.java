@@ -1,7 +1,7 @@
 package com.remo.runner;
 
 
-import com.remo.common.exception.RedisConnectException;
+import com.remo.common.exception.exception.RedisConnectException;
 import com.remo.common.service.CacheService;
 import com.remo.manager.UserManager;
 import com.remo.pojo.po.User;

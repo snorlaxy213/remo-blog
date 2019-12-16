@@ -1,7 +1,7 @@
 package com.remo.common.service;
 
 import com.remo.common.domain.RedisInfo;
-import com.remo.common.exception.RedisConnectException;
+import com.remo.common.exception.exception.RedisConnectException;
 
 import java.util.List;
 import java.util.Map;
