@@ -1,7 +1,6 @@
 package com.remo.pojo.po;
 
 
-import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
