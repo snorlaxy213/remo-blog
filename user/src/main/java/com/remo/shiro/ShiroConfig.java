@@ -82,7 +82,7 @@ public class ShiroConfig {
     }
 
     /**
-     * 开启aop注解支持
+     * 开启权限注解支持
      * @param securityManager
      * @return
      */
