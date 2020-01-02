@@ -26,13 +26,13 @@ public class JwtTokenUtils {
     private static byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(SecurityConstants.JWT_SECRET_KEY);
     private static SecretKey secretKey = Keys.hmacShaKeyFor(apiKeySecretBytes);
 
-    public static String createToken(String username, List<String> roles, List<String> authoritys) {
+    public static String createToken(String username, List<String> roles, List<String> authorities) {
 
         String tokenPrefix = Jwts.builder()
                 .setHeaderParam("type", SecurityConstants.TOKEN_TYPE)
                 .signWith(secretKey, SignatureAlgorithm.HS256)
                 .claim(SecurityConstants.ROLE_CLAIMS, String.join(",", roles))
-                .claim(SecurityConstants.AUTHORITY_CLAIMS, String.join(",", authoritys))
+                .claim(SecurityConstants.AUTHORITY_CLAIMS, String.join(",", authorities))
                 .setIssuer("VinoClimb")
                 .setIssuedAt(new Date())
                 .setSubject(username)

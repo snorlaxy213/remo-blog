@@ -7,16 +7,16 @@ import com.remo.common.domain.RemoConstant;
 import com.remo.common.exception.exception.BusinessException;
 import com.remo.common.properties.RemoProperties;
 import com.remo.common.service.RedisService;
+import com.remo.entity.JWTToken;
 import com.remo.manager.UserManager;
 import com.remo.pojo.dto.UserDto;
 import com.remo.pojo.vo.ResponseVo;
-import com.remo.shiro.JWTToken;
-import com.remo.shiro.JWTUtil;
 import com.remo.util.DateUtil;
 import com.remo.util.IPUtil;
 import com.remo.util.MD5Util;
 import com.remo.util.RemoUtil;
 import com.remo.util.ResponseUtil;
+import com.remo.utils.JwtTokenUtils;
 import com.remo.validation.groups.Login;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -65,7 +65,7 @@ public class LoginController {
             throw new BusinessException(RemoConstant.ERROR_RESULT_CODE, errorMessage);
         }
 
-        String token = RemoUtil.encryptToken(JWTUtil.sign(username, password));
+        String token = RemoUtil.encryptToken(JwtTokenUtils.createToken(username, password));
         LocalDateTime expireTime = LocalDateTime.now().plusSeconds(properties.getShiro().getJwtTimeOut());
         String expireTimeStr = DateUtil.formatFullTime(expireTime);
         JWTToken jwtToken = new JWTToken(token, expireTimeStr);

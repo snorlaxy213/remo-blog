@@ -1,13 +1,12 @@
-package com.remo.shiro;
+package com.remo.entity;
 
 import lombok.Data;
-import org.apache.shiro.authc.AuthenticationToken;
 
 /**
  * JSON Web Token
  */
 @Data
-public class JWTToken implements AuthenticationToken {
+public class JWTToken {
 
     private static final long serialVersionUID = 1282057025599826155L;
 
@@ -23,15 +22,4 @@ public class JWTToken implements AuthenticationToken {
         this.token = token;
         this.expireAt = expireAt;
     }
-
-    @Override
-    public Object getPrincipal() {
-        return token;
-    }
-
-    @Override
-    public Object getCredentials() {
-        return token;
-    }
-
 }

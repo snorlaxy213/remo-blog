@@ -2,12 +2,7 @@ package com.remo.util;
 
 import com.remo.common.domain.RemoConstant;
 import com.remo.common.function.CacheSelector;
-import com.remo.common.service.CacheService;
-import com.remo.pojo.dto.UserDto;
-import com.remo.service.UserService;
-import com.remo.shiro.JWTUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.SecurityUtils;
 
 import java.util.function.Supplier;
 
@@ -38,20 +33,6 @@ public class RemoUtil {
             log.debug("query data from database ······");
             return databaseSelector.get();
         }
-    }
-
-    /**
-     * 获取当前操作用户
-     *
-     * @return 用户信息
-     */
-    public static UserDto getCurrentUser() {
-        String token = (String) SecurityUtils.getSubject().getPrincipal();
-        String username = JWTUtil.getUsername(token);
-        UserService userService = SpringContextUtil.getBean(UserService.class);
-        CacheService cacheService = SpringContextUtil.getBean(CacheService.class);
-
-        return selectCacheByTemplate(() -> cacheService.getUser(username), () -> userService.findByUsername(username));
     }
 
     /**
