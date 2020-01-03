@@ -53,19 +53,21 @@ public class LoginController {
     @PostMapping("login")
     public ResponseVo login(@Validated(Login.class) @RequestBody UserDto loginDto, HttpServletRequest request)  throws Exception {
         String username = StringUtils.lowerCase(loginDto.getUsername());
-        String password = MD5Util.encrypt(username, loginDto.getPassword());
+        String password = MD5Util.encrypt(loginDto.getPassword());
         final String errorMessage = "用户名或密码错误";
 
         UserDto userDto = this.userManager.getUser(username);
 
-        if (userDto == null){
+        if (userDto == null) {
             throw new BusinessException(RemoConstant.ERROR_RESULT_CODE, errorMessage);
         }
         if (!StringUtils.equals(userDto.getPassword(), password)) {
             throw new BusinessException(RemoConstant.ERROR_RESULT_CODE, errorMessage);
         }
+        Set<String> roles = this.userManager.getUserRoles(username);
+        Set<String> permissions = this.userManager.getUserPermissions(username);
 
-        String token = RemoUtil.encryptToken(JwtTokenUtils.createToken(username, password));
+        String token = RemoUtil.encryptToken(JwtTokenUtils.createToken(username, roles, permissions));
         LocalDateTime expireTime = LocalDateTime.now().plusSeconds(properties.getShiro().getJwtTimeOut());
         String expireTimeStr = DateUtil.formatFullTime(expireTime);
         JWTToken jwtToken = new JWTToken(token, expireTimeStr);

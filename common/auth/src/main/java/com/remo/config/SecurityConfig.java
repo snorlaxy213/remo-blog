@@ -15,7 +15,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.addFilter(new JWTAuthorizationFilter(authenticationManager()))//添加自定义Filter
+        http.cors().and()
+                // 禁用 CSRF
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/user/**").authenticated()
+                .anyRequest().permitAll()
+                .and()
+                .addFilter(new JWTAuthorizationFilter(authenticationManager()))//添加自定义Filter
                 // 不需要session（不创建会话）
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 // 授权异常处理
