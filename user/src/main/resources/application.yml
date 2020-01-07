@@ -19,7 +19,7 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
-    password:
+    password: admin
     jedis:
       pool:
         #连接池中的最小空闲连接
@@ -41,9 +41,7 @@ mybatis-plus:
     map-underscore-to-camel-case: true
 
 remo:
-  shiro:
-    # 后端免认证接口 url
-    anonUrl: /login,/swagger-resources/**,/webjars/**,/v2/**,/swagger-ui.html/**
+  security:
     # token有效期，单位秒
     jwtTimeOut: 3600
 
