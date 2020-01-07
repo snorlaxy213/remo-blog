@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "remo")
 public class RemoProperties {
 
-    private ShiroProperties shiro = new ShiroProperties();
+    private SecurityProperties security = new SecurityProperties();
 
     private boolean openAopLog = true;
 
