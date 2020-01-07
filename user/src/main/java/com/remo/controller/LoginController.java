@@ -20,6 +20,8 @@ import com.remo.utils.JwtTokenUtils;
 import com.remo.validation.groups.Login;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -34,7 +36,7 @@ import java.util.Map;
 import java.util.Set;
 
 @RestController
-@Api(tags = "System security")
+@Api(tags = "System security", value = "security api", protocols = "http")
 public class LoginController {
 
     @Autowired
@@ -49,9 +51,14 @@ public class LoginController {
     @Autowired
     private RedisService redisService;
 
-    @ApiOperation(value = "login", notes = "check if userName and password is correct")
+    @ApiOperation(value = "login",
+            notes = "check if userName and password is correct")
+    @ApiResponses({
+            @ApiResponse(code = 1, message = "请求失败", response = BusinessException.class)
+    })
     @PostMapping("login")
-    public ResponseVo login(@Validated(Login.class) @RequestBody UserDto loginDto, HttpServletRequest request)  throws Exception {
+    public ResponseVo login(@Validated(Login.class) @RequestBody UserDto loginDto, HttpServletRequest request) throws Exception {
+
         String username = StringUtils.lowerCase(loginDto.getUsername());
         String password = MD5Util.encrypt(loginDto.getPassword());
         final String errorMessage = "用户名或密码错误";
