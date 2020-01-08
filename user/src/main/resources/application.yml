@@ -50,6 +50,8 @@ server:
   port: 9101
 spring:
   profiles: user-one
+  main:
+    banner-mode: off
 eureka:
   client:
     enabled: false
