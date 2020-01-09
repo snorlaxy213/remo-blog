@@ -4,11 +4,13 @@ import com.remo.pojo.dto.UserDto;
 import com.remo.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * 用户登录以及用户管理
@@ -17,7 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "User")
 public class UserController {
 
-    @Autowired
+    @Resource
+    @Qualifier("userServiceImpl")
     UserService userService;
 
     @ApiOperation(value = "findById", notes = "findById")

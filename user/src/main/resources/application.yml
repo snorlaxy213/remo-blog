@@ -19,7 +19,7 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
-    password: admin
+    password:
     jedis:
       pool:
         #连接池中的最小空闲连接
@@ -50,8 +50,6 @@ server:
   port: 9101
 spring:
   profiles: user-one
-  main:
-    banner-mode: off
 eureka:
   client:
     enabled: false
