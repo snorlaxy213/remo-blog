@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : cmis
-Source Server Version : 50640
-Source Host           : 192.168.101.153:3306
+Source Server         : remo
+Source Server Version : 80018
+Source Host           : localhost:3306
 Source Database       : remo_log
 
 Target Server Type    : MYSQL
-Target Server Version : 50640
+Target Server Version : 80018
 File Encoding         : 65001
 
-Date: 2019-11-15 18:31:53
+Date: 2020-01-10 14:38:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,7 +32,7 @@ CREATE TABLE `log` (
   `update_time` datetime(6) DEFAULT NULL COMMENT '更新时间',
   `update_user` varchar(45) DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of log

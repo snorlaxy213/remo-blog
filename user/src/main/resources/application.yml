@@ -12,9 +12,9 @@ spring:
       min-idle: 5
       connection-test-query: select 1
       pool-name: RemoHikariCP
-    url: jdbc:mysql://localhost:3306/remo_user?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://cdb-3oe9swdq.cd.tencentcdb.com:10095/remo_user?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
     username: root
-    password: admin
+    password: admin1314
     driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
     host: 127.0.0.1
