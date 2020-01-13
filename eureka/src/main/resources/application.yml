@@ -4,7 +4,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://193.112.210.35:8761/eureka/
+      defaultZone: http://server-one/eureka/
 #      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
 #      register-with-eureka: false #表示是否将自己注册到Eureka server,默认为true
 #      fetch-registry: false #表示是否从Eureka server获取注册信息,默认为true,高可用时需要从其他Eurake server获取注册信息
