@@ -18,10 +18,27 @@ public interface UserService extends IService<User> {
     /**
      * fetch data by user id
      * -----------------------
+     *
      * @param id id
      * @return UserDto
      */
     UserDto findById(Long id);
 
+    /**
+     * fetch data by username
+     * -----------------------
+     *
+     * @param username username
+     * @return UserDto
+     */
     UserDto findByUsername(String username);
+
+    /**
+     * add user
+     * -----------------------
+     *
+     * @param userDto userDto
+     * @return id
+     */
+    Long addUser(UserDto userDto);
 }

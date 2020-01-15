@@ -1,5 +1,6 @@
 package com.remo.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
 import com.remo.mapper.UserMapper;
@@ -39,16 +40,13 @@ import java.util.List;
 @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
-    @Resource(name = "userMapper")
-    UserMapper userMapper;
-
     @Resource(name = "dozerBeanMapper")
     private DozerBeanMapper mapper;
 
     @Override
     public List<UserDto> findAll() {
         log.info("<=============== findAll ===============>");
-        List<User> users = userMapper.findAll();
+        List<User> users = this.list();
         List<UserDto> userDtos = Lists.newArrayList();
         users.forEach(user -> userDtos.add(mapper.map(user, UserDto.class)));
         return userDtos;
@@ -57,12 +55,21 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public UserDto findById(Long id) {
         log.info("<=============== findById ===============>");
-        return mapper.map(userMapper.findById(id), UserDto.class);
+        return mapper.map(this.getById(id), UserDto.class);
     }
 
     @Override
     public UserDto findByUsername(String username) {
         log.info("<=============== findByUsername ===============>");
-        return mapper.map(userMapper.findByUsername(username), UserDto.class);
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        return mapper.map(this.getOne(wrapper.eq("username", username)), UserDto.class);
+    }
+
+    @Override
+    public Long addUser(UserDto userDto) {
+        log.info("<=============== addUser ===============>");
+        User user = mapper.map(userDto, User.class);
+
+        return null;
     }
 }
