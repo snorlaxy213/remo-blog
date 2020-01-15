@@ -13,20 +13,21 @@ import com.remo.manager.UserManager;
 import com.remo.pojo.dto.UserDto;
 import com.remo.pojo.dto.query.LoginQuery;
 import com.remo.pojo.vo.ResponseVo;
-import com.remo.util.*;
+import com.remo.util.DateUtil;
+import com.remo.util.IPUtil;
+import com.remo.util.MD5Util;
+import com.remo.util.RemoUtil;
+import com.remo.util.ResponseUtil;
 import com.remo.utils.JwtTokenUtils;
-import com.remo.validation.groups.Login;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -37,26 +38,22 @@ import java.util.Set;
 @Api(tags = "System security", value = "security api", protocols = "http")
 public class LoginController {
 
-    @Autowired
+    @Resource(name = "userManager")
     private UserManager userManager;
 
-    @Autowired
+    @Resource(name = "remoProperties")
     private RemoProperties properties;
+
+    @Resource(name = "redisServiceImpl")
+    private RedisService redisService;
 
     @Autowired
     private ObjectMapper mapper;
 
-    @Autowired
-    private RedisService redisService;
-
     @ApiOperation(value = "login",
             notes = "check if userName and password is correct")
-    @ApiResponses({
-            @ApiResponse(code = 0, message = "请求成功"),
-            @ApiResponse(code = 1, message = "请求失败", response = BusinessException.class)
-    })
     @PostMapping("login")
-    public ResponseVo login(@Validated(Login.class) @RequestBody LoginQuery query, HttpServletRequest request) throws Exception {
+    public ResponseVo login(@RequestBody LoginQuery query, HttpServletRequest request) throws Exception {
 
         String username = StringUtils.lowerCase(query.getUsername());
         String password = MD5Util.encrypt(query.getPassword());

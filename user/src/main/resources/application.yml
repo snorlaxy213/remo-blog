@@ -6,12 +6,18 @@ spring:
     p6spy: true
     # 配置hikari连接池
     hikari:
-      connection-timeout: 30000
-      max-lifetime: 1800000
-      max-pool-size: 15
-      min-idle: 5
-      connection-test-query: select 1
+      # 连接池名称
       pool-name: RemoHikariCP
+      # 最小空闲连接数量
+      minimum-idle: 5
+      # 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 1800000
+      # 连接池最大连接数，默认是10
+      maximum-pool-size:  15
+      # 数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 30000
+      # 数据库连接超时测试
+      connection-test-query: SELECT 1
     url: jdbc:mysql://cdb-3oe9swdq.cd.tencentcdb.com:10095/remo_user?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
     username: root
     password: admin1314
@@ -39,6 +45,8 @@ mybatis-plus:
   configuration:
     #开启DB驼峰命名
     map-underscore-to-camel-case: true
+  global-config:
+    banner: false
 
 remo:
   security:
@@ -46,6 +54,7 @@ remo:
     jwtTimeOut: 3600
 
 ---
+# port 9101 - 9110
 server:
   port: 9101
 spring:
@@ -66,6 +75,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
+      #      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
+      defaultZone: http://server-one:8761/eureka/
     instances:
       prefer-ip-address: true

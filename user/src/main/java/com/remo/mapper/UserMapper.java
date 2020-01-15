@@ -3,11 +3,11 @@ package com.remo.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.remo.pojo.po.User;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Component
+@Repository("userMapper")
 public interface UserMapper extends BaseMapper<User> {
 
     @Select("select * from sys_user")

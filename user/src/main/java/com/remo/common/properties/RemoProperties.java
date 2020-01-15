@@ -6,14 +6,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Data
-@Component
+@Component("remoProperties")
 @Configuration
 @ConfigurationProperties(prefix = "remo")
 public class RemoProperties {
 
-    private SecurityProperties security = new SecurityProperties();
-
     private boolean openAopLog = true;
+
+    private SecurityProperties security = new SecurityProperties();
 
     private SwaggerProperties swagger = new SwaggerProperties();
 }

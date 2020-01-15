@@ -37,7 +37,7 @@ public class CommonConfig {
     /**
      * dozer配置
      */
-    @Bean
+    @Bean("dozerBeanMapper")
     public DozerBeanMapper mapper() {
         DozerBeanMapper mapper = new DozerBeanMapper();
         mapper.setMappingFiles(Arrays.asList("dozer/dozer-mapping.xml"));

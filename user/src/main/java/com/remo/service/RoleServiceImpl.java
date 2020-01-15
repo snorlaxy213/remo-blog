@@ -1,30 +1,36 @@
 package com.remo.service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.google.common.collect.Lists;
 import com.remo.mapper.RoleMapper;
 import com.remo.pojo.dto.RoleDto;
 import com.remo.pojo.po.Role;
-import org.dozer.Mapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
+import org.dozer.DozerBeanMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
+import javax.annotation.Resource;
 import java.util.List;
 
-@Service
+@Slf4j
+@Service(value = "roleServiceImpl")
+@Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
 
-    @Autowired
+    @Resource(name = "roleMapper")
     private RoleMapper roleMapper;
 
-    @Autowired
-    private Mapper dozer;
+    @Resource(name = "dozerBeanMapper")
+    private DozerBeanMapper mapper;
 
     @Override
     public List<RoleDto> listUserRoles(String username) {
+        log.info("<=============== listUserRoles ===============>");
         List<Role> roles = roleMapper.listUserRoles(username);
-        List<RoleDto> roleDtos = new ArrayList<>();
-        roles.forEach(role -> roleDtos.add(dozer.map(role, RoleDto.class)));
+        List<RoleDto> roleDtos = Lists.newArrayList();
+        roles.forEach(role -> roleDtos.add(mapper.map(role, RoleDto.class)));
         return roleDtos;
     }
 }

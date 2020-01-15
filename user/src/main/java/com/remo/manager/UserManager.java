@@ -9,26 +9,26 @@ import com.remo.service.PermissionService;
 import com.remo.service.RoleService;
 import com.remo.service.UserService;
 import com.remo.util.RemoUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Service
+@Service("userManager")
 public class UserManager {
 
-    @Autowired
+    @Resource(name = "cacheServiceImpl")
     private CacheService cacheService;
 
-    @Autowired
+    @Resource(name = "userServiceImpl")
     private UserService userService;
 
-    @Autowired
+    @Resource(name = "roleServiceImpl")
     private RoleService roleService;
 
-    @Autowired
+    @Resource(name = "permissionService")
     private PermissionService permissionService;
 
     /**

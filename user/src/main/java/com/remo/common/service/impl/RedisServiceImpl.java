@@ -22,7 +22,7 @@ import java.util.Set;
  * 可根据实际需要按类似的方式扩展即可。
  *
  */
-@Service("redisService")
+@Service("redisServiceImpl")
 public class RedisServiceImpl implements RedisService {
 
     @Autowired

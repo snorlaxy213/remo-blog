@@ -1,7 +1,11 @@
 package com.remo.pojo.po;
 
 
-import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -23,19 +27,25 @@ public class User implements Serializable {
     /**
      * 性别
      */
-    public static final String SEX_MALE = "0";
+    public static final String SEX_MALE = "M";
 
-    public static final String SEX_FEMALE = "1";
+    public static final String SEX_FEMALE = "F";
 
-    public static final String SEX_UNKNOWN = "2";
+    public static final String SEX_UNKNOWN = "U";
 
-    // 默认密码
     public static final String DEFAULT_PASSWORD = "1";
 
     /**
      * id
+     * <p>
+     * IdType：
+     * IdType.AUTO: 主键自增 数据库中需要设置主键自增
+     * IdType.NONE: 跟随全局策略走,全局里默认等于 INPUT
+     * IdType.ASSIGN_UUID: UUID类型主键
+     * IdType.ASSIGN_ID: 分配ID(主键类型为Number(Long和Integer)或String)
+     * IdType.INPUT: insert前自行set主键值
      */
-    @TableId(value = "user_id", type = IdType.ID_WORKER)
+    @TableId(value = "user_id", type = IdType.ASSIGN_ID)
     private Long userId;
 
     /**
