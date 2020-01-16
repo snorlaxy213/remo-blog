@@ -6,8 +6,10 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.util.StringUtils;
 
 import javax.crypto.SecretKey;
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
 import java.util.Arrays;
 import java.util.Date;
@@ -67,5 +69,16 @@ public class JwtTokenUtils {
                 .setSigningKey(secretKey)
                 .parseClaimsJws(token)
                 .getBody();
+    }
+
+    public static String getJwtFromRequest(HttpServletRequest requests) {
+        if (requests != null) {
+            String bearerToken = requests.getHeader("Authorization");
+            if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
+                String jwt = bearerToken.substring(7);
+                return jwt;
+            }
+        }
+        return null;
     }
 }

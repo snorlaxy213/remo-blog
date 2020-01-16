@@ -41,4 +41,13 @@ public interface UserService extends IService<User> {
      * @return id
      */
     Long addUser(UserDto userDto);
+
+    /**
+     * update user
+     * -----------------------
+     *
+     * @param userDto userDto
+     * @return id
+     */
+    Long updateUser(UserDto userDto);
 }

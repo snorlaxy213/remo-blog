@@ -102,6 +102,12 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
+        <!-- p6spy: 性能分析(开发环境使用) -->
+        <dependency>
+            <groupId>p6spy</groupId>
+            <artifactId>p6spy</artifactId>
+            <version>3.8.6</version>
+        </dependency>
 
     </dependencies>
 

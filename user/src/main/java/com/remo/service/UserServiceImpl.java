@@ -69,7 +69,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public Long addUser(UserDto userDto) {
         log.info("<=============== addUser ===============>");
         User user = mapper.map(userDto, User.class);
+        this.save(user);
+        return user.getUserId();
+    }
 
-        return null;
+    @Override
+    public Long updateUser(UserDto userDto) {
+        log.info("<=============== updateUser ===============>");
+        User user = mapper.map(userDto, User.class);
+        this.saveOrUpdate(user);
+        return user.getUserId();
     }
 }

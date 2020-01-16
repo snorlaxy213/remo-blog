@@ -10,7 +10,7 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * User实体类
@@ -113,7 +113,7 @@ public class User implements Serializable {
      * 创建时间
      */
     @TableField(value = "create_time", fill = FieldFill.INSERT)
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      * 创建人
@@ -125,7 +125,7 @@ public class User implements Serializable {
      * 更新时间
      */
     @TableField(value = "update_time", fill = FieldFill.UPDATE)
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
     /**
      * 更新人
