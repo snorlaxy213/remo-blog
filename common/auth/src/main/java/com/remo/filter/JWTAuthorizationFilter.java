@@ -35,7 +35,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest request, javax.servlet.http.HttpServletResponse response, javax.servlet.FilterChain chain) throws IOException, ServletException {
         String authorization = request.getHeader(SecurityConstants.TOKEN_HEADER);
         // 如果请求头中没有token信息则直接放行了
-        if (authorization == null || !authorization.startsWith(SecurityConstants.TOKEN_PREFIX)) {
+        if (authorization == null) {
             chain.doFilter(request, response);
             return;
         }
@@ -48,7 +48,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
      * 获取用户认证信息 Authentication
      */
     private UsernamePasswordAuthenticationToken getAuthentication(String authorization) {
-        String token = authorization.replace(SecurityConstants.TOKEN_PREFIX, "");
+        String token = JwtTokenUtils.decryptToken(authorization).replace(SecurityConstants.TOKEN_PREFIX, "");
         try {
             String username = JwtTokenUtils.getUsernameByToken(token);
             logger.info("checking username:" + username);

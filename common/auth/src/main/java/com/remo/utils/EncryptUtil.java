@@ -1,4 +1,4 @@
-package com.remo.util;
+package com.remo.utils;
 
 
 import javax.crypto.Cipher;

@@ -5,6 +5,9 @@ package com.remo.constants;
  */
 public class SecurityConstants {
 
+    // token缓存前缀
+    public static final String TOKEN_CACHE_PREFIX = "remo.cache.token.";
+
     /**
      * 角色的key
      **/

@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.util.StringUtils;
 
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 /**
  * @author vino
  */
+@Slf4j
 public class JwtTokenUtils {
 
 
@@ -80,5 +82,37 @@ public class JwtTokenUtils {
             }
         }
         return null;
+    }
+
+    /**
+     * token 加密
+     *
+     * @param token token
+     * @return 加密后的 token
+     */
+    public static String encryptToken(String token) {
+        try {
+            EncryptUtil encryptUtil = new EncryptUtil(SecurityConstants.TOKEN_CACHE_PREFIX);
+            return encryptUtil.encrypt(token);
+        } catch (Exception e) {
+            log.info("token加密失败：", e);
+            return null;
+        }
+    }
+
+    /**
+     * token 解密
+     *
+     * @param encryptToken 加密后的 token
+     * @return 解密后的 token
+     */
+    public static String decryptToken(String encryptToken) {
+        try {
+            EncryptUtil encryptUtil = new EncryptUtil(SecurityConstants.TOKEN_CACHE_PREFIX);
+            return encryptUtil.decrypt(encryptToken);
+        } catch (Exception e) {
+            log.info("token解密失败：", e);
+            return null;
+        }
     }
 }

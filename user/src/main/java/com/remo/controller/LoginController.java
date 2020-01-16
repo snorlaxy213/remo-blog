@@ -16,7 +16,6 @@ import com.remo.pojo.vo.ResponseVo;
 import com.remo.util.DateUtil;
 import com.remo.util.IPUtil;
 import com.remo.util.MD5Util;
-import com.remo.util.RemoUtil;
 import com.remo.util.ResponseUtil;
 import com.remo.utils.JwtTokenUtils;
 import io.swagger.annotations.Api;
@@ -70,7 +69,7 @@ public class LoginController {
         Set<String> roles = this.userManager.getUserRoles(username);
         Set<String> permissions = this.userManager.getUserPermissions(username);
 
-        String token = RemoUtil.encryptToken(JwtTokenUtils.createToken(username, roles, permissions));
+        String token = JwtTokenUtils.encryptToken(JwtTokenUtils.createToken(username, roles, permissions));
         LocalDateTime expireTime = LocalDateTime.now().plusSeconds(properties.getSecurity().getJwtTimeOut());
         String expireTimeStr = DateUtil.formatFullTime(expireTime);
         JWTToken jwtToken = new JWTToken(token, expireTimeStr);
