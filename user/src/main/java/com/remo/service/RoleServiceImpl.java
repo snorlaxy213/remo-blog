@@ -19,16 +19,22 @@ import java.util.List;
 @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
 
-    @Resource(name = "roleMapper")
-    private RoleMapper roleMapper;
-
     @Resource(name = "dozerBeanMapper")
     private DozerBeanMapper mapper;
 
     @Override
+    public List<RoleDto> listUserRoles() {
+        log.info("<=============== listUserRoles() ===============>");
+        List<Role> roles = this.list();
+        List<RoleDto> roleDtos = Lists.newArrayList();
+        roles.forEach(role -> roleDtos.add(mapper.map(role, RoleDto.class)));
+        return roleDtos;
+    }
+
+    @Override
     public List<RoleDto> listUserRoles(String username) {
-        log.info("<=============== listUserRoles ===============>");
-        List<Role> roles = roleMapper.listUserRoles(username);
+        log.info("<=============== listUserRoles(String username) ===============>");
+        List<Role> roles = this.getBaseMapper().listUserRoles(username);
         List<RoleDto> roleDtos = Lists.newArrayList();
         roles.forEach(role -> roleDtos.add(mapper.map(role, RoleDto.class)));
         return roleDtos;

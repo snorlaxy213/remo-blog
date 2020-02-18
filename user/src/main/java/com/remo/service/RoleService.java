@@ -7,4 +7,6 @@ import java.util.List;
 public interface RoleService {
 
     List<RoleDto> listUserRoles(String username);
+
+    List<RoleDto> listUserRoles();
 }

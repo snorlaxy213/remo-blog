@@ -23,7 +23,7 @@ import java.util.List;
  * <p>
  * NOT_SUPPORTED:声明方法不需要事务。如果方法没有关联到一个事务，容器不会为他开启事务，如果方法在一个事务中被调用，该事务会被挂起，调用结束后，原先的事务会恢复执行。
  * <p>
- * REQUIRESNEW:不管是否存在事务，该方法总汇为自己发起一个新的事务。如果方法已经运行在一个事务中，则原有事务挂起，新的事务被创建。
+ * REQUIRESNEW:不管是否存在事务，该方法总会为自己发起一个新的事务。如果方法已经运行在一个事务中，则原有事务挂起，新的事务被创建。
  * <p>
  * MANDATORY：该方法只能在一个已经存在的事务中执行，业务方法不能发起自己的事务。如果在没有事务的环境下被调用，容器抛出例外。
  * <p>
@@ -66,6 +66,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public Long addUser(UserDto userDto) {
         log.info("<=============== addUser ===============>");
         User user = mapper.map(userDto, User.class);
@@ -74,6 +75,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public Long updateUser(UserDto userDto) {
         log.info("<=============== updateUser ===============>");
         User user = mapper.map(userDto, User.class);

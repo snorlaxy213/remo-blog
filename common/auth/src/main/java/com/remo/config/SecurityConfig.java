@@ -20,6 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/user/**").authenticated()
+                .antMatchers("/userRole/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()))//添加自定义Filter
