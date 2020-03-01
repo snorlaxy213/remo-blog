@@ -1,6 +1,6 @@
 package com.remo.util;
 
-import com.remo.common.domain.RemoConstant;
+import com.remo.common.constant.RemoConstant;
 import com.remo.pojo.dto.FieldErrorDto;
 import com.remo.pojo.vo.ResponseVo;
 import org.springframework.validation.BindingResult;

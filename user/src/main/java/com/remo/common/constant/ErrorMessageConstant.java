@@ -1,4 +1,4 @@
-package com.remo.common.domain;
+package com.remo.common.constant;
 
 public class ErrorMessageConstant {
 

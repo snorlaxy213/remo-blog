@@ -39,4 +39,6 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         roles.forEach(role -> roleDtos.add(mapper.map(role, RoleDto.class)));
         return roleDtos;
     }
+
+
 }

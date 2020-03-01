@@ -2,8 +2,8 @@ package com.remo.common.service.impl;
 
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.remo.common.domain.ErrorMessageConstant;
-import com.remo.common.domain.RemoConstant;
+import com.remo.common.constant.ErrorMessageConstant;
+import com.remo.common.constant.RemoConstant;
 import com.remo.common.exception.exception.BusinessException;
 import com.remo.common.service.CacheService;
 import com.remo.common.service.RedisService;
