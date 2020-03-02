@@ -20,7 +20,7 @@ public class UserRoleController {
     @Resource(name = "roleServiceImpl")
     RoleService roleServiceImpl;
 
-    @ApiOperation(value = "findAll", notes = "findAll--")
+    @ApiOperation(value = "findAll", notes = "findAll")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "Authorization", paramType = "header", defaultValue = "Bearer ")
     })

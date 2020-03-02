@@ -25,7 +25,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
     @Override
     public List<PermissionDto> findUserPermissions(String username) {
         log.info("<=============== findUserPermissions ===============>");
-        List<Permission> permissions = this.baseMapper.findUserPermissions(username);
+        List<Permission> permissions = this.getBaseMapper().findUserPermissions(username);
         List<PermissionDto> permissionDtos = new ArrayList<>();
         permissions.forEach(permission -> permissionDtos.add(mapper.map(permission, PermissionDto.class)));
         return permissionDtos;

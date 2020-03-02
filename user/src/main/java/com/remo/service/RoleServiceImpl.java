@@ -40,5 +40,19 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         return roleDtos;
     }
 
+    @Override
+    public Long addRole(RoleDto roleDto) {
+        log.info("<=============== addRole ===============>");
+        Role role = mapper.map(roleDto, Role.class);
+        this.save(role);
+        return role.getRoleId();
+    }
 
+    @Override
+    public Long updateUser(RoleDto roleDto) {
+        log.info("<=============== updateUser ===============>");
+        Role role = mapper.map(roleDto, Role.class);
+        this.saveOrUpdate(role);
+        return role.getRoleId();
+    }
 }
