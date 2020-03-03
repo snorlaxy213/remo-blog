@@ -9,10 +9,10 @@ spring:
       primary: master
       datasource:
         master:
-          url: jdbc:mysql://cdb-3oe9swdq.cd.tencentcdb.com:10095/remo_article?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+          url: jdbc:mysql://localhost:3306/remo_article?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
 #          url: jdbc:mysql://localhost:3306/remo_article?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
           username: root
-          password: admin1314
+          password: admin
           driver-class-name: com.mysql.cj.jdbc.Driver
 #        slave:
 #          url: jdbc:mysql://192.168.116.128:3306/remo_article?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8

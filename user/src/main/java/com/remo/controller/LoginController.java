@@ -2,6 +2,7 @@ package com.remo.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.remo.annotation.RemoLog;
 import com.remo.common.constant.ErrorMessageConstant;
 import com.remo.common.constant.RemoConstant;
 import com.remo.common.domain.ActiveUser;
@@ -52,6 +53,7 @@ public class LoginController {
     @ApiOperation(value = "login",
             notes = "check if userName and password is correct")
     @PostMapping("login")
+    @RemoLog
     public ResponseVo login(@RequestBody LoginQuery query, HttpServletRequest request) throws Exception {
 
         String username = StringUtils.lowerCase(query.getUsername());

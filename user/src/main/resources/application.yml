@@ -26,7 +26,7 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
-    password: admin
+    password:
     jedis:
       pool:
         #连接池中的最小空闲连接
@@ -48,6 +48,10 @@ mybatis-plus:
     map-underscore-to-camel-case: true
   global-config:
     banner: false
+
+feign:
+  hystrix:
+    enabled: true
 
 remo:
   security:
