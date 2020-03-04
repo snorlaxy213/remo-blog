@@ -1,14 +1,10 @@
 package com.remo.pojo.po;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @TableName("sys_permission")
@@ -35,22 +31,10 @@ public class Permission implements Serializable {
     private Integer orderNum;
 
     /**
-     * 乐观锁
-     */
-    @TableField("version")
-    private Integer version;
-
-    /**
      * 创建时间
      */
     @TableField(value = "create_time", fill = FieldFill.INSERT)
-    private Date createTime;
-
-    /**
-     * 修改时间
-     */
-    @TableField(value = "update_time", fill = FieldFill.UPDATE)
-    private Date updateTime;
+    private LocalDateTime createTime;
 
     /**
      * 创建用户
@@ -59,9 +43,26 @@ public class Permission implements Serializable {
     private String createUser;
 
     /**
+     * 修改时间
+     */
+    @TableField(value = "update_time", fill = FieldFill.UPDATE)
+    private LocalDateTime updateTime;
+
+    /**
      * 修改用户
      */
     @TableField(value = "update_user", fill = FieldFill.UPDATE)
     private String updateUser;
 
+    /**
+     * 是否删除:1-以删除;0-存在
+     */
+    @TableField(value = "is_delete")
+    private Integer isDelete;
+
+    /**
+     * 乐观锁
+     */
+    @TableField("version")
+    private Integer version;
 }

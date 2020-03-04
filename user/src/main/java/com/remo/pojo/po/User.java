@@ -1,11 +1,7 @@
 package com.remo.pojo.po;
 
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -104,12 +100,6 @@ public class User implements Serializable {
     private String brief;
 
     /**
-     * 角色id(多个逗号隔开)
-     */
-    @TableField("role_id")
-    private String roleId;
-
-    /**
      * 创建时间
      */
     @TableField(value = "create_time", fill = FieldFill.INSERT)
@@ -132,6 +122,12 @@ public class User implements Serializable {
      */
     @TableField(value = "update_user", fill = FieldFill.UPDATE)
     private String updateUser;
+
+    /**
+     * 是否删除:1-以删除;0-存在
+     */
+    @TableField(value = "is_delete", fill = FieldFill.UPDATE)
+    private Integer isDelete;
 
     /**
      * 乐观锁
