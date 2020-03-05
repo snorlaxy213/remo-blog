@@ -2,7 +2,10 @@ package com.remo.pojo.po;
 
 
 import com.baomidou.mybatisplus.annotation.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
@@ -14,7 +17,10 @@ import java.time.LocalDateTime;
  * @author Jules
  * @date 2019/5/27
  */
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@Accessors(chain = true)
 @TableName("sys_user")
 public class User implements Serializable {
 
@@ -126,7 +132,7 @@ public class User implements Serializable {
     /**
      * 是否删除:1-以删除;0-存在
      */
-    @TableField(value = "is_delete", fill = FieldFill.UPDATE)
+    @TableField(value = "is_delete")
     private Integer isDelete;
 
     /**

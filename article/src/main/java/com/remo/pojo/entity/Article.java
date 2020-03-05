@@ -1,11 +1,6 @@
 package com.remo.pojo.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.Version;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,12 +9,6 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * 文章实体类
- *
- * @author vino
- * @since 2019-08-26
- */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -28,6 +17,7 @@ import java.util.Date;
 public class Article implements Serializable {
 
     private static final long serialVersionUID = 8365686186585051797L;
+
     /**
      * 主键，自增
      */
@@ -37,118 +27,102 @@ public class Article implements Serializable {
     /**
      * 文章id
      */
-    @TableField(value = "articleId", fill = FieldFill.INSERT)
+    @TableField(value = "article_id", fill = FieldFill.INSERT)
     private Long articleId;
 
     /**
      * 作者
      */
+    @TableField(value = "author_name")
     private String author;
 
     /**
      * 文章原作者
      */
-    @TableField("originalAuthor")
+    @TableField("original_author_name")
     private String originalAuthor;
 
     /**
      * 文章标题
      */
-    @TableField("articleTitle")
+    @TableField("article_title")
     private String articleTitle;
 
     /**
      * 文章内容
      */
-    @TableField("articleContent")
+    @TableField("article_content")
     private String articleContent;
-
-    /**
-     * 文章标签
-     */
-    @TableField("articleTags")
-    private String articleTags;
 
     /**
      * 文章类型
      */
-    @TableField("articleType")
+    @TableField("article_type")
     private String articleType;
-
-    /**
-     * 文章分类
-     */
-    @TableField("articleCategories")
-    private String articleCategories;
-
-    /**
-     * 发布文章日期
-     */
-    @TableField("publishDate")
-    private String publishDate;
-
-    /**
-     * 更新文章日期
-     */
-    @TableField("updateDate")
-    private String updateDate;
 
     /**
      * 文章url
      */
-    @TableField("articleUrl")
+    @TableField("article_url")
     private String articleUrl;
 
     /**
      * 文章摘要
      */
-    @TableField("articleTabloid")
+    @TableField("article_tabloid")
     private String articleTabloid;
 
     /**
      * 文章喜欢数
      */
+    @TableField("likes")
     private Integer likes;
 
     /**
      * 上一篇文章id
      */
-    @TableField("lastArticleId")
+    @TableField("last_article_id")
     private Long lastArticleId;
 
     /**
      * 下一篇文章id
      */
-    @TableField("nextArticleId")
+    @TableField("next_article_id")
     private Long nextArticleId;
 
     /**
      * 创建时间
      */
-    @TableField("createTime")
+    @TableField(value = "create_time", fill = FieldFill.INSERT)
     private Date createTime;
 
     /**
      * 创建人
      */
-    @TableField("createUser")
+    @TableField(value = "create_user", fill = FieldFill.INSERT)
     private String createUser;
 
     /**
      * 更新时间
      */
-    @TableField("updateTime")
+    @TableField(value = "update_time", fill = FieldFill.UPDATE)
     private Date updateTime;
 
     /**
      * 更新人
      */
-    @TableField("updateUser")
+    @TableField(value = "update_user", fill = FieldFill.UPDATE)
     private String updateUser;
+
+    /**
+     * 是否删除:1-以删除;0-存在
+     */
+    @TableField(value = "is_delete")
+    private Integer isDelete;
 
     /**
      * 乐观锁
      */
-    @Version
+    @TableField("version")
     private Integer version;
 }

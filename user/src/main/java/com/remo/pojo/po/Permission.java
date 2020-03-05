@@ -1,12 +1,18 @@
 package com.remo.pojo.po;
 
 import com.baomidou.mybatisplus.annotation.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@Accessors(chain = true)
 @TableName("sys_permission")
 public class Permission implements Serializable {
 
