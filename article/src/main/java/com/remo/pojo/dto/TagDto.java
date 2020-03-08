@@ -25,18 +25,13 @@ public class TagDto {
      * 简介
      */
     @NotBlank(groups = Insert.class)
-    private String tagDesc;
-
-    /**
-     * 父Tag Id
-     */
-    private Long parentId;
+    private String tagDescription;
 
     /**
      * 排序编号
      */
     @NotNull(groups = Insert.class)
-    private Integer orderSeq;
+    private Integer orderNum;
 
     /**
      * articleDtos

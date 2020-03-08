@@ -1,7 +1,7 @@
 package com.remo.pojo.dto;
 
-import com.remo.common.group.Update;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.remo.common.group.Update;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +16,13 @@ import java.util.List;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ArticleDto {
+
+    /**
+     * @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT-8")
+     * @JsonFormat,注解@JsonFormat主要是后台到前台的时间格式的转换
+     * @DateTimeFormat(pattern = "yyyy-MM-dd")
+     * @DataFormAT,注解@DataFormAT主要是前后到后台的时间格式的转换
+     */
 
     @NotNull(groups = Update.class)
     private Integer id;
@@ -49,11 +56,6 @@ public class ArticleDto {
     private String articleContent;
 
     /**
-     * 文章标签
-     */
-    private String articleTags;
-
-    /**
      * 文章类型
      */
     @NotBlank
@@ -63,21 +65,6 @@ public class ArticleDto {
      * 文章分类
      */
     private String articleCategories;
-
-    /**
-     * 发布文章日期
-     * @JsonFormat,注解@JsonFormat主要是后台到前台的时间格式的转换
-     * @DataFormAT,注解@DataFormAT主要是前后到后台的时间格式的转换
-     */
-//    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT-8")
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private String publishDate;
-
-    /**
-     * 更新文章日期
-     *
-     */
-    private String updateDate;
 
     /**
      * 文章url

@@ -6,7 +6,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -19,7 +19,7 @@ public class Tag implements Serializable {
     /**
      * Tag Id,自增
      */
-    @TableId(value = "tagId",type = IdType.AUTO)
+    @TableId(value = "tag_id", type = IdType.AUTO)
     private Long tagId;
 
     /**
@@ -38,7 +38,7 @@ public class Tag implements Serializable {
      * 创建时间
      */
     @TableField(value = "create_time", fill = FieldFill.INSERT)
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      * 创建人
@@ -50,7 +50,7 @@ public class Tag implements Serializable {
      * 更新时间
      */
     @TableField(value = "update_time", fill = FieldFill.UPDATE)
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
     /**
      * 更新人

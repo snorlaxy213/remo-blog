@@ -2,12 +2,9 @@ package com.remo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.remo.common.exception.exception.ParamException;
 import com.remo.common.exception.utils.ServiceUtil;
-import com.remo.common.exception.utils.constant.FormatConstant;
 import com.remo.mapper.ArticleMapper;
 import com.remo.pojo.dto.ArticleDto;
-import com.remo.pojo.dto.FieldErrorDto;
 import com.remo.pojo.dto.SimpleArticleDto;
 import com.remo.pojo.entity.Article;
 import com.remo.pojo.vo.query.ListArticleQuery;
@@ -20,9 +17,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.text.ParseException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,29 +37,30 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
     /**
      * 根据ListArticleQuery的参数查询Articles
-     * @param query
+     *
+     * @param listArticleQuery
      * @return
      */
     @Override
 //    @DS("slave")
-    public List<ArticleDto> listArticles(ListArticleQuery query) {
+    public List<ArticleDto> listArticles(ListArticleQuery listArticleQuery) {
         QueryWrapper<Article> wrapper = new QueryWrapper<>();
-        if (query.getArticleType() != null) {
-            wrapper.eq("articleType", query.getArticleType());
+        if (listArticleQuery.getArticleType() != null) {
+            wrapper.eq("articleType", listArticleQuery.getArticleType());
         }
-        if (query.getArticleTags() != null) {
-            wrapper.eq("articleTags", query.getArticleTags());
+        if (listArticleQuery.getArticleTags() != null) {
+            wrapper.eq("articleTags", listArticleQuery.getArticleTags());
         }
-        if (query.getArticleCategories() != null) {
-            wrapper.eq("articleCategories", query.getArticleCategories());
+        if (listArticleQuery.getArticleCategories() != null) {
+            wrapper.eq("articleCategories", listArticleQuery.getArticleCategories());
         }
-        if (query.getPublishDate() != null) {
-            wrapper.eq("publishDate", query.getPublishDate());
+        if (listArticleQuery.getPublishDate() != null) {
+            wrapper.eq("publishDate", listArticleQuery.getPublishDate());
         }
 
         List<Article> articles = this.list(wrapper);
         List<ArticleDto> articleDtos = new ArrayList<>();
-        articles.forEach(article -> articleDtos.add(dozerMapper.map(article,ArticleDto.class)));
+        articles.forEach(article -> articleDtos.add(dozerMapper.map(article, ArticleDto.class)));
         return articleDtos;
     }
 
@@ -84,20 +81,6 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Override
     @Transactional(rollbackFor = Exception.class)
     public boolean insertArticle(ArticleDto articleDto) {
-        //validation
-        List<FieldErrorDto> fieldErrorDtos = new ArrayList<>();
-        try {
-            FormatConstant.yyyyMM.parse(articleDto.getPublishDate());
-        } catch (ParseException e) {
-            FieldErrorDto fieldErrorDto = new FieldErrorDto("publishDate","date format error");
-            fieldErrorDtos.add(fieldErrorDto);
-        }
-
-        if (!fieldErrorDtos.isEmpty()) {
-            throw new ParamException(fieldErrorDtos);
-        }
-
-        //service business
         Article article = new Article();
         BeanUtils.copyProperties(articleDto, article);
         ServiceUtil.initEntity(article,true);
@@ -113,28 +96,12 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Override
     @Transactional(rollbackFor = Exception.class)
     public boolean updateArticle(ArticleDto articleDto) {
-        //validation
-        List<FieldErrorDto> fieldErrorDtos = new ArrayList<>();
-        try {
-            FormatConstant.yyyyMM.parse(articleDto.getUpdateDate());
-        } catch (ParseException e) {
-            FieldErrorDto fieldErrorDto = new FieldErrorDto("publishDate","date format error");
-            fieldErrorDtos.add(fieldErrorDto);
-        }
-
-        if (!fieldErrorDtos.isEmpty()) {
-            throw new ParamException(fieldErrorDtos);
-        }
-
-        //service business
         Article article = this.getById(articleDto.getId());
 
         article.setArticleTitle(articleDto.getArticleTitle())
                 .setArticleContent(articleDto.getArticleContent())
-                .setArticleTags(articleDto.getArticleTags())
                 .setArticleType(articleDto.getArticleType())
-                .setArticleCategories(articleDto.getArticleCategories())
-                .setUpdateDate(FormatConstant.yyyyMMdd.format(new Date()))
+                .setUpdateTime(LocalDateTime.now())
                 .setArticleTabloid(articleDto.getArticleTabloid())
                 .setVersion(articleDto.getVersion());
 

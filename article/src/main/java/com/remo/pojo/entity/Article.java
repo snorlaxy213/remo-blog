@@ -7,7 +7,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -34,13 +34,13 @@ public class Article implements Serializable {
      * 作者
      */
     @TableField(value = "author_name")
-    private String author;
+    private String authorName;
 
     /**
      * 文章原作者
      */
     @TableField("original_author_name")
-    private String originalAuthor;
+    private String originalAuthorName;
 
     /**
      * 文章标题
@@ -94,7 +94,7 @@ public class Article implements Serializable {
      * 创建时间
      */
     @TableField(value = "create_time", fill = FieldFill.INSERT)
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      * 创建人
@@ -106,7 +106,7 @@ public class Article implements Serializable {
      * 更新时间
      */
     @TableField(value = "update_time", fill = FieldFill.UPDATE)
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
     /**
      * 更新人
