@@ -17,11 +17,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -58,7 +54,7 @@ public class ArticleController {
 
     @ApiOperation(value = "getArticle")
     @GetMapping("getArticle/{id}")
-    public ResponseVo getArticle(@PathVariable(value = "id")Long id) {
+    public ResponseVo getArticle(@PathVariable(value = "id") Long id) {
         ArticleDto articleDto = articleService.getArticle(id);
         return ResponseUtil.initSuccessResponse(articleDto);
     }

@@ -23,7 +23,8 @@ public class LogAspect {
     private LogServiceClient logServiceClient;
 
     @Pointcut("@annotation(com.remo.annotation.RemoLog)")
-    public void pointcut() { }
+    public void pointcut() {
+    }
 
     @Around("pointcut()")
     public Object around(ProceedingJoinPoint point) {

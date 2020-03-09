@@ -9,7 +9,7 @@ import com.remo.pojo.vo.query.ListArticleQuery;
 import java.util.List;
 
 /**
- *  Article服务类
+ * Article服务类
  *
  * @author vino
  * @since 2019-08-26

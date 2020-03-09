@@ -6,7 +6,7 @@ import com.remo.pojo.entity.Tag;
 
 import java.util.List;
 
-public interface ITagService  extends IService<Tag> {
+public interface ITagService extends IService<Tag> {
 
     List<TagDto> listTags();
 

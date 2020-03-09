@@ -20,6 +20,7 @@ import springfox.documentation.spring.web.plugins.Docket;
  * 如果值不为空，则将该值与havingValue指定的值进行比较，如果一样则返回true;否则返回false。
  * 如果返回值为false，则该configuration不生效；为true则生效。
  */
+
 /**
  * swagger配置类
  *

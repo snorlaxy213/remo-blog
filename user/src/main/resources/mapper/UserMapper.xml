@@ -4,23 +4,23 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.remo.pojo.po.User">
-        <id column="user_id" property="userId" />
-        <result column="avatar" property="avatar" />
-        <result column="username" property="username" />
-        <result column="password" property="password" />
-        <result column="salt" property="salt" />
-        <result column="name" property="name" />
-        <result column="birthday" property="birthday" />
-        <result column="gender" property="gender" />
-        <result column="email" property="email" />
-        <result column="phone" property="phone" />
-        <result column="role_id" property="roleId" />
-        <result column="brief" property="brief" />
-        <result column="create_time" property="createTime" />
-        <result column="create_user" property="createUser" />
-        <result column="update_time" property="updateTime" />
-        <result column="update_user" property="updateUser" />
-        <result column="version" property="version" />
+        <id column="user_id" property="userId"/>
+        <result column="avatar" property="avatar"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="salt" property="salt"/>
+        <result column="name" property="name"/>
+        <result column="birthday" property="birthday"/>
+        <result column="gender" property="gender"/>
+        <result column="email" property="email"/>
+        <result column="phone" property="phone"/>
+        <result column="role_id" property="roleId"/>
+        <result column="brief" property="brief"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="version" property="version"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->

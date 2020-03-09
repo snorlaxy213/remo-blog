@@ -105,8 +105,8 @@ public class LoginController {
      * 1. token
      * 2. 用户角色
      *
-     * @param token token
-     * @param userDto  用户信息
+     * @param token   token
+     * @param userDto 用户信息
      * @return UserInfo
      */
     private Map<String, Object> generateUserInfo(JWTToken token, UserDto userDto) {
