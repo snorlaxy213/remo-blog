@@ -1,7 +1,6 @@
 package com.remo.controller;
 
-import com.remo.po.SysLog;
-import com.remo.service.LogService;
+import com.remo.service.GoodsService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +11,7 @@ import javax.annotation.Resource;
 public class LogController {
 
     @Resource(name = "logServiceImpl")
-    LogService logService;
+    GoodsService logService;
 
     @PostMapping(value = "/saveLog")
     public void saveSysLog(@RequestBody SysLog sysLog) {

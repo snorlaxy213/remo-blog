@@ -1,17 +1,17 @@
 spring:
   application:
-    name: log
+    name: seckill
   datasource:
-    url: jdbc:mysql://localhost:3306/remo_log?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/seckill?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
     username: root
     password: admin
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 ---
 server:
-  port: 8764
+  port: 8791
 spring:
-  profiles: log-one
+  profiles: seckill-one
 eureka:
   client:
     service-url:
@@ -21,9 +21,9 @@ eureka:
 
 ---
 server:
-  port: 8765
+  port: 8792
 spring:
-  profiles: log-two
+  profiles: seckill-two
 eureka:
   client:
     service-url:
