@@ -8,13 +8,7 @@ import com.remo.utils.ImageUtil;
 import com.remo.utils.ResponseUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.awt.image.BufferedImage;
@@ -54,7 +48,7 @@ public class SeckillController {
     @RequestMapping(value = "/{path}/seckill", method = RequestMethod.POST)
     public ResponseVo seckill(@PathVariable("path") String path,
                               @RequestParam("userId") Long userId,
-                              @RequestParam("goodsId") long goodsId) {
+                              @RequestParam("goodsId") Long goodsId) {
         //验证path
         boolean pathCheck = seckillServiceImpl.checkPath(userId, goodsId, path);
         if (!pathCheck) {
@@ -72,11 +66,10 @@ public class SeckillController {
             return ResponseUtil.initErrorResultVO("物品已下架");
         }
         //预见库存
-        Long stock = redisService.decr(GoodsKey.getMiaoshaGoodsStock, "" + goodsId);
+        Long stock = seckillOrderServiceImpl.stockDesc(goodsId);
         if (stock < 0) {
             localOverMap.put(goodsId, true);
-            result.withError(MIAO_SHA_OVER.getCode(), MIAO_SHA_OVER.getMessage());
-            return result;
+            return ResponseUtil.initErrorResultVO("物品已下架");
         }
         MiaoshaMessage mm = new MiaoshaMessage();
         mm.setGoodsId(goodsId);

@@ -24,5 +24,8 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
         return mapper.convertValue(redisUtil.get(PrefixConstant.SECKILL_SECKILL_ORDER_PREFIX + userId + goodsId), SeckillOrderDto.class);
     }
 
-
+    @Override
+    public long stockDesc(Long goodsId) {
+        return redisUtil.decr(String.valueOf(goodsId), 1);
+    }
 }

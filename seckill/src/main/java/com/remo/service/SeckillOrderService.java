@@ -6,5 +6,5 @@ public interface SeckillOrderService {
 
     SeckillOrderDto getSeckillOrderByUserIdAndGoodsId(long userId, long goodsId);
 
-    long stockDesc()
+    long stockDesc(Long goodsId);
 }
