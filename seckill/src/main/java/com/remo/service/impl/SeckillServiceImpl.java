@@ -66,13 +66,13 @@ public class SeckillServiceImpl implements SeckillService {
     public String createSeckillPath(Long userId, Long goodsId) {
         String uuid = UUID.randomUUID().toString().replace("-", "");
         String path = MD5Util.encrypt(uuid + goodsId);
-        redisUtil.set(PrefixConstant.SECKILL_SECKILLPATH_PREFIX + userId + "_" + goodsId, path);
+        redisUtil.set(PrefixConstant.SECKILL_SECKILL_PATH_PREFIX + userId + "_" + goodsId, path);
         return path;
     }
 
     @Override
     public boolean checkPath(Long userId, Long goodsId, String path) {
-        String oldPath = (String) redisUtil.get(PrefixConstant.SECKILL_SECKILLPATH_PREFIX + userId + "_" + goodsId);
+        String oldPath = (String) redisUtil.get(PrefixConstant.SECKILL_SECKILL_PATH_PREFIX + userId + "_" + goodsId);
         return path.equals(oldPath);
     }
 }
