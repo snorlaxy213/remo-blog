@@ -16,4 +16,6 @@ public interface SeckillService {
     String createSeckillPath(Long userId, Long goodsId);
 
     OrderDto seckill(Long userId, SeckillGoodsDto seckillGoodsDto);
+
+    long getSeckillResult(Long userId, long goodsId);
 }

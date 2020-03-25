@@ -3,8 +3,10 @@ package com.remo.service.impl;
 import com.remo.common.PrefixConstant;
 import com.remo.pojo.dto.OrderDto;
 import com.remo.pojo.dto.SeckillGoodsDto;
+import com.remo.pojo.dto.SeckillOrderDto;
 import com.remo.service.GoodsService;
 import com.remo.service.OrderService;
+import com.remo.service.SeckillOrderService;
 import com.remo.service.SeckillService;
 import com.remo.utils.CommonUtil;
 import com.remo.utils.MD5Util;
@@ -28,6 +30,9 @@ public class SeckillServiceImpl implements SeckillService {
 
     @Resource(name = "orderServiceImpl")
     OrderService orderServiceImpl;
+
+    @Resource(name = "seckillOrderServiceImpl")
+    SeckillOrderService seckillOrderServiceImpl;
 
     /**
      * 利用ScriptEngineManager对计算公式的支持
@@ -100,7 +105,28 @@ public class SeckillServiceImpl implements SeckillService {
         }
     }
 
+    @Override
+    public long getSeckillResult(Long userId, long goodsId) {
+        SeckillOrderDto seckillOrderDto = seckillOrderServiceImpl.getSeckillOrderByUserIdAndGoodsId(userId, goodsId);
+        if (seckillOrderDto != null) {//秒杀成功
+            return seckillOrderDto.getOrderId();
+        } else {
+            boolean isOver = getGoodsOver(goodsId);
+            if (isOver) {
+                //秒杀失败
+                return -1;
+            } else {
+                //排队中
+                return 0;
+            }
+        }
+    }
+
     private void setGoodsOver(Long goodsId) {
         redisUtil.set(PrefixConstant.SECKILL_GOODS_OVER_PREFIX + goodsId, true);
+    }
+
+    private boolean getGoodsOver(Long goodsId) {
+        return (Boolean) redisUtil.get(PrefixConstant.SECKILL_GOODS_OVER_PREFIX + goodsId) == true;
     }
 }

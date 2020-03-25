@@ -9,13 +9,7 @@ import com.remo.utils.ImageUtil;
 import com.remo.utils.ResponseUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.awt.image.BufferedImage;
@@ -84,5 +78,11 @@ public class SeckillController {
 
         rabbitMQProvider.sendSeckillMessage(userId, goodsId);
         return ResponseUtil.initSuccessResultVO("恭喜秒杀成功");
+    }
+
+    @RequestMapping(value = "/result", method = RequestMethod.GET)
+    public ResponseVo seckillResult(@RequestParam("userId") Long userId,
+                                    @RequestParam("GoodsId") Long goodsId) {
+        return ResponseUtil.initSuccessResultVO(seckillServiceImpl.getSeckillResult(userId, goodsId));
     }
 }
