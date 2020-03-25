@@ -2,13 +2,20 @@ package com.remo.controller;
 
 import com.remo.pojo.dto.SeckillOrderDto;
 import com.remo.pojo.vo.ResponseVo;
+import com.remo.rabbitmq.RabbitMQProvider;
 import com.remo.service.SeckillOrderService;
 import com.remo.service.SeckillService;
 import com.remo.utils.ImageUtil;
 import com.remo.utils.ResponseUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.awt.image.BufferedImage;
@@ -24,6 +31,9 @@ public class SeckillController {
 
     @Resource(name = "seckillOrderServiceImpl")
     SeckillOrderService seckillOrderServiceImpl;
+
+    @Resource(name = "rabbitMQProvider")
+    RabbitMQProvider rabbitMQProvider;
 
     private HashMap<Long, Boolean> localOverMap = new HashMap<>();
 
@@ -48,7 +58,7 @@ public class SeckillController {
     @RequestMapping(value = "/{path}/seckill", method = RequestMethod.POST)
     public ResponseVo seckill(@PathVariable("path") String path,
                               @RequestParam("userId") Long userId,
-                              @RequestParam("goodsId") Long goodsId) {
+                              @RequestParam("GoodsId") Long goodsId) {
         //验证path
         boolean pathCheck = seckillServiceImpl.checkPath(userId, goodsId, path);
         if (!pathCheck) {
@@ -71,10 +81,8 @@ public class SeckillController {
             localOverMap.put(goodsId, true);
             return ResponseUtil.initErrorResultVO("物品已下架");
         }
-        MiaoshaMessage mm = new MiaoshaMessage();
-        mm.setGoodsId(goodsId);
-        mm.setUser(user);
-        mqSender.sendMiaoshaMessage(mm);
-        return result;
+
+        rabbitMQProvider.sendSeckillMessage(userId, goodsId);
+        return ResponseUtil.initSuccessResultVO("恭喜秒杀成功");
     }
 }

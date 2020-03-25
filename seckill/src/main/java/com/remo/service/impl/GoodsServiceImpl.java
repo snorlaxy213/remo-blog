@@ -1,6 +1,7 @@
 package com.remo.service.impl;
 
 import com.remo.pojo.dto.GoodsDto;
+import com.remo.pojo.dto.SeckillGoodsDto;
 import com.remo.pojo.po.Goods;
 import com.remo.pojo.po.SeckillGoods;
 import com.remo.repository.GoodsRepository;
@@ -15,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Slf4j
 @Service("goodsServiceImpl")
@@ -29,18 +30,49 @@ public class GoodsServiceImpl implements GoodsService {
     SeckillGoodsRepository seckillGoodsRepository;
 
     @Override
-    public List<GoodsDto> listSeckillGoods() {
+    public List<SeckillGoodsDto> listSeckillGoods() {
         List<SeckillGoods> seckillGoods = seckillGoodsRepository.findAll();
-        List<Long> ids = seckillGoods.stream().map(SeckillGoods::getGoodsId).collect(Collectors.toList());
-        List<Goods> goods = goodsRepository.findByGoodsIdIn(ids);
-        List<GoodsDto> goodsDtos = new ArrayList<>();
-        goods.forEach(goodsTemp -> {
+        List<SeckillGoodsDto> seckillGoodsDtos = new ArrayList<>();
+        seckillGoods.forEach(seckillGoodsTemp -> {
+            Goods goods = goodsRepository.findById(seckillGoodsTemp.getGoodsId()).get();
             GoodsDto goodsDto = new GoodsDto();
-            BeanUtils.copyProperties(goodsTemp, goodsDto);
-            goodsDtos.add(goodsDto);
+            BeanUtils.copyProperties(goods, goodsDto);
+
+            SeckillGoodsDto seckillGoodsDto = new SeckillGoodsDto();
+            BeanUtils.copyProperties(seckillGoodsTemp, seckillGoodsDto);
+            seckillGoodsDto.setGoodsDto(goodsDto);
+
+            seckillGoodsDtos.add(seckillGoodsDto);
         });
 
-        return goodsDtos;
+        return seckillGoodsDtos;
+    }
+
+    @Override
+    public SeckillGoodsDto getSeckillGoodsById(Long goodsId) {
+        Optional<SeckillGoods> goodsOptional = seckillGoodsRepository.findByGoodsId(goodsId);
+        SeckillGoodsDto seckillGoodsDto = new SeckillGoodsDto();
+        goodsOptional.ifPresent(seckillGoods -> BeanUtils.copyProperties(seckillGoods, seckillGoodsDto));
+        return seckillGoodsDto;
+    }
+
+    @Override
+    public boolean reduceStock(SeckillGoodsDto seckillGoodsDto) {
+        Optional<SeckillGoods> seckillGoodsOptional = seckillGoodsRepository.findByGoodsId(seckillGoodsDto.getGoodsId());
+
+        Integer stockCount = 0;
+        if (seckillGoodsOptional.isPresent()) {
+            SeckillGoods seckillGoods = seckillGoodsOptional.get();
+            stockCount = seckillGoods.getStockCount();
+
+            if (stockCount > 0) {
+                stockCount = stockCount - 1;
+                seckillGoods.setStockCount(stockCount);
+                seckillGoodsRepository.save(seckillGoods);
+            }
+        }
+
+        return stockCount > 0;
     }
 
     @Override

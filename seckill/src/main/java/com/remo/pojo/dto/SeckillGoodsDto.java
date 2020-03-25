@@ -24,4 +24,6 @@ public class SeckillGoodsDto {
     private LocalDateTime endDate;
 
     private Integer version;
+
+    private GoodsDto goodsDto;
 }

@@ -1,5 +1,8 @@
 package com.remo.service;
 
+import com.remo.pojo.dto.OrderDto;
+import com.remo.pojo.dto.SeckillGoodsDto;
+
 import java.awt.image.BufferedImage;
 
 public interface SeckillService {
@@ -11,4 +14,6 @@ public interface SeckillService {
     boolean checkVerifyCode(Long userId, Long goodsId, Integer verifyCode);
 
     String createSeckillPath(Long userId, Long goodsId);
+
+    OrderDto seckill(Long userId, SeckillGoodsDto seckillGoodsDto);
 }
