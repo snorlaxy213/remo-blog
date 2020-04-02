@@ -15,12 +15,13 @@ public class ArticleIDMetaObjectHandler implements MetaObjectHandler {
 
     /**
      * field Insert fill data automatically
+     *
      * @param metaObject
      */
     @Override
     public void insertFill(MetaObject metaObject) {
         //自动填充articleId（文章ID）
-        Object articleId = getFieldValByName("articleId",metaObject);
+        Object articleId = getFieldValByName("articleId", metaObject);
         if (articleId == null) {
             setFieldValByName("articleId", getRandomCode(), metaObject);
         }
@@ -28,6 +29,7 @@ public class ArticleIDMetaObjectHandler implements MetaObjectHandler {
 
     /**
      * field Update fill data automatically
+     *
      * @param metaObject
      */
     @Override
@@ -37,6 +39,7 @@ public class ArticleIDMetaObjectHandler implements MetaObjectHandler {
 
     /**
      * 获得10位随机码
+     *
      * @return 随机码
      */
     private Long getRandomCode() {

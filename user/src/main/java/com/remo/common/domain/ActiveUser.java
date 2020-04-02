@@ -22,5 +22,5 @@ public class ActiveUser implements Serializable {
     // token(加密后)
     private String token;
     // 登录时间
-    private String loginTime = DateUtil.formatFullTime(LocalDateTime.now(),DateUtil.FULL_TIME_SPLIT_PATTERN);
+    private String loginTime = DateUtil.formatFullTime(LocalDateTime.now(), DateUtil.FULL_TIME_SPLIT_PATTERN);
 }

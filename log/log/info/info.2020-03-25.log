@@ -1,0 +1,390 @@
+2020-03-25 22:07:40.052 remo [restartedMain] INFO  com.remo.SeckillApplication - Starting SeckillApplication on vino with PID 10004 (D:\Space\Java\remo\remo-blog\seckill\target\classes started by Administrator in D:\Space\Java\remo\remo-blog)
+2020-03-25 22:07:40.052 remo [restartedMain] INFO  com.remo.SeckillApplication - No active profile set, falling back to default profiles: default
+2020-03-25 22:07:40.092 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-03-25 22:07:40.092 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-03-25 22:07:40.887 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-25 22:07:40.887 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-03-25 22:07:40.975 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 80ms. Found 4 repository interfaces.
+2020-03-25 22:07:40.983 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-25 22:07:40.991 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-03-25 22:07:41.007 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.GoodsRepository.
+2020-03-25 22:07:41.007 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.OrderRepository.
+2020-03-25 22:07:41.007 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.SeckillGoodsRepository.
+2020-03-25 22:07:41.007 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.SeckillOrderRepository.
+2020-03-25 22:07:41.007 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16ms. Found 0 repository interfaces.
+2020-03-25 22:07:41.365 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$23e9fe60] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-25 22:07:41.680 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-25 22:07:41.688 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-25 22:07:41.704 remo [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-25 22:07:41.704 remo [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.22]
+2020-03-25 22:07:41.816 remo [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-25 22:07:41.816 remo [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1724 ms
+2020-03-25 22:07:41.946 remo [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-03-25 22:07:42.414 remo [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2020-03-25 22:07:42.470 remo [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-03-25 22:07:42.526 remo [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.10.Final}
+2020-03-25 22:07:42.526 remo [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2020-03-25 22:07:42.646 remo [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-03-25 22:07:42.774 remo [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-03-25 22:07:43.329 remo [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-03-25 22:07:44.089 remo [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-25 22:07:44.404 remo [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2020-03-25 22:07:44.489 remo [restartedMain] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:07:48.585 remo [restartedMain] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Broker not available; cannot force queue declarations during start: java.net.ConnectException: Connection refused: connect
+2020-03-25 22:07:48.593 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:07:52.677 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:07:56.767 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-25 22:07:56.791 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-25 22:07:56.791 remo [restartedMain] INFO  com.remo.SeckillApplication - Started SeckillApplication in 17.372 seconds (JVM running for 18.24)
+2020-03-25 22:08:01.959 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1b82399: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:08:01.959 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:08:06.020 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:08:15.209 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@10f0393: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:08:15.210 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:08:19.278 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:08:28.531 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@122ce63: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:08:28.531 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:08:32.593 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:08:41.845 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3a856a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:08:41.845 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:08:45.906 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:08:55.165 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@173f5a1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:08:55.165 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:08:59.200 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:09:08.406 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1663e1f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:09:08.406 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:09:15.399 remo [restartedMain] INFO  com.remo.SeckillApplication - Starting SeckillApplication on vino with PID 8456 (D:\Space\Java\remo\remo-blog\seckill\target\classes started by Administrator in D:\Space\Java\remo\remo-blog)
+2020-03-25 22:09:15.401 remo [restartedMain] INFO  com.remo.SeckillApplication - No active profile set, falling back to default profiles: default
+2020-03-25 22:09:15.438 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-03-25 22:09:15.438 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-03-25 22:09:16.171 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-25 22:09:16.171 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-03-25 22:09:16.256 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 78ms. Found 4 repository interfaces.
+2020-03-25 22:09:16.270 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-25 22:09:16.271 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-03-25 22:09:16.288 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.GoodsRepository.
+2020-03-25 22:09:16.289 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.OrderRepository.
+2020-03-25 22:09:16.290 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.SeckillGoodsRepository.
+2020-03-25 22:09:16.290 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.SeckillOrderRepository.
+2020-03-25 22:09:16.290 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12ms. Found 0 repository interfaces.
+2020-03-25 22:09:16.648 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4b47674a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-25 22:09:16.961 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-25 22:09:16.972 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-25 22:09:16.980 remo [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-25 22:09:16.980 remo [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.22]
+2020-03-25 22:09:17.088 remo [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-25 22:09:17.088 remo [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1650 ms
+2020-03-25 22:09:17.218 remo [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-03-25 22:09:17.667 remo [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2020-03-25 22:09:17.723 remo [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-03-25 22:09:17.779 remo [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.10.Final}
+2020-03-25 22:09:17.779 remo [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2020-03-25 22:09:17.900 remo [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-03-25 22:09:18.028 remo [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-03-25 22:09:18.599 remo [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-03-25 22:09:19.359 remo [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-25 22:09:19.680 remo [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2020-03-25 22:09:19.776 remo [restartedMain] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:09:23.868 remo [restartedMain] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Broker not available; cannot force queue declarations during start: java.net.ConnectException: Connection refused: connect
+2020-03-25 22:09:23.876 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:09:27.937 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:09:32.003 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-25 22:09:32.019 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-25 22:09:32.027 remo [restartedMain] INFO  com.remo.SeckillApplication - Started SeckillApplication in 17.06 seconds (JVM running for 17.741)
+2020-03-25 22:09:37.177 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1361cfe: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:09:37.177 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:09:41.250 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:09:50.445 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@147c2d1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:09:50.445 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:09:54.508 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:10:03.758 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@48c8a9: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:10:03.758 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:10:07.802 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:10:16.992 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@bb57e1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:10:16.993 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:10:21.051 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:10:30.288 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@27ff6b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:10:30.288 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:10:34.330 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:10:43.554 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1009a5a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:10:43.554 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:10:47.614 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:10:56.707 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@120663: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:10:56.708 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:11:00.765 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:11:09.977 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@294046: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:11:09.978 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-9] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:11:14.074 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-9] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:11:20.843 remo [restartedMain] INFO  com.remo.SeckillApplication - Starting SeckillApplication on vino with PID 4084 (D:\Space\Java\remo\remo-blog\seckill\target\classes started by Administrator in D:\Space\Java\remo\remo-blog)
+2020-03-25 22:11:20.845 remo [restartedMain] INFO  com.remo.SeckillApplication - No active profile set, falling back to default profiles: default
+2020-03-25 22:11:20.883 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-03-25 22:11:20.883 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-03-25 22:11:21.632 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-25 22:11:21.632 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-03-25 22:11:21.718 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 80ms. Found 4 repository interfaces.
+2020-03-25 22:11:21.732 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-25 22:11:21.733 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-03-25 22:11:21.751 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.GoodsRepository.
+2020-03-25 22:11:21.752 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.OrderRepository.
+2020-03-25 22:11:21.752 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.SeckillGoodsRepository.
+2020-03-25 22:11:21.753 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.SeckillOrderRepository.
+2020-03-25 22:11:21.753 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13ms. Found 0 repository interfaces.
+2020-03-25 22:11:22.117 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ec0d3595] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-25 22:11:22.438 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-25 22:11:22.452 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-25 22:11:22.460 remo [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-25 22:11:22.461 remo [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.22]
+2020-03-25 22:11:22.575 remo [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-25 22:11:22.575 remo [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1692 ms
+2020-03-25 22:11:22.719 remo [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-03-25 22:11:23.169 remo [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2020-03-25 22:11:23.218 remo [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-03-25 22:11:23.277 remo [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.10.Final}
+2020-03-25 22:11:23.279 remo [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2020-03-25 22:11:23.400 remo [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-03-25 22:11:23.527 remo [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-03-25 22:11:24.102 remo [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-03-25 22:11:24.856 remo [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-25 22:11:25.185 remo [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2020-03-25 22:11:25.365 remo [restartedMain] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:11:29.457 remo [restartedMain] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Broker not available; cannot force queue declarations during start: java.net.ConnectException: Connection refused: connect
+2020-03-25 22:11:29.462 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:11:33.555 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:11:37.648 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-25 22:11:37.667 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-25 22:11:37.670 remo [restartedMain] INFO  com.remo.SeckillApplication - Started SeckillApplication in 17.28 seconds (JVM running for 18.0)
+2020-03-25 22:11:42.810 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3369ff: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:11:42.812 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:11:46.846 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:11:55.984 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1878c58: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:11:55.985 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:12:00.038 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:12:09.215 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@b00666: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:12:09.216 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:12:13.284 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:12:22.438 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1009a5a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:12:22.439 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:12:26.477 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:12:35.603 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@142357e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:12:35.604 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:12:39.679 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:12:48.875 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@152d351: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:12:48.876 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:12:52.982 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:13:02.123 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1842745: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:13:02.123 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:13:06.192 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:13:15.432 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1509f32: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:13:15.432 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-9] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:13:19.517 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-9] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:13:28.698 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-9] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@15ba218: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:13:28.698 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-10] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:13:32.757 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-10] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:13:42.012 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-10] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@9dea45: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:13:42.012 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-11] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:13:46.080 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-11] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:13:55.297 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-11] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1724f3: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:13:55.297 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-12] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:13:59.370 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-12] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:14:08.528 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-12] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@11a15de: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:14:08.529 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-13] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:14:12.599 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-13] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:14:21.746 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-13] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1d8ccf6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:14:21.747 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-14] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:14:25.852 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-14] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:14:34.992 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-14] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1babcdd: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:14:34.992 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-15] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:14:39.088 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-15] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:14:48.227 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-15] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@188bca2: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:14:48.228 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-16] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:14:52.350 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-16] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:15:01.547 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-16] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@f863f8: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:15:01.548 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-17] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:15:05.647 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-17] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:15:14.819 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-17] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@cc0bdf: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:15:14.820 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-18] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:15:18.873 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-18] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:15:28.084 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-18] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@318fb9: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:15:28.085 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-19] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:15:32.179 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-19] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:15:41.384 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-19] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@45365b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:15:41.385 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-20] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:15:45.451 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-20] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:15:54.715 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-20] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1fd30e0: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:15:54.715 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-21] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:15:58.787 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-21] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:16:08.033 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-21] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1fa35b5: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:16:08.033 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-22] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:16:12.096 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-22] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:16:21.284 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-22] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@167f5f7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:16:21.285 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-23] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:16:25.392 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-23] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:16:34.647 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-23] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@870f78: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:16:34.647 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-24] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:16:38.688 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-24] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:16:47.903 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-24] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@141b02c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:16:47.903 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-25] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:16:51.973 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-25] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:17:01.173 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-25] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@d47f92: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:17:01.173 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-26] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:17:05.258 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-26] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:17:14.457 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-26] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1d735e4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:17:14.457 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-27] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:17:18.509 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-27] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:17:27.723 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-27] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@126c566: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:17:27.724 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-28] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:17:31.783 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-28] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:17:41.029 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-28] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@8ccc21: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:17:41.029 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-29] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:17:45.064 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-29] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:17:54.298 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-29] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1d5243: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:17:54.298 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-30] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:17:58.377 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-30] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:18:07.581 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-30] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@124fa40: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:18:07.581 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-31] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:18:11.633 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-31] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:18:20.921 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-31] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@13b6aa8: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:18:20.921 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-32] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:18:24.996 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-32] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:18:34.250 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-32] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1a6353e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:18:34.250 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-33] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:18:38.320 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-33] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:18:47.578 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-33] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5533c5: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:18:47.579 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-34] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:18:51.672 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-34] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:19:00.933 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-34] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@18a5a3d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:19:00.933 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-35] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:19:05.004 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-35] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:19:14.252 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-35] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6d6f5c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:19:14.252 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-36] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:19:18.293 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-36] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:19:27.555 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-36] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6c51a9: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:19:27.555 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-37] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:19:31.623 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-37] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:19:40.883 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-37] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@bcf087: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:19:40.883 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-38] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:19:44.933 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-38] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:19:54.171 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-38] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@110bc9c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:19:54.171 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-39] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:19:58.251 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-39] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:20:07.484 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-39] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@17f84f3: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:20:07.484 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-40] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:20:11.543 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-40] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:20:20.753 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-40] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1a096e6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:20:20.754 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-41] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:20:24.821 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-41] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:20:34.059 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-41] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@10533fd: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:20:34.059 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-42] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:20:38.104 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-42] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:20:47.348 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-42] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@18220ad: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:20:47.348 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-43] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:20:51.396 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-43] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:21:00.601 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-43] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@c7d07c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:21:00.601 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-44] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:21:04.691 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-44] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:21:13.845 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-44] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7bc169: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:21:13.846 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-45] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:21:17.890 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-45] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:21:27.068 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-45] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1619ab4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:21:27.069 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-46] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:21:31.109 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-46] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:21:40.320 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-46] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@14f6bf1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:21:40.321 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-47] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:21:44.356 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-47] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:21:53.562 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-47] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@119ae19: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:21:53.563 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-48] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:21:57.612 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-48] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:22:06.813 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-48] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3c2796: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:22:06.814 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-49] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:22:10.892 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-49] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:22:20.060 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-49] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1c54fcc: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:22:20.060 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-50] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:22:24.105 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-50] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:22:33.353 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-50] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@83fd2f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2020-03-25 22:22:33.354 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-51] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:22:37.472 remo [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-51] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#1de2c74:101/SimpleConnection@34188b [delegate=amqp://guest@0:0:0:0:0:0:0:1:5672/, localPort= 3133]
+2020-03-25 22:22:56.346 remo [restartedMain] INFO  com.remo.SeckillApplication - Starting SeckillApplication on vino with PID 11664 (D:\Space\Java\remo\remo-blog\seckill\target\classes started by Administrator in D:\Space\Java\remo\remo-blog)
+2020-03-25 22:22:56.348 remo [restartedMain] INFO  com.remo.SeckillApplication - No active profile set, falling back to default profiles: default
+2020-03-25 22:22:56.387 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-03-25 22:22:56.387 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-03-25 22:22:57.141 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-25 22:22:57.141 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-03-25 22:22:57.229 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 81ms. Found 4 repository interfaces.
+2020-03-25 22:22:57.244 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-25 22:22:57.245 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-03-25 22:22:57.263 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.GoodsRepository.
+2020-03-25 22:22:57.264 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.OrderRepository.
+2020-03-25 22:22:57.264 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.SeckillGoodsRepository.
+2020-03-25 22:22:57.265 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.SeckillOrderRepository.
+2020-03-25 22:22:57.265 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13ms. Found 0 repository interfaces.
+2020-03-25 22:22:57.631 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d9f72b47] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-25 22:22:57.940 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-25 22:22:57.953 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-25 22:22:57.961 remo [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-25 22:22:57.961 remo [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.22]
+2020-03-25 22:22:58.074 remo [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-25 22:22:58.074 remo [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1687 ms
+2020-03-25 22:22:58.202 remo [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-03-25 22:22:58.652 remo [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2020-03-25 22:22:58.704 remo [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-03-25 22:22:58.766 remo [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.10.Final}
+2020-03-25 22:22:58.772 remo [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2020-03-25 22:22:58.891 remo [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-03-25 22:22:59.020 remo [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-03-25 22:22:59.581 remo [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-03-25 22:23:00.333 remo [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-25 22:23:00.665 remo [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2020-03-25 22:23:00.832 remo [restartedMain] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:23:00.859 remo [restartedMain] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#223c40:0/SimpleConnection@3dea71 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 3155]
+2020-03-25 22:23:00.916 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-25 22:23:00.937 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-25 22:23:00.939 remo [restartedMain] INFO  com.remo.SeckillApplication - Started SeckillApplication in 5.058 seconds (JVM running for 5.753)
+2020-03-25 22:33:07.026 remo [restartedMain] INFO  com.remo.SeckillApplication - Starting SeckillApplication on vino with PID 7620 (D:\Space\Java\remo\remo-blog\seckill\target\classes started by Administrator in D:\Space\Java\remo\remo-blog)
+2020-03-25 22:33:07.028 remo [restartedMain] INFO  com.remo.SeckillApplication - The following profiles are active: dev
+2020-03-25 22:33:07.076 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-03-25 22:33:07.077 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-03-25 22:33:07.979 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-25 22:33:07.979 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-03-25 22:33:08.081 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 95ms. Found 4 repository interfaces.
+2020-03-25 22:33:08.095 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-25 22:33:08.101 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-03-25 22:33:08.120 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.GoodsRepository.
+2020-03-25 22:33:08.121 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.OrderRepository.
+2020-03-25 22:33:08.121 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.SeckillGoodsRepository.
+2020-03-25 22:33:08.122 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.SeckillOrderRepository.
+2020-03-25 22:33:08.122 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13ms. Found 0 repository interfaces.
+2020-03-25 22:33:08.557 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5993ed64] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-25 22:33:08.934 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8791 (http)
+2020-03-25 22:33:08.948 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8791"]
+2020-03-25 22:33:08.964 remo [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-25 22:33:08.964 remo [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.22]
+2020-03-25 22:33:09.092 remo [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-25 22:33:09.092 remo [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2015 ms
+2020-03-25 22:33:09.255 remo [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-03-25 22:33:09.758 remo [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2020-03-25 22:33:09.822 remo [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-03-25 22:33:09.892 remo [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.10.Final}
+2020-03-25 22:33:09.893 remo [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2020-03-25 22:33:10.049 remo [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-03-25 22:33:10.208 remo [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-03-25 22:33:10.908 remo [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-03-25 22:33:11.861 remo [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-25 22:33:12.288 remo [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2020-03-25 22:33:12.403 remo [restartedMain] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2020-03-25 22:33:12.433 remo [restartedMain] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#141080e:0/SimpleConnection@12137c7 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 3244]
+2020-03-25 22:33:12.503 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8791"]
+2020-03-25 22:33:12.525 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8791 (http) with context path ''
+2020-03-25 22:33:12.527 remo [restartedMain] INFO  com.remo.SeckillApplication - Started SeckillApplication in 6.018 seconds (JVM running for 7.255)
+2020-03-25 22:33:29.129 remo [http-nio-8791-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-25 22:33:29.130 remo [http-nio-8791-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-25 22:33:29.136 remo [http-nio-8791-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms

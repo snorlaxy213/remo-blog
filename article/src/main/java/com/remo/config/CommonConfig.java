@@ -20,7 +20,7 @@ public class CommonConfig {
      * dozer配置
      */
     @Bean("dozerBeanMapper")
-    public DozerBeanMapper dozerBeanMapper(){
+    public DozerBeanMapper dozerBeanMapper() {
         List<String> mappingFiles = Arrays.asList(
                 "dozer/dozer-mapping.xml"
         );

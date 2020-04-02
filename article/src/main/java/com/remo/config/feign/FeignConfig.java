@@ -21,7 +21,6 @@ public class FeignConfig {
 
     /**
      * FeignClient的默认超时时间为10s
-     *
      */
     @Bean
     public Request.Options options() {
@@ -30,7 +29,7 @@ public class FeignConfig {
 
     /**
      * FeignClient的默认不会开启重试机制,默认为5次，需要自定义配置。
-     *
+     * <p>
      * 开启重试机制,重试问隔为 100 毫秒,最大重试时间为1秒,自定义重试次数为3次
      */
     @Bean

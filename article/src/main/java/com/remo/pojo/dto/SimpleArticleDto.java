@@ -34,9 +34,10 @@ public class SimpleArticleDto {
 
     /**
      * 发布文章日期
+     *
      * @JsonFormat,格式化传入的Date数据
      */
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT-8")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT-8")
     private String publishDate;
 
     /**

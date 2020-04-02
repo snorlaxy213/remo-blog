@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  文章服务实现
+ * 文章服务实现
  *
  * @author vino
  * @since 2019-08-26
@@ -65,10 +65,10 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     }
 
     @Override
-    public List<SimpleArticleDto> listSimpleArticles(){
+    public List<SimpleArticleDto> listSimpleArticles() {
         List<Article> articles = this.list();
         List<SimpleArticleDto> simpleArticleDtos = new ArrayList<>();
-        articles.forEach(article -> simpleArticleDtos.add(dozerMapper.map(article,SimpleArticleDto.class)));
+        articles.forEach(article -> simpleArticleDtos.add(dozerMapper.map(article, SimpleArticleDto.class)));
         return simpleArticleDtos;
     }
 
@@ -83,7 +83,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     public boolean insertArticle(ArticleDto articleDto) {
         Article article = new Article();
         BeanUtils.copyProperties(articleDto, article);
-        ServiceUtil.initEntity(article,true);
+        ServiceUtil.initEntity(article, true);
         boolean flag = this.save(article);
 
         articleDto.getTagDtos().forEach(tagDto -> {
@@ -105,18 +105,18 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
                 .setArticleTabloid(articleDto.getArticleTabloid())
                 .setVersion(articleDto.getVersion());
 
-        ServiceUtil.initEntity(article,false);
+        ServiceUtil.initEntity(article, false);
         boolean flag = this.updateById(article);
-        if(flag){
+        if (flag) {
             log.info("Update successfully");
-        }else{
+        } else {
             log.info("Update failed due to modified by others");
         }
 
         //update article-tag relation
         this.getBaseMapper().deleteResolutionByArticleId(article.getArticleId());
         articleDto.getTagDtos().forEach(tagDto ->
-            this.getBaseMapper().addResolutionWithArticleAndTag(article.getArticleId(), tagDto.getTagId())
+                this.getBaseMapper().addResolutionWithArticleAndTag(article.getArticleId(), tagDto.getTagId())
         );
 
         return flag;

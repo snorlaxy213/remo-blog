@@ -22,18 +22,18 @@ public class test {
         //流里面的元素还是一个数组
         citys.stream()
                 .map(city -> Arrays.stream(city.split(" ")))//流里面的每个元素还是数组
-                .forEach(cities ->cities.forEach(city-> System.out.print(city+"&")));//note2
+                .forEach(cities -> cities.forEach(city -> System.out.print(city + "&")));//note2
 
         System.out.println();
         System.out.println();
 
         //直接一个flatMap()就把数组合并到映射流里面了
-        citys.stream().flatMap(mCities->Arrays.stream(mCities.split(" "))).forEach(System.out::println);//note3
+        citys.stream().flatMap(mCities -> Arrays.stream(mCities.split(" "))).forEach(System.out::println);//note3
 
         System.out.println();
 
         //使用distinct()方法去重！
-        citys.stream().flatMap(mCities->Arrays.stream(mCities.split(" "))).distinct().forEach(System.out::println);//note4
+        citys.stream().flatMap(mCities -> Arrays.stream(mCities.split(" "))).distinct().forEach(System.out::println);//note4
 
     }
 }

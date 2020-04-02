@@ -13,10 +13,10 @@ public class FieldErrorDto {
     private String fieldName;
     private String errMsg;
 
-    public FieldErrorDto(){
+    public FieldErrorDto() {
     }
 
-    public FieldErrorDto(String fieldName, String errMsg){
+    public FieldErrorDto(String fieldName, String errMsg) {
         this.fieldName = fieldName;
         this.errMsg = errMsg;
     }

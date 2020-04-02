@@ -11,6 +11,7 @@ public interface UserService extends IService<User> {
     /**
      * fetch all data
      * -----------------------
+     *
      * @return List<UserDto>
      */
     List<UserDto> findAll();

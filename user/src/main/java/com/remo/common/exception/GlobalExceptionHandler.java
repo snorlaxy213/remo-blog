@@ -13,7 +13,7 @@ public class GlobalExceptionHandler {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(value = BusinessException.class)
-    public ResponseVo exceptionGlobalHandler(BusinessException e){
+    public ResponseVo exceptionGlobalHandler(BusinessException e) {
         return ResponseUtil.initSuccessResultVO(e.getErrMsg());
     }
 

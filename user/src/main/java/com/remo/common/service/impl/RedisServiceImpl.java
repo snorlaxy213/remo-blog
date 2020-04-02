@@ -10,17 +10,11 @@ import redis.clients.jedis.Client;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Redis 工具类，只封装了几个常用的 redis 命令，
  * 可根据实际需要按类似的方式扩展即可。
- *
  */
 @Service("redisServiceImpl")
 public class RedisServiceImpl implements RedisService {

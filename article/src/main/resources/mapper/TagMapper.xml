@@ -5,8 +5,8 @@
     <!-- 开启二级缓存 -->
     <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
 
-<!--    <delete id="deleteResolutionByTagId">-->
-<!--        delete from article_tag where tagId = #{tagId}-->
-<!--    </delete>-->
+    <!--    <delete id="deleteResolutionByTagId">-->
+    <!--        delete from article_tag where tagId = #{tagId}-->
+    <!--    </delete>-->
 
 </mapper>
