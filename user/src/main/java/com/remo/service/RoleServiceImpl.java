@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Slf4j
-@Service(value = "roleServiceImpl")
+@Service(value = "roleService")
 @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
 
@@ -41,6 +41,11 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     }
 
     @Override
+    public RoleDto findUserRoleById(Long id) {
+        return mapper.map(this.getById(id), RoleDto.class);
+    }
+
+    @Override
     public Long addRole(RoleDto roleDto) {
         log.info("<=============== addRole ===============>");
         Role role = mapper.map(roleDto, Role.class);
@@ -49,7 +54,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     }
 
     @Override
-    public Long updateUser(RoleDto roleDto) {
+    public Long updateRole(RoleDto roleDto) {
         log.info("<=============== updateUser ===============>");
         Role role = mapper.map(roleDto, Role.class);
         this.saveOrUpdate(role);

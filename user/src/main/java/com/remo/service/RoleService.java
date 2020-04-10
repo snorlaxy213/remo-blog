@@ -8,12 +8,14 @@ import java.util.List;
 
 public interface RoleService extends IService<Role> {
 
+    RoleDto findUserRoleById(Long id);
+
     List<RoleDto> listUserRoles(String username);
 
     List<RoleDto> listUserRoles();
 
     Long addRole(RoleDto roleDto);
 
-    Long updateUser(RoleDto roleDto);
+    Long updateRole(RoleDto roleDto);
 
 }

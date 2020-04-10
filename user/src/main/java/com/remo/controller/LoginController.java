@@ -25,6 +25,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -35,6 +36,7 @@ import java.util.Map;
 import java.util.Set;
 
 @RestController
+@RequestMapping("/user")
 @Api(tags = "System security", value = "security api", protocols = "http")
 public class LoginController {
 
@@ -52,7 +54,7 @@ public class LoginController {
 
     @ApiOperation(value = "login",
             notes = "check if userName and password is correct")
-    @PostMapping("login")
+    @PostMapping("/login")
     @RemoLog
     public ResponseVo login(@RequestBody LoginQuery query, HttpServletRequest request) throws Exception {
 
