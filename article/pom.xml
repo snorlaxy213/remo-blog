@@ -8,7 +8,9 @@
         <artifactId>blog</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.remo</groupId>
+
+    <!--    groupId的定义是多余的，因为它是从父级继承的-->
+    <!--    <groupId>com.remo</groupId>-->
     <artifactId>article</artifactId>
     <version>1.0-SNAPSHOT</version>
 
