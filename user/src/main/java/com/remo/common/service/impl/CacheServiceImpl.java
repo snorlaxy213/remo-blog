@@ -17,25 +17,22 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
-@Service("cacheServiceImpl")
+@Service("cacheService")
 public class CacheServiceImpl implements CacheService {
 
-    @Autowired
-    private RedisService redisService;
-
-    @Autowired
-    private RoleService roleService;
-
-    @Autowired
-    private UserService userService;
-
-    @Autowired
+    @Resource(name = "permissionService")
     PermissionService permissionService;
-
+    @Resource(name = "redisService")
+    private RedisService redisService;
+    @Resource(name = "roleService")
+    private RoleService roleService;
+    @Resource(name = "userService")
+    private UserService userService;
     @Autowired
-    private ObjectMapper mapper;
+    private ObjectMapper objectMapper;
 
     @Override
     public void testConnect() throws Exception {
@@ -48,7 +45,7 @@ public class CacheServiceImpl implements CacheService {
         if (StringUtils.isBlank(userString)) {
             throw new BusinessException(RemoConstant.ERROR_RESULT_CODE, ErrorMessageConstant.WRONG_INPUT);
         } else {
-            return this.mapper.readValue(userString, UserDto.class);
+            return this.objectMapper.readValue(userString, UserDto.class);
         }
     }
 
@@ -58,8 +55,8 @@ public class CacheServiceImpl implements CacheService {
         if (StringUtils.isBlank(roleListString)) {
             throw new BusinessException(RemoConstant.ERROR_RESULT_CODE, ErrorMessageConstant.WRONG_INPUT);
         } else {
-            JavaType type = mapper.getTypeFactory().constructParametricType(List.class, RoleDto.class);
-            return this.mapper.readValue(roleListString, type);
+            JavaType type = objectMapper.getTypeFactory().constructParametricType(List.class, RoleDto.class);
+            return this.objectMapper.readValue(roleListString, type);
         }
     }
 
@@ -69,8 +66,8 @@ public class CacheServiceImpl implements CacheService {
         if (StringUtils.isBlank(permissionListString)) {
             throw new Exception();
         } else {
-            JavaType type = mapper.getTypeFactory().constructParametricType(List.class, PermissionDto.class);
-            return this.mapper.readValue(permissionListString, type);
+            JavaType type = objectMapper.getTypeFactory().constructParametricType(List.class, PermissionDto.class);
+            return this.objectMapper.readValue(permissionListString, type);
         }
     }
 
@@ -78,14 +75,14 @@ public class CacheServiceImpl implements CacheService {
     public void saveUser(UserDto user) throws Exception {
         String username = user.getUsername();
         this.deleteUser(username);
-        redisService.set(RemoConstant.USER_CACHE_PREFIX + username, mapper.writeValueAsString(user));
+        redisService.set(RemoConstant.USER_CACHE_PREFIX + username, objectMapper.writeValueAsString(user));
     }
 
     @Override
     public void saveUser(String username) throws Exception {
         UserDto user = userService.findByUsername(username);
         this.deleteUser(username);
-        redisService.set(RemoConstant.USER_CACHE_PREFIX + username, mapper.writeValueAsString(user));
+        redisService.set(RemoConstant.USER_CACHE_PREFIX + username, objectMapper.writeValueAsString(user));
     }
 
     @Override
@@ -93,16 +90,16 @@ public class CacheServiceImpl implements CacheService {
         List<RoleDto> roles = this.roleService.listUserRoles(username);
         if (!roles.isEmpty()) {
             this.deleteRoles(username);
-            redisService.set(RemoConstant.USER_ROLE_CACHE_PREFIX + username, mapper.writeValueAsString(roles));
+            redisService.set(RemoConstant.USER_ROLE_CACHE_PREFIX + username, objectMapper.writeValueAsString(roles));
         }
     }
 
     @Override
     public void savePermissions(String username) throws Exception {
-        List<PermissionDto> permissions = this.permissionService.findUserPermissions(username);
+        List<PermissionDto> permissions = this.permissionService.listUserPermissions(username);
         if (!permissions.isEmpty()) {
             this.deletePermissions(username);
-            redisService.set(RemoConstant.USER_PERMISSION_CACHE_PREFIX + username, mapper.writeValueAsString(permissions));
+            redisService.set(RemoConstant.USER_PERMISSION_CACHE_PREFIX + username, objectMapper.writeValueAsString(permissions));
         }
     }
 

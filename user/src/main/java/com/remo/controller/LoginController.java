@@ -25,6 +25,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -35,6 +36,7 @@ import java.util.Map;
 import java.util.Set;
 
 @RestController
+@RequestMapping("/user")
 @Api(tags = "System security", value = "security api", protocols = "http")
 public class LoginController {
 
@@ -44,15 +46,14 @@ public class LoginController {
     @Resource(name = "remoProperties")
     private RemoProperties properties;
 
-    @Resource(name = "redisServiceImpl")
+    @Resource(name = "redisService")
     private RedisService redisService;
 
     @Autowired
-    private ObjectMapper mapper;
+    private ObjectMapper objectMapper;
 
-    @ApiOperation(value = "login",
-            notes = "check if userName and password is correct")
-    @PostMapping("login")
+    @ApiOperation(value = "login", notes = "check if userName and password is correct")
+    @PostMapping("/login")
     @RemoLog
     public ResponseVo login(@RequestBody LoginQuery query, HttpServletRequest request) throws Exception {
 
@@ -93,7 +94,7 @@ public class LoginController {
         activeUser.setToken(token.getToken());
 
         // zset 存储登录用户，score 为过期时间戳
-        this.redisService.zadd(RemoConstant.ACTIVE_USERS_ZSET_PREFIX, Double.valueOf(token.getExpireAt()), mapper.writeValueAsString(activeUser));
+        this.redisService.zadd(RemoConstant.ACTIVE_USERS_ZSET_PREFIX, Double.valueOf(token.getExpireAt()), objectMapper.writeValueAsString(activeUser));
         // redis 中存储这个加密 token，key = 前缀 + 加密 token + .ip
         this.redisService.set(RemoConstant.TOKEN_CACHE_PREFIX + token.getToken() + StringPool.DOT + ip, token.getToken(), properties.getSecurity().getJwtTimeOut() * 1000);
 

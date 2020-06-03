@@ -36,7 +36,7 @@ import java.util.List;
  * 它只对DataSourceTransactionManager事务管理器起效。
  */
 @Slf4j
-@Service(value = "userServiceImpl")
+@Service(value = "userService")
 @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
@@ -44,7 +44,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     private DozerBeanMapper mapper;
 
     @Override
-    public List<UserDto> findAll() {
+    public List<UserDto> listUsers() {
         log.info("<=============== findAll ===============>");
         List<User> users = this.list();
         List<UserDto> userDtos = Lists.newArrayList();

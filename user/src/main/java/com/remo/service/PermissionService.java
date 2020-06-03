@@ -7,5 +7,7 @@ import com.remo.pojo.po.Permission;
 import java.util.List;
 
 public interface PermissionService extends IService<Permission> {
-    List<PermissionDto> findUserPermissions(String username);
+    List<PermissionDto> listUserPermissions();
+
+    List<PermissionDto> listUserPermissions(String username);
 }

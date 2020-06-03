@@ -19,13 +19,13 @@ import java.util.stream.Collectors;
 @Service("userManager")
 public class UserManager {
 
-    @Resource(name = "cacheServiceImpl")
+    @Resource(name = "cacheService")
     private CacheService cacheService;
 
-    @Resource(name = "userServiceImpl")
+    @Resource(name = "userService")
     private UserService userService;
 
-    @Resource(name = "roleServiceImpl")
+    @Resource(name = "roleService")
     private RoleService roleService;
 
     @Resource(name = "permissionService")
@@ -65,7 +65,7 @@ public class UserManager {
     public Set<String> getUserPermissions(String username) {
         List<PermissionDto> roleList = RemoUtil.selectCacheByTemplate(
                 () -> this.cacheService.getPermissions(username),
-                () -> this.permissionService.findUserPermissions(username));
+                () -> this.permissionService.listUserPermissions(username));
         return roleList.stream().map(PermissionDto::getPermissionName).collect(Collectors.toSet());
     }
 

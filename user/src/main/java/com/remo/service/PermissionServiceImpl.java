@@ -20,14 +20,23 @@ import java.util.List;
 public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permission> implements PermissionService {
 
     @Resource(name = "dozerBeanMapper")
-    private DozerBeanMapper mapper;
+    private DozerBeanMapper dozerBeanMapper;
 
     @Override
-    public List<PermissionDto> findUserPermissions(String username) {
+    public List<PermissionDto> listUserPermissions() {
+        log.info("<=============== findUserPermissions ===============>");
+        List<Permission> permissions = this.list();
+        List<PermissionDto> permissionDtos = new ArrayList<>();
+        permissions.forEach(permission -> permissionDtos.add(dozerBeanMapper.map(permission, PermissionDto.class)));
+        return permissionDtos;
+    }
+
+    @Override
+    public List<PermissionDto> listUserPermissions(String username) {
         log.info("<=============== findUserPermissions ===============>");
         List<Permission> permissions = this.getBaseMapper().findUserPermissions(username);
         List<PermissionDto> permissionDtos = new ArrayList<>();
-        permissions.forEach(permission -> permissionDtos.add(mapper.map(permission, PermissionDto.class)));
+        permissions.forEach(permission -> permissionDtos.add(dozerBeanMapper.map(permission, PermissionDto.class)));
         return permissionDtos;
     }
 }

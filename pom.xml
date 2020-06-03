@@ -18,6 +18,7 @@
         <module>kafka</module>
         <module>user-shiro</module>
         <module>seckill</module>
+        <module>batch</module>
     </modules>
 
     <properties>
