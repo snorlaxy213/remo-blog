@@ -9,13 +9,7 @@ import com.remo.utils.ImageUtil;
 import com.remo.utils.ResponseUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.awt.image.BufferedImage;
@@ -35,7 +29,7 @@ public class SeckillController {
     @Resource(name = "rabbitMQProvider")
     RabbitMQProvider rabbitMQProvider;
 
-    private HashMap<Long, Boolean> localOverMap = new HashMap<>();
+    private final HashMap<Long, Boolean> localOverMap = new HashMap<>();
 
     @RequestMapping(value = "/path", method = RequestMethod.GET)
     public ResponseVo getSeckillPath(@RequestParam("userId") Long userId,
