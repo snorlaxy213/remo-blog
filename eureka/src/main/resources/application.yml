@@ -1,11 +1,16 @@
 spring:
   application:
     name: eureka-server
+  security:
+    basic:
+      enabled: true # 开启基于Http basic的认证（新版的spring Cloud中basic.enabled是禁用的），所以在启动类中重写了了相关configure
+    user:
+      name: root
+      password: root
 eureka:
   client:
     service-url:
-      #      defaultZone: http://server-one/eureka/
-      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
+      defaultZone: http://root:root@localhost:8761/eureka/,http://root:root@localhost:8762/eureka/
       register-with-eureka: true #表示是否将自己注册到Eureka server,默认为true
       fetch-registry: true #表示是否从Eureka server获取注册信息,默认为true,高可用时需要从其他Eurake server获取注册信息
 ---

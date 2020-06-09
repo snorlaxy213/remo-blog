@@ -3,10 +3,11 @@ server:
 
 spring:
   application:
+    # 该服务的名称，同时也是注册到eureka上的应用名称
     name: gateway
   cloud:
     gateway:
-      # close gateway, default value is true
+      # 关闭gateway，默认为false
       enabled: true
       discovery:
         locator:
@@ -24,7 +25,7 @@ eureka:
   client:
     enabled: true
     service-url:
-      #      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
-      defaultZone: http://server-one:8761/eureka/
+      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
     instances:
+      # 将自己的IP注册到eureka server，如不配或配置为false，则将微服务所在操作系统的hostname注册到eureka server
       prefer-ip-address: true

@@ -26,14 +26,27 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+        <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
     </properties>
 
+    <!--  dependencies与dependencyManagement的区别：
+            在父项目中的dependencies中定义的所有依赖，在子项目中都会直接继承，
+            在父项目中的dependencyManagement中定义的所有依赖，子项目并不会继承，我们还要在子项目中引入我们需要的依赖，才能进行使用，但是，我们在子项目中不用设置版本.
+    -->
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
