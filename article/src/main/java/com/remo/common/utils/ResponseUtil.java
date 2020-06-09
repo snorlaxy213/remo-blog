@@ -1,4 +1,4 @@
-package com.remo.common.exception.utils;
+package com.remo.common.utils;
 
 import com.remo.pojo.dto.FieldErrorDto;
 import com.remo.pojo.vo.ResponseVo;

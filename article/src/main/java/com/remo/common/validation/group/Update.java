@@ -1,4 +1,4 @@
-package com.remo.common.group;
+package com.remo.common.validation.group;
 
 public interface Update {
 }

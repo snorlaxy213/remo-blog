@@ -49,7 +49,7 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Article")
-                .description("Article文档")
+                .description("Article document")
                 .contact(new Contact("vino", "https://xxx/remo/article", ""))
                 .version("1.0")
                 .build();

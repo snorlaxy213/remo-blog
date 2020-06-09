@@ -10,11 +10,11 @@ spring:
       enabled: true
       discovery:
         locator:
-          # 是否与服务注册于发现组件进行结合，通过 serviceId 转发到具体的服务实例。默认为 false
+          # 是否与服务注册与发现组件进行结合，通过 serviceId 转发到具体的服务实例。默认为 false
           enabled: true
       routes:
         - id: user
-          uri: http://USER:9101
+          uri: http://user:9101
           predicates:
             - Path=/user/**
           filters:
@@ -22,7 +22,7 @@ spring:
             - StripPrefix=1
 eureka:
   client:
-    enabled: false
+    enabled: true
     service-url:
       #      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
       defaultZone: http://server-one:8761/eureka/
