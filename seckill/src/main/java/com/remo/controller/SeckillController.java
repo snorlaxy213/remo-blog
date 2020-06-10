@@ -20,16 +20,13 @@ import java.util.HashMap;
 @RestController
 public class SeckillController {
 
+    private final HashMap<Long, Boolean> localOverMap = new HashMap<>();
     @Resource(name = "seckillServiceImpl")
     SeckillService seckillServiceImpl;
-
     @Resource(name = "seckillOrderServiceImpl")
     SeckillOrderService seckillOrderServiceImpl;
-
     @Resource(name = "rabbitMQProvider")
     RabbitMQProvider rabbitMQProvider;
-
-    private final HashMap<Long, Boolean> localOverMap = new HashMap<>();
 
     @RequestMapping(value = "/path", method = RequestMethod.GET)
     public ResponseVo getSeckillPath(@RequestParam("userId") Long userId,

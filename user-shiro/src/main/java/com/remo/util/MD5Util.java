@@ -5,13 +5,12 @@ import org.apache.shiro.util.ByteSource;
 
 public class MD5Util {
 
+    private static final String ALGORITHM_NAME = "md5";
+    private static final int HASH_ITERATIONS = 2;
+
     protected MD5Util() {
 
     }
-
-    private static final String ALGORITHM_NAME = "md5";
-
-    private static final int HASH_ITERATIONS = 2;
 
     public static String encrypt(String password) {
         return new SimpleHash(ALGORITHM_NAME, password, ByteSource.Util.bytes(password), HASH_ITERATIONS).toHex();

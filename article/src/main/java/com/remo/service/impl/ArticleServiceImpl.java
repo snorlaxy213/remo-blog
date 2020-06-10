@@ -2,7 +2,7 @@ package com.remo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.remo.common.exception.utils.ServiceUtil;
+import com.remo.common.utils.ServiceUtil;
 import com.remo.mapper.ArticleMapper;
 import com.remo.pojo.dto.ArticleDto;
 import com.remo.pojo.dto.SimpleArticleDto;
@@ -109,7 +109,8 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         boolean flag = this.updateById(article);
         if (flag) {
             log.info("Update successfully");
-        } else {
+        }
+        else {
             log.info("Update failed due to modified by others");
         }
 

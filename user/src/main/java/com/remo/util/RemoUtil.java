@@ -23,7 +23,8 @@ public class RemoUtil {
             if (t == null) {
                 // 没有记录再查询数据库
                 return databaseSelector.get();
-            } else {
+            }
+            else {
                 return t;
             }
         } catch (Exception e) {

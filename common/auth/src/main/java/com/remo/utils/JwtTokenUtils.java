@@ -28,8 +28,8 @@ public class JwtTokenUtils {
     /**
      * 生成足够的安全随机密钥，以适合符合规范的签名
      */
-    private static byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(SecurityConstants.JWT_SECRET_KEY);
-    private static SecretKey secretKey = Keys.hmacShaKeyFor(apiKeySecretBytes);
+    private static final byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(SecurityConstants.JWT_SECRET_KEY);
+    private static final SecretKey secretKey = Keys.hmacShaKeyFor(apiKeySecretBytes);
 
     public static String createToken(String username, Set<String> roles, Set<String> authorities) {
 
@@ -44,11 +44,6 @@ public class JwtTokenUtils {
                 .setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION * 1000))
                 .compact();
         return SecurityConstants.TOKEN_PREFIX + tokenPrefix;
-    }
-
-    private boolean isTokenExpired(String token) {
-        Date expiredDate = getTokenBody(token).getExpiration();
-        return expiredDate.before(new Date());
     }
 
     public static String getUsernameByToken(String token) {
@@ -114,5 +109,10 @@ public class JwtTokenUtils {
             log.info("token解密失败：", e);
             return null;
         }
+    }
+
+    private boolean isTokenExpired(String token) {
+        Date expiredDate = getTokenBody(token).getExpiration();
+        return expiredDate.before(new Date());
     }
 }

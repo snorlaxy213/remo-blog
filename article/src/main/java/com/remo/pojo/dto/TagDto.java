@@ -1,7 +1,7 @@
 package com.remo.pojo.dto;
 
-import com.remo.common.group.Insert;
-import com.remo.common.group.Update;
+import com.remo.common.validation.group.Insert;
+import com.remo.common.validation.group.Update;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -16,25 +16,22 @@ import java.util.List;
 public class TagDto {
 
     /**
+     * articleDtos
+     */
+    List<ArticleDto> articleDtos;
+    /**
      * Tag Id
      */
     @NotNull(groups = Update.class)
     private Long tagId;
-
     /**
      * 简介
      */
     @NotBlank(groups = Insert.class)
     private String tagDescription;
-
     /**
      * 排序编号
      */
     @NotNull(groups = Insert.class)
     private Integer orderNum;
-
-    /**
-     * articleDtos
-     */
-    List<ArticleDto> articleDtos;
 }

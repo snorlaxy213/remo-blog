@@ -72,7 +72,8 @@ public final class RedisUtil {
         if (key != null && key.length > 0) {
             if (key.length == 1) {
                 redisTemplate.delete(key[0]);
-            } else {
+            }
+            else {
                 redisTemplate.delete(CollectionUtils.arrayToList(key));
             }
         }
@@ -120,7 +121,8 @@ public final class RedisUtil {
         try {
             if (time > 0) {
                 redisTemplate.opsForValue().set(key, value, time, TimeUnit.SECONDS);
-            } else {
+            }
+            else {
                 set(key, value);
             }
             return true;

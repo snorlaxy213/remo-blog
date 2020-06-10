@@ -22,17 +22,13 @@ import java.util.List;
 public class CacheServiceImpl implements CacheService {
 
     @Autowired
+    PermissionService permissionService;
+    @Autowired
     private RedisService redisService;
-
     @Autowired
     private RoleService roleService;
-
     @Autowired
     private UserService userService;
-
-    @Autowired
-    PermissionService permissionService;
-
     @Autowired
     private ObjectMapper mapper;
 
@@ -46,7 +42,8 @@ public class CacheServiceImpl implements CacheService {
         String userString = this.redisService.get(RemoConstant.USER_CACHE_PREFIX + username);
         if (StringUtils.isBlank(userString)) {
             throw new BusinessException(RemoConstant.ERROR_RESULT_CODE, RemoConstant.WRONG_INPUT);
-        } else {
+        }
+        else {
             return this.mapper.readValue(userString, UserDto.class);
         }
     }
@@ -56,7 +53,8 @@ public class CacheServiceImpl implements CacheService {
         String roleListString = this.redisService.get(RemoConstant.USER_ROLE_CACHE_PREFIX + username);
         if (StringUtils.isBlank(roleListString)) {
             throw new BusinessException(RemoConstant.ERROR_RESULT_CODE, RemoConstant.WRONG_INPUT);
-        } else {
+        }
+        else {
             JavaType type = mapper.getTypeFactory().constructParametricType(List.class, RoleDto.class);
             return this.mapper.readValue(roleListString, type);
         }
@@ -67,7 +65,8 @@ public class CacheServiceImpl implements CacheService {
         String permissionListString = this.redisService.get(RemoConstant.USER_PERMISSION_CACHE_PREFIX + username);
         if (StringUtils.isBlank(permissionListString)) {
             throw new Exception();
-        } else {
+        }
+        else {
             JavaType type = mapper.getTypeFactory().constructParametricType(List.class, PermissionDto.class);
             return this.mapper.readValue(permissionListString, type);
         }

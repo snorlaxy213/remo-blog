@@ -13,19 +13,19 @@ public class SpringContextHolder implements ApplicationContextAware {
     }
 
     /**
-     * 实现ApplicationContextAware接口, 注入Context到静态变量中.
-     */
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        SpringContextHolder.applicationContext = applicationContext;
-    }
-
-    /**
      * 获取静态变量中的ApplicationContext.
      */
     public static ApplicationContext getApplicationContext() {
         assertApplicationContext();
         return applicationContext;
+    }
+
+    /**
+     * 实现ApplicationContextAware接口, 注入Context到静态变量中.
+     */
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        SpringContextHolder.applicationContext = applicationContext;
     }
 
     /**

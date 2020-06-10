@@ -35,7 +35,8 @@ public class ArticleController {
     public ResponseVo insertArticle(@Validated(Insert.class) @RequestBody ArticleDto articleDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResponseUtil.initFailResponse(bindingResult);
-        } else {
+        }
+        else {
             boolean flag = articleService.insertArticle(articleDto);
             return ResponseUtil.initSuccessResponse(flag);
         }
@@ -46,7 +47,8 @@ public class ArticleController {
     public ResponseVo updateArticle(@Validated(Update.class) @RequestBody ArticleDto articleDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResponseUtil.initFailResponse(bindingResult);
-        } else {
+        }
+        else {
             boolean flag = articleService.updateArticle(articleDto);
             return ResponseUtil.initSuccessResponse(flag);
         }

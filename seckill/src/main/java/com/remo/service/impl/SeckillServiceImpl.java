@@ -97,7 +97,8 @@ public class SeckillServiceImpl implements SeckillService {
         boolean success = goodsServiceImpl.reduceStock(seckillGoodsDto);
         if (success) {
             return orderServiceImpl.createOrder(userId, seckillGoodsDto);
-        } else {
+        }
+        else {
             //如果库存不存在则内存标记为true
             setGoodsOver(seckillGoodsDto.getGoodsId());
             //返回空OrderDto对象
@@ -110,12 +111,14 @@ public class SeckillServiceImpl implements SeckillService {
         SeckillOrderDto seckillOrderDto = seckillOrderServiceImpl.getSeckillOrderByUserIdAndGoodsId(userId, goodsId);
         if (seckillOrderDto != null) {//秒杀成功
             return seckillOrderDto.getOrderId();
-        } else {
+        }
+        else {
             boolean isOver = getGoodsOver(goodsId);
             if (isOver) {
                 //秒杀失败
                 return -1;
-            } else {
+            }
+            else {
                 //排队中
                 return 0;
             }

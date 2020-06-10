@@ -26,7 +26,8 @@ public class ServiceUtil {
                 Method setCreateUser = entityClass.getMethod("setCreateUser", String.class);
                 setCreateTime.invoke(entity, now);
                 setCreateUser.invoke(entity, userId);
-            } else {
+            }
+            else {
                 Method setUpdateTime = entityClass.getMethod("setUpdateTime", Date.class);
                 Method setUpdateUser = entityClass.getMethod("setUpdateUser", String.class);
                 setUpdateTime.invoke(entity, now);

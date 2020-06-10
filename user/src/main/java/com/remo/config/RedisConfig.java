@@ -63,7 +63,8 @@ public class RedisConfig extends CachingConfigurerSupport {
         jedisPoolConfig.setMaxWaitMillis(maxWaitMillis);
         if (StringUtils.isNotBlank(password)) {
             return new JedisPool(jedisPoolConfig, host, port, timeout, password, database);
-        } else {
+        }
+        else {
             return new JedisPool(jedisPoolConfig, host, port, timeout, null, database);
         }
     }
@@ -138,8 +139,8 @@ public class RedisConfig extends CachingConfigurerSupport {
 }
 
 class JacksonRedisSerializer<T> implements RedisSerializer<T> {
-    private Class<T> clazz;
-    private ObjectMapper mapper;
+    private final Class<T> clazz;
+    private final ObjectMapper mapper;
 
     JacksonRedisSerializer(Class<T> clazz) {
         super();

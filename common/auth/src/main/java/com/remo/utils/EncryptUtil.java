@@ -8,11 +8,26 @@ import java.security.Security;
 public class EncryptUtil {
 
     //设置默认密匙
-    private static String strDefaultKey = "defaultKey";
+    private static final String strDefaultKey = "defaultKey";
     //加密
-    private Cipher encryptCipher;
+    private final Cipher encryptCipher;
     //解密
-    private Cipher decryptCipher;
+    private final Cipher decryptCipher;
+
+    public EncryptUtil() throws Exception {
+        this(strDefaultKey);
+    }
+
+    public EncryptUtil(String strKey) throws Exception {
+        Security.addProvider(new com.sun.crypto.provider.SunJCE());
+        Key key = getKey(strKey.getBytes());
+
+        encryptCipher = Cipher.getInstance("DES");
+        encryptCipher.init(Cipher.ENCRYPT_MODE, key);
+
+        decryptCipher = Cipher.getInstance("DES");
+        decryptCipher.init(Cipher.DECRYPT_MODE, key);
+    }
 
     private static String byteArr2HexStr(byte[] arrB) {
         int iLen = arrB.length;
@@ -40,21 +55,6 @@ public class EncryptUtil {
             arrOut[i / 2] = (byte) Integer.parseInt(strTmp, 16);
         }
         return arrOut;
-    }
-
-    public EncryptUtil() throws Exception {
-        this(strDefaultKey);
-    }
-
-    EncryptUtil(String strKey) throws Exception {
-        Security.addProvider(new com.sun.crypto.provider.SunJCE());
-        Key key = getKey(strKey.getBytes());
-
-        encryptCipher = Cipher.getInstance("DES");
-        encryptCipher.init(Cipher.ENCRYPT_MODE, key);
-
-        decryptCipher = Cipher.getInstance("DES");
-        decryptCipher.init(Cipher.DECRYPT_MODE, key);
     }
 
     private byte[] encrypt(byte[] arrB) throws Exception {

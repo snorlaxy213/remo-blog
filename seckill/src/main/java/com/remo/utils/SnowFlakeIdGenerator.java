@@ -22,9 +22,9 @@ public class SnowFlakeIdGenerator {
     // 生成序列的掩码，这里为4095 (0b111111111111=0xfff=4095)
     private final long SEQUENCE_MASK = ~(-1L << SEQUENCE_BITS);
     // 工作节点ID(0~31)
-    private long workerId;
+    private final long workerId;
     // 数据中心ID(0~31)
-    private long datacenterId;
+    private final long datacenterId;
     // 毫秒内序列(0~4095)
     private long sequence = 0L;
     // 上次生成ID的时间截
@@ -72,7 +72,8 @@ public class SnowFlakeIdGenerator {
             if (sequence == 0) {// sequence等于0说明毫秒内序列已经增长到最大值
                 timestamp = tilNextMillis(lastTimestamp); // 阻塞到下一个毫秒,获得新的时间戳
             }
-        } else {// 时间戳改变，毫秒内序列重置
+        }
+        else {// 时间戳改变，毫秒内序列重置
             sequence = 0L;
         }
 

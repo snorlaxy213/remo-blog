@@ -24,19 +24,14 @@ import java.time.LocalDateTime;
 @TableName("sys_user")
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 1553854489109140483L;
-
     /**
      * 性别
      */
     public static final String SEX_MALE = "M";
-
     public static final String SEX_FEMALE = "F";
-
     public static final String SEX_UNKNOWN = "U";
-
     public static final String DEFAULT_PASSWORD = "1";
-
+    private static final long serialVersionUID = 1553854489109140483L;
     /**
      * id
      * <p>

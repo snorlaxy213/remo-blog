@@ -1,8 +1,8 @@
 package com.remo.controller;
 
-import com.remo.common.exception.utils.ResponseUtil;
-import com.remo.common.group.Insert;
-import com.remo.common.group.Update;
+import com.remo.common.utils.ResponseUtil;
+import com.remo.common.validation.group.Insert;
+import com.remo.common.validation.group.Update;
 import com.remo.pojo.dto.TagDto;
 import com.remo.pojo.vo.ResponseVo;
 import com.remo.service.ITagService;
@@ -40,7 +40,8 @@ public class TagController {
     public ResponseVo addTag(@Validated(Insert.class) @RequestBody TagDto tagDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResponseUtil.initFailResponse(bindingResult);
-        } else {
+        }
+        else {
             return ResponseUtil.initSuccessResponse(tagService.addTag(tagDto));
         }
     }
@@ -50,7 +51,8 @@ public class TagController {
     public ResponseVo updateTag(@Validated(Update.class) @RequestBody TagDto tagDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResponseUtil.initFailResponse(bindingResult);
-        } else {
+        }
+        else {
             return ResponseUtil.initSuccessResponse(tagService.updateTag(tagDto));
         }
     }
