@@ -20,7 +20,7 @@ spring:
     config:
       server:
         git:
-          uri: xxxxxxxxxx
+          uri: https://github.com/snorlaxy213/remo-blog.git
           search-paths: respo
           username: snorlaxy213
           password:
