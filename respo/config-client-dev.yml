@@ -1,3 +1,1 @@
-server:
-  port: 8762
-foo: foo version git 2
+foo: foo version eureka git 2
