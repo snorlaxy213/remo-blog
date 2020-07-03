@@ -1,0 +1,31 @@
+server:
+  port: 8769
+spring:
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/shared
+  profiles:
+    active: native
+  application:
+    name: config-server
+
+---
+
+server:
+  port: 8769
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: xxxxxxxxxx
+          search-paths: respo
+          username: snorlaxy213
+          password:
+      label: master
+  profiles:
+    active: remote
+  application:
+    name: config-server
