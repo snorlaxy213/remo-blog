@@ -29,7 +29,7 @@ spring:
           uri: https://github.com/snorlaxy213/remo-blog.git
           search-paths: respo
           username: snorlaxy213
-          password: LOVEcoding1314
+          password:
       label: master
   profiles:
     active: remote
