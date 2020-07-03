@@ -1,3 +1,9 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://root:root@localhost:8761/eureka/,http://root:root@localhost:8762/eureka/
+
+---
 server:
   port: 8769
 spring:
@@ -14,7 +20,7 @@ spring:
 ---
 
 server:
-  port: 8769
+  port: 8770
 spring:
   cloud:
     config:
@@ -23,7 +29,7 @@ spring:
           uri: https://github.com/snorlaxy213/remo-blog.git
           search-paths: respo
           username: snorlaxy213
-          password:
+          password: LOVEcoding1314
       label: master
   profiles:
     active: remote
