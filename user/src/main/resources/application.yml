@@ -58,7 +58,6 @@ remo:
     jwtTimeOut: 3600
 
 ---
-# port 9101 - 9110
 server:
   port: 9101
 spring:
@@ -67,10 +66,11 @@ eureka:
   client:
     enabled: false
     service-url:
-      #      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
-      defaultZone: http://server-one:8761/eureka/
+#      defaultZone: http://root:root@localhost:8761/eureka/,http://root:root@localhost:8762/eureka/
+      defaultZone: http://root:root@localhost:8761/eureka/
     instances:
       prefer-ip-address: true
+
 ---
 server:
   port: 9102
@@ -79,7 +79,7 @@ spring:
 eureka:
   client:
     service-url:
-      #      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
-      defaultZone: http://server-one:8761/eureka/
+      #      defaultZone: http://root:root@localhost:8761/eureka/,http://root:root@localhost:8762/eureka/
+      defaultZone: http://root:root@localhost:8761/eureka/
     instances:
       prefer-ip-address: true
