@@ -35,3 +35,8 @@ spring:
     active: remote
   application:
     name: config-server
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh

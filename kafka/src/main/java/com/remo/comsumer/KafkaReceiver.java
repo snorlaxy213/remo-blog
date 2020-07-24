@@ -15,6 +15,7 @@ public class KafkaReceiver {
     @KafkaListener(topics = {"kafka"})
     public void listen(ConsumerRecord<?, ?> record) {
 
+
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());
 
         if (kafkaMessage.isPresent()) {
