@@ -1,6 +1,4 @@
-server:
-  port: 8771
-foo: foo version 11
+foo: foo version eureka git 1
 
 
 
