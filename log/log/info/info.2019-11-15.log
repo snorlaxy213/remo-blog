@@ -1,6 +1,6 @@
 2019-11-15 11:56:36.667 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
 2019-11-15 11:56:36.850 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$33f02fe4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-11-15 11:56:38.109 remo [restartedMain] INFO  com.remo.LogApplication - No active profile set, falling back to default profiles: default
+2019-11-15 11:56:38.109 remo [restartedMain] INFO  LogApplication - No active profile set, falling back to default profiles: default
 2019-11-15 11:56:38.595 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
 2019-11-15 11:56:38.609 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8ms. Found 0 repository interfaces.
 2019-11-15 11:56:38.824 remo [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=e868c774-e942-3ed1-8e08-953569c1731b
@@ -51,7 +51,7 @@
 2019-11-15 11:56:45.846 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
 2019-11-15 11:56:45.868 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
 2019-11-15 11:56:45.869 remo [restartedMain] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8080
-2019-11-15 11:56:45.871 remo [restartedMain] INFO  com.remo.LogApplication - Started LogApplication in 10.914 seconds (JVM running for 11.713)
+2019-11-15 11:56:45.871 remo [restartedMain] INFO  LogApplication - Started LogApplication in 10.914 seconds (JVM running for 11.713)
 2019-11-15 11:57:15.823 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
 2019-11-15 11:57:15.823 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
 2019-11-15 11:57:15.824 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
@@ -735,7 +735,7 @@
 2019-11-15 12:41:43.756 remo [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
 2019-11-15 14:11:07.673 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
 2019-11-15 14:11:07.860 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$19425af8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-11-15 14:11:09.127 remo [restartedMain] INFO  com.remo.LogApplication - No active profile set, falling back to default profiles: default
+2019-11-15 14:11:09.127 remo [restartedMain] INFO  LogApplication - No active profile set, falling back to default profiles: default
 2019-11-15 14:11:09.629 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
 2019-11-15 14:11:09.644 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8ms. Found 0 repository interfaces.
 2019-11-15 14:11:09.862 remo [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=e868c774-e942-3ed1-8e08-953569c1731b
@@ -770,7 +770,7 @@
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 2019-11-15 14:11:45.794 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
 2019-11-15 14:11:45.979 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$a61374b3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-11-15 14:11:47.240 remo [restartedMain] INFO  com.remo.LogApplication - No active profile set, falling back to default profiles: default
+2019-11-15 14:11:47.240 remo [restartedMain] INFO  LogApplication - No active profile set, falling back to default profiles: default
 2019-11-15 14:11:47.735 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
 2019-11-15 14:11:47.750 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10ms. Found 0 repository interfaces.
 2019-11-15 14:11:47.969 remo [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=e868c774-e942-3ed1-8e08-953569c1731b
@@ -822,7 +822,7 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2019-11-15 14:11:53.474 remo [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_LOG/localhost:log:8800 - registration status: 204
 2019-11-15 14:11:53.476 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8800 (http) with context path ''
 2019-11-15 14:11:53.476 remo [restartedMain] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8800
-2019-11-15 14:11:53.478 remo [restartedMain] INFO  com.remo.LogApplication - Started LogApplication in 9.38 seconds (JVM running for 10.179)
+2019-11-15 14:11:53.478 remo [restartedMain] INFO  LogApplication - Started LogApplication in 9.38 seconds (JVM running for 10.179)
 2019-11-15 14:16:53.279 remo [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
 2019-11-15 14:21:53.281 remo [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
 2019-11-15 14:26:53.282 remo [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
@@ -838,7 +838,7 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2019-11-15 14:30:52.598 remo [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2019-11-15 14:30:52.605 remo [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
 2019-11-15 14:30:54.052 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$a61374b3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-11-15 14:30:55.218 remo [restartedMain] INFO  com.remo.LogApplication - No active profile set, falling back to default profiles: default
+2019-11-15 14:30:55.218 remo [restartedMain] INFO  LogApplication - No active profile set, falling back to default profiles: default
 2019-11-15 14:30:55.456 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
 2019-11-15 14:30:55.457 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1ms. Found 0 repository interfaces.
 2019-11-15 14:30:55.504 remo [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=e868c774-e942-3ed1-8e08-953569c1731b
@@ -885,7 +885,7 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2019-11-15 14:31:00.469 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8763 (http) with context path ''
 2019-11-15 14:31:00.470 remo [restartedMain] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8763
 2019-11-15 14:31:00.470 remo [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_LOG/localhost:log:8763 - registration status: 204
-2019-11-15 14:31:00.470 remo [restartedMain] INFO  com.remo.LogApplication - Started LogApplication in 7.616 seconds (JVM running for 1157.172)
+2019-11-15 14:31:00.470 remo [restartedMain] INFO  LogApplication - Started LogApplication in 7.616 seconds (JVM running for 1157.172)
 2019-11-15 14:31:00.473 remo [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
 2019-11-15 14:31:30.456 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
 2019-11-15 14:31:30.456 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
@@ -915,7 +915,7 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2019-11-15 15:15:36.601 remo [Thread-33] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
 2019-11-15 15:15:36.605 remo [Thread-33] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
 2019-11-15 15:15:38.141 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$a61374b3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-11-15 15:15:39.295 remo [restartedMain] INFO  com.remo.LogApplication - No active profile set, falling back to default profiles: default
+2019-11-15 15:15:39.295 remo [restartedMain] INFO  LogApplication - No active profile set, falling back to default profiles: default
 2019-11-15 15:15:39.540 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
 2019-11-15 15:15:39.542 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1ms. Found 0 repository interfaces.
 2019-11-15 15:15:39.590 remo [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=e868c774-e942-3ed1-8e08-953569c1731b
@@ -962,7 +962,7 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2019-11-15 15:15:44.497 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8763"]
 2019-11-15 15:15:44.500 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8763 (http) with context path ''
 2019-11-15 15:15:44.500 remo [restartedMain] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8763
-2019-11-15 15:15:44.500 remo [restartedMain] INFO  com.remo.LogApplication - Started LogApplication in 7.581 seconds (JVM running for 3841.203)
+2019-11-15 15:15:44.500 remo [restartedMain] INFO  LogApplication - Started LogApplication in 7.581 seconds (JVM running for 3841.203)
 2019-11-15 15:15:44.503 remo [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
 2019-11-15 15:16:14.488 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
 2019-11-15 15:16:14.488 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
@@ -974,7 +974,7 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2019-11-15 15:16:14.493 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
 2019-11-15 16:01:44.634 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
 2019-11-15 16:01:44.823 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$5b527340] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-11-15 16:01:46.085 remo [restartedMain] INFO  com.remo.LogApplication - No active profile set, falling back to default profiles: default
+2019-11-15 16:01:46.085 remo [restartedMain] INFO  LogApplication - No active profile set, falling back to default profiles: default
 2019-11-15 16:01:46.569 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
 2019-11-15 16:01:46.583 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8ms. Found 0 repository interfaces.
 2019-11-15 16:01:46.803 remo [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=e868c774-e942-3ed1-8e08-953569c1731b
@@ -1025,7 +1025,7 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2019-11-15 16:01:51.987 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8763"]
 2019-11-15 16:01:52.014 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8763 (http) with context path ''
 2019-11-15 16:01:52.015 remo [restartedMain] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8763
-2019-11-15 16:01:52.016 remo [restartedMain] INFO  com.remo.LogApplication - Started LogApplication in 9.056 seconds (JVM running for 10.618)
+2019-11-15 16:01:52.016 remo [restartedMain] INFO  LogApplication - Started LogApplication in 9.056 seconds (JVM running for 10.618)
 2019-11-15 16:01:52.016 remo [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_LOG/localhost:log:8763 - registration status: 204
 2019-11-15 16:03:03.284 remo [Thread-2] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application LOG with eureka with status DOWN
 2019-11-15 16:03:03.284 remo [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_LOG/localhost:log:8763: registering service...
@@ -1039,7 +1039,7 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2019-11-15 16:03:06.315 remo [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2019-11-15 16:03:06.322 remo [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
 2019-11-15 16:03:07.980 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$5b527340] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-11-15 16:03:09.196 remo [restartedMain] INFO  com.remo.LogApplication - No active profile set, falling back to default profiles: default
+2019-11-15 16:03:09.196 remo [restartedMain] INFO  LogApplication - No active profile set, falling back to default profiles: default
 2019-11-15 16:03:09.551 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
 2019-11-15 16:03:09.554 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 2ms. Found 0 repository interfaces.
 2019-11-15 16:03:09.678 remo [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=e868c774-e942-3ed1-8e08-953569c1731b
@@ -1085,7 +1085,7 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2019-11-15 16:03:15.175 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8763"]
 2019-11-15 16:03:15.178 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8763 (http) with context path ''
 2019-11-15 16:03:15.179 remo [restartedMain] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8763
-2019-11-15 16:03:15.179 remo [restartedMain] INFO  com.remo.LogApplication - Started LogApplication in 8.535 seconds (JVM running for 93.781)
+2019-11-15 16:03:15.179 remo [restartedMain] INFO  LogApplication - Started LogApplication in 8.535 seconds (JVM running for 93.781)
 2019-11-15 16:03:15.180 remo [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_LOG/localhost:log:8763 - registration status: 204
 2019-11-15 16:03:15.183 remo [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
 2019-11-15 16:03:45.166 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false

@@ -6,7 +6,7 @@ APPLICATION FAILED TO START
 
 Description:
 
-Field logService in com.remo.controller.LogController required a bean of type 'service.LogService' that could not be found.
+Field logService in LogController required a bean of type 'service.LogService' that could not be found.
 
 The injection point has the following annotations:
 	- @org.springframework.com.remo.beans.factory.annotation.Autowired(required=true)
@@ -24,7 +24,7 @@ APPLICATION FAILED TO START
 
 Description:
 
-Field sysLogRepository in com.remo.service.impl.GoodsServiceImpl required a bean of type 'repository.SysLogRepository' that could not be found.
+Field sysLogRepository in GoodsServiceImpl required a bean of type 'repository.SysLogRepository' that could not be found.
 
 The injection point has the following annotations:
 	- @org.springframework.com.remo.beans.factory.annotation.Autowired(required=true)
@@ -55,7 +55,7 @@ org.springframework.com.remo.beans.factory.UnsatisfiedDependencyException: Error
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:312)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1214)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1203)
-	at com.remo.LogApplication.main(LogApplication.java:10)
+	at LogApplication.main(LogApplication.java:10)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -108,7 +108,7 @@ Caused by: java.lang.IllegalArgumentException: Not a managed type: class po.SysL
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1774)
 	... 47 common frames omitted
 2019-11-18 10:23:41.584 remo [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.com.remo.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'logController': Unsatisfied dependency expressed through field 'logService'; nested exception is org.springframework.com.remo.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'logServiceImpl': Unsatisfied dependency expressed through field 'sysLogRepository'; nested exception is org.springframework.com.remo.beans.factory.BeanCreationException: Error creating bean with name 'sysLogRepository': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Not a managed type: class com.remo.po.SysLog
+org.springframework.com.remo.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'logController': Unsatisfied dependency expressed through field 'logService'; nested exception is org.springframework.com.remo.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'logServiceImpl': Unsatisfied dependency expressed through field 'sysLogRepository'; nested exception is org.springframework.com.remo.beans.factory.BeanCreationException: Error creating bean with name 'sysLogRepository': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Not a managed type: class SysLog
 	at org.springframework.com.remo.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:596)
 	at org.springframework.com.remo.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90)
 	at org.springframework.com.remo.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:374)
@@ -128,13 +128,13 @@ org.springframework.com.remo.beans.factory.UnsatisfiedDependencyException: Error
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:312)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1214)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1203)
-	at com.remo.LogApplication.main(LogApplication.java:10)
+	at LogApplication.main(LogApplication.java:10)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-Caused by: org.springframework.com.remo.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'logServiceImpl': Unsatisfied dependency expressed through field 'sysLogRepository'; nested exception is org.springframework.com.remo.beans.factory.BeanCreationException: Error creating bean with name 'sysLogRepository': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Not a managed type: class com.remo.po.SysLog
+Caused by: org.springframework.com.remo.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'logServiceImpl': Unsatisfied dependency expressed through field 'sysLogRepository'; nested exception is org.springframework.com.remo.beans.factory.BeanCreationException: Error creating bean with name 'sysLogRepository': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Not a managed type: class SysLog
 	at org.springframework.com.remo.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:596)
 	at org.springframework.com.remo.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90)
 	at org.springframework.com.remo.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:374)
@@ -150,7 +150,7 @@ Caused by: org.springframework.com.remo.beans.factory.UnsatisfiedDependencyExcep
 	at org.springframework.com.remo.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1171)
 	at org.springframework.com.remo.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:593)
 	... 24 common frames omitted
-Caused by: org.springframework.com.remo.beans.factory.BeanCreationException: Error creating bean with name 'sysLogRepository': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Not a managed type: class com.remo.po.SysLog
+Caused by: org.springframework.com.remo.beans.factory.BeanCreationException: Error creating bean with name 'sysLogRepository': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Not a managed type: class SysLog
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1778)
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:593)
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515)
@@ -163,7 +163,7 @@ Caused by: org.springframework.com.remo.beans.factory.BeanCreationException: Err
 	at org.springframework.com.remo.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1171)
 	at org.springframework.com.remo.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:593)
 	... 37 common frames omitted
-Caused by: java.lang.IllegalArgumentException: Not a managed type: class com.remo.po.SysLog
+Caused by: java.lang.IllegalArgumentException: Not a managed type: class SysLog
 	at org.hibernate.metamodel.internal.MetamodelImpl.managedType(MetamodelImpl.java:552)
 	at org.springframework.data.jpa.repository.support.JpaMetamodelEntityInformation.<init>(JpaMetamodelEntityInformation.java:74)
 	at org.springframework.data.jpa.repository.support.JpaEntityInformationSupport.getEntityInformation(JpaEntityInformationSupport.java:66)
@@ -181,7 +181,7 @@ Caused by: java.lang.IllegalArgumentException: Not a managed type: class com.rem
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1774)
 	... 47 common frames omitted
 2019-11-18 10:30:22.366 remo [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.com.remo.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: No identifier specified for entity: com.remo.po.SysLog
+org.springframework.com.remo.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: No identifier specified for entity: SysLog
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1778)
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:593)
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515)
@@ -198,13 +198,13 @@ org.springframework.com.remo.beans.factory.BeanCreationException: Error creating
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:312)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1214)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1203)
-	at com.remo.LogApplication.main(LogApplication.java:10)
+	at LogApplication.main(LogApplication.java:10)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-Caused by: org.hibernate.AnnotationException: No identifier specified for entity: com.remo.po.SysLog
+Caused by: org.hibernate.AnnotationException: No identifier specified for entity: SysLog
 	at org.hibernate.cfg.InheritanceState.determineDefaultAccessType(InheritanceState.java:266)
 	at org.hibernate.cfg.InheritanceState.getElementsToProcess(InheritanceState.java:211)
 	at org.hibernate.cfg.AnnotationBinder.bindClass(AnnotationBinder.java:775)
@@ -222,7 +222,7 @@ Caused by: org.hibernate.AnnotationException: No identifier specified for entity
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1774)
 	... 21 common frames omitted
 2019-11-18 10:35:16.401 remo [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.com.remo.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: No identifier specified for entity: com.remo.po.SysLog
+org.springframework.com.remo.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: No identifier specified for entity: SysLog
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1778)
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:593)
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515)
@@ -239,13 +239,13 @@ org.springframework.com.remo.beans.factory.BeanCreationException: Error creating
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:312)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1214)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1203)
-	at com.remo.LogApplication.main(LogApplication.java:10)
+	at LogApplication.main(LogApplication.java:10)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-Caused by: org.hibernate.AnnotationException: No identifier specified for entity: com.remo.po.SysLog
+Caused by: org.hibernate.AnnotationException: No identifier specified for entity: SysLog
 	at org.hibernate.cfg.InheritanceState.determineDefaultAccessType(InheritanceState.java:266)
 	at org.hibernate.cfg.InheritanceState.getElementsToProcess(InheritanceState.java:211)
 	at org.hibernate.cfg.AnnotationBinder.bindClass(AnnotationBinder.java:775)
@@ -263,7 +263,7 @@ Caused by: org.hibernate.AnnotationException: No identifier specified for entity
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1774)
 	... 21 common frames omitted
 2019-11-18 10:36:12.018 remo [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.com.remo.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: No identifier specified for entity: com.remo.po.SysLog
+org.springframework.com.remo.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: No identifier specified for entity: SysLog
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1778)
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:593)
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515)
@@ -280,13 +280,13 @@ org.springframework.com.remo.beans.factory.BeanCreationException: Error creating
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:312)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1214)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1203)
-	at com.remo.LogApplication.main(LogApplication.java:10)
+	at LogApplication.main(LogApplication.java:10)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-Caused by: org.hibernate.AnnotationException: No identifier specified for entity: com.remo.po.SysLog
+Caused by: org.hibernate.AnnotationException: No identifier specified for entity: SysLog
 	at org.hibernate.cfg.InheritanceState.determineDefaultAccessType(InheritanceState.java:266)
 	at org.hibernate.cfg.InheritanceState.getElementsToProcess(InheritanceState.java:211)
 	at org.hibernate.cfg.AnnotationBinder.bindClass(AnnotationBinder.java:775)
@@ -304,7 +304,7 @@ Caused by: org.hibernate.AnnotationException: No identifier specified for entity
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1774)
 	... 21 common frames omitted
 2019-11-18 10:36:52.333 remo [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.com.remo.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: No identifier specified for entity: com.remo.po.SysLog
+org.springframework.com.remo.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: No identifier specified for entity: SysLog
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1778)
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:593)
 	at org.springframework.com.remo.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515)
@@ -321,13 +321,13 @@ org.springframework.com.remo.beans.factory.BeanCreationException: Error creating
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:312)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1214)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1203)
-	at com.remo.LogApplication.main(LogApplication.java:10)
+	at LogApplication.main(LogApplication.java:10)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-Caused by: org.hibernate.AnnotationException: No identifier specified for entity: com.remo.po.SysLog
+Caused by: org.hibernate.AnnotationException: No identifier specified for entity: SysLog
 	at org.hibernate.cfg.InheritanceState.determineDefaultAccessType(InheritanceState.java:266)
 	at org.hibernate.cfg.InheritanceState.getElementsToProcess(InheritanceState.java:211)
 	at org.hibernate.cfg.AnnotationBinder.bindClass(AnnotationBinder.java:775)
@@ -419,8 +419,8 @@ java.sql.SQLException: Field 'id' doesn't have a default value
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
 	at com.sun.proxy.$Proxy101.saveAndFlush(Unknown Source)
-	at com.remo.service.impl.GoodsServiceImpl.saveSysLog(LogServiceImpl.java:19)
-	at com.remo.service.impl.GoodsServiceImpl$$FastClassBySpringCGLIB$$417f50fa.invoke(<generated>)
+	at GoodsServiceImpl.saveSysLog(LogServiceImpl.java:19)
+	at GoodsServiceImpl$$FastClassBySpringCGLIB$$417f50fa.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
@@ -428,8 +428,8 @@ java.sql.SQLException: Field 'id' doesn't have a default value
 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at com.remo.service.impl.GoodsServiceImpl$$EnhancerBySpringCGLIB$$524ff96b.saveSysLog(<generated>)
-	at com.remo.controller.LogController.saveSysLog(LogController.java:18)
+	at GoodsServiceImpl$$EnhancerBySpringCGLIB$$524ff96b.saveSysLog(<generated>)
+	at LogController.saveSysLog(LogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -561,8 +561,8 @@ java.sql.SQLException: Field 'id' doesn't have a default value
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
 	at com.sun.proxy.$Proxy101.saveAndFlush(Unknown Source)
-	at com.remo.service.impl.GoodsServiceImpl.saveSysLog(LogServiceImpl.java:19)
-	at com.remo.service.impl.GoodsServiceImpl$$FastClassBySpringCGLIB$$417f50fa.invoke(<generated>)
+	at GoodsServiceImpl.saveSysLog(LogServiceImpl.java:19)
+	at GoodsServiceImpl$$FastClassBySpringCGLIB$$417f50fa.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
@@ -570,8 +570,8 @@ java.sql.SQLException: Field 'id' doesn't have a default value
 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at com.remo.service.impl.GoodsServiceImpl$$EnhancerBySpringCGLIB$$524ff96b.saveSysLog(<generated>)
-	at com.remo.controller.LogController.saveSysLog(LogController.java:18)
+	at GoodsServiceImpl$$EnhancerBySpringCGLIB$$524ff96b.saveSysLog(<generated>)
+	at LogController.saveSysLog(LogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -700,8 +700,8 @@ java.sql.SQLException: Field 'id' doesn't have a default value
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
 	at com.sun.proxy.$Proxy101.saveAndFlush(Unknown Source)
-	at com.remo.service.impl.GoodsServiceImpl.saveSysLog(LogServiceImpl.java:19)
-	at com.remo.service.impl.GoodsServiceImpl$$FastClassBySpringCGLIB$$417f50fa.invoke(<generated>)
+	at GoodsServiceImpl.saveSysLog(LogServiceImpl.java:19)
+	at GoodsServiceImpl$$FastClassBySpringCGLIB$$417f50fa.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
@@ -709,8 +709,8 @@ java.sql.SQLException: Field 'id' doesn't have a default value
 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at com.remo.service.impl.GoodsServiceImpl$$EnhancerBySpringCGLIB$$524ff96b.saveSysLog(<generated>)
-	at com.remo.controller.LogController.saveSysLog(LogController.java:18)
+	at GoodsServiceImpl$$EnhancerBySpringCGLIB$$524ff96b.saveSysLog(<generated>)
+	at LogController.saveSysLog(LogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -839,8 +839,8 @@ java.sql.SQLException: Field 'id' doesn't have a default value
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
 	at com.sun.proxy.$Proxy101.saveAndFlush(Unknown Source)
-	at com.remo.service.impl.GoodsServiceImpl.saveSysLog(LogServiceImpl.java:19)
-	at com.remo.service.impl.GoodsServiceImpl$$FastClassBySpringCGLIB$$417f50fa.invoke(<generated>)
+	at GoodsServiceImpl.saveSysLog(LogServiceImpl.java:19)
+	at GoodsServiceImpl$$FastClassBySpringCGLIB$$417f50fa.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
@@ -848,8 +848,8 @@ java.sql.SQLException: Field 'id' doesn't have a default value
 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at com.remo.service.impl.GoodsServiceImpl$$EnhancerBySpringCGLIB$$524ff96b.saveSysLog(<generated>)
-	at com.remo.controller.LogController.saveSysLog(LogController.java:18)
+	at GoodsServiceImpl$$EnhancerBySpringCGLIB$$524ff96b.saveSysLog(<generated>)
+	at LogController.saveSysLog(LogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -1177,8 +1177,8 @@ java.sql.SQLException: Field 'id' doesn't have a default value
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
 	at com.sun.proxy.$Proxy101.saveAndFlush(Unknown Source)
-	at com.remo.service.impl.GoodsServiceImpl.saveSysLog(LogServiceImpl.java:19)
-	at com.remo.service.impl.GoodsServiceImpl$$FastClassBySpringCGLIB$$417f50fa.invoke(<generated>)
+	at GoodsServiceImpl.saveSysLog(LogServiceImpl.java:19)
+	at GoodsServiceImpl$$FastClassBySpringCGLIB$$417f50fa.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
@@ -1186,8 +1186,8 @@ java.sql.SQLException: Field 'id' doesn't have a default value
 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at com.remo.service.impl.GoodsServiceImpl$$EnhancerBySpringCGLIB$$524ff96b.saveSysLog(<generated>)
-	at com.remo.controller.LogController.saveSysLog(LogController.java:18)
+	at GoodsServiceImpl$$EnhancerBySpringCGLIB$$524ff96b.saveSysLog(<generated>)
+	at LogController.saveSysLog(LogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

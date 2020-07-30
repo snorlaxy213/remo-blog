@@ -5,6 +5,13 @@ spring:
   application:
     # 该服务的名称，同时也是注册到eureka上的应用名称
     name: gateway
+  redis:
+    enabled: true # Redis switch / off by default
+    database: 0 # Redis database index (default is 0)
+    host: 127.0.0.1 # Redis server address
+    port: 6379 # Redis server connection port
+    password:  #redis password
+    timeout: 5000
   cloud:
     gateway:
       # 关闭gateway，默认为false
@@ -21,6 +28,24 @@ spring:
           filters:
             # StripPrefix Filter 是一个请求路径截取的功能,StripPrefix=n,n代表截取路径的个数
             - StripPrefix=1
+            - name: RequestRateLimiter
+              args:
+                key-resolver: '#{@hostAddrKeyResolver}' # 用于限流的键的解析器的 Bean 对象的名字。它使用 SpEL 表达式根据#{@beanName}从 Spring 容器中获取 Bean 对象
+                redis-rate-limiter.replenishRate: 1 # 令牌桶每秒填充平均速率
+                redis-rate-limiter.burstCapacity: 3 # 令牌桶总容量
+        - id: article
+          uri: http://localhost:9111
+          predicates:
+            - Path=/article/**
+          filters:
+            # StripPrefix Filter 是一个请求路径截取的功能,StripPrefix=n,n代表截取路径的个数
+            - StripPrefix=1
+            - name: RequestRateLimiter
+              args:
+                key-resolver: '#{@hostAddrKeyResolver}' # 用于限流的键的解析器的 Bean 对象的名字。它使用 SpEL 表达式根据#{@beanName}从 Spring 容器中获取 Bean 对象
+                redis-rate-limiter.replenishRate: 1 # 令牌桶每秒填充平均速率
+                redis-rate-limiter.burstCapacity: 1 # 令牌桶总容量
+
 eureka:
   client:
     enabled: true

@@ -1,6 +1,6 @@
 2020-03-11 00:20:06.519 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
 2020-03-11 00:20:06.772 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$84edce18] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-03-11 00:20:08.204 remo [restartedMain] INFO  com.remo.SeckillApplication - The following profiles are active: seckill-one
+2020-03-11 00:20:08.204 remo [restartedMain] INFO  SeckillApplication - The following profiles are active: seckill-one
 2020-03-11 00:20:09.120 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
 2020-03-11 00:20:09.244 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 109ms. Found 4 repository interfaces.
 2020-03-11 00:20:09.572 remo [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=5e352b0a-6fdd-30a5-808e-6918c80d29dd
@@ -29,7 +29,7 @@
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 2020-03-11 00:31:25.056 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
 2020-03-11 00:31:25.248 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$2f847681] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-03-11 00:31:26.666 remo [restartedMain] INFO  com.remo.SeckillApplication - The following profiles are active: seckill-one
+2020-03-11 00:31:26.666 remo [restartedMain] INFO  SeckillApplication - The following profiles are active: seckill-one
 2020-03-11 00:31:27.219 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
 2020-03-11 00:31:27.293 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 66ms. Found 4 repository interfaces.
 2020-03-11 00:31:27.530 remo [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=a31b8ede-eb34-3e49-8be7-67750b1beb41
@@ -60,7 +60,7 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 2020-03-11 00:32:00.603 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
 2020-03-11 00:32:00.781 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$a64c5538] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-03-11 00:32:02.202 remo [restartedMain] INFO  com.remo.SeckillApplication - The following profiles are active: seckill-one
+2020-03-11 00:32:02.202 remo [restartedMain] INFO  SeckillApplication - The following profiles are active: seckill-one
 2020-03-11 00:32:02.749 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
 2020-03-11 00:32:02.821 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 64ms. Found 4 repository interfaces.
 2020-03-11 00:32:03.054 remo [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=c91cefa9-b667-32c6-a2ba-17c5d6a49e5a
@@ -111,7 +111,7 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2020-03-11 00:32:14.175 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8791"]
 2020-03-11 00:32:14.208 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8791 (http) with context path ''
 2020-03-11 00:32:14.209 remo [restartedMain] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8791
-2020-03-11 00:32:14.210 remo [restartedMain] INFO  com.remo.SeckillApplication - Started SeckillApplication in 15.288 seconds (JVM running for 16.02)
+2020-03-11 00:32:14.210 remo [restartedMain] INFO  SeckillApplication - Started SeckillApplication in 15.288 seconds (JVM running for 16.02)
 2020-03-11 00:32:44.146 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
 2020-03-11 00:32:44.146 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
 2020-03-11 00:32:44.146 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
@@ -130,7 +130,7 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2020-03-11 00:33:18.667 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
 2020-03-11 00:33:38.874 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
 2020-03-11 00:33:39.054 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$e837f16d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-03-11 00:33:40.461 remo [restartedMain] INFO  com.remo.SeckillApplication - The following profiles are active: dev
+2020-03-11 00:33:40.461 remo [restartedMain] INFO  SeckillApplication - The following profiles are active: dev
 2020-03-11 00:33:41.012 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
 2020-03-11 00:33:41.093 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 75ms. Found 4 repository interfaces.
 2020-03-11 00:33:41.332 remo [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=c91cefa9-b667-32c6-a2ba-17c5d6a49e5a
@@ -181,7 +181,7 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2020-03-11 00:33:51.419 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8791"]
 2020-03-11 00:33:51.438 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8791 (http) with context path ''
 2020-03-11 00:33:51.439 remo [restartedMain] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8791
-2020-03-11 00:33:51.440 remo [restartedMain] INFO  com.remo.SeckillApplication - Started SeckillApplication in 14.268 seconds (JVM running for 15.011)
+2020-03-11 00:33:51.440 remo [restartedMain] INFO  SeckillApplication - Started SeckillApplication in 14.268 seconds (JVM running for 15.011)
 2020-03-11 00:34:21.400 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
 2020-03-11 00:34:21.401 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
 2020-03-11 00:34:21.401 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
@@ -1311,16 +1311,16 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2020-03-11 01:52:38.924 remo [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_SECKILL/localhost:seckill:8791: registering service...
 2020-03-11 01:53:13.028 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
 2020-03-11 01:53:13.198 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$871e71b9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-03-11 01:53:14.612 remo [restartedMain] INFO  com.remo.SeckillApplication - The following profiles are active: dev
+2020-03-11 01:53:14.612 remo [restartedMain] INFO  SeckillApplication - The following profiles are active: dev
 2020-03-11 01:53:15.258 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
 2020-03-11 01:53:15.258 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
 2020-03-11 01:53:15.332 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 68ms. Found 4 repository interfaces.
 2020-03-11 01:53:15.348 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
 2020-03-11 01:53:15.349 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-03-11 01:53:15.370 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.GoodsRepository.
-2020-03-11 01:53:15.371 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.OrderRepository.
-2020-03-11 01:53:15.371 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.SeckillGoodsRepository.
-2020-03-11 01:53:15.372 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.SeckillOrderRepository.
+2020-03-11 01:53:15.370 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface GoodsRepository.
+2020-03-11 01:53:15.371 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface OrderRepository.
+2020-03-11 01:53:15.371 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface SeckillGoodsRepository.
+2020-03-11 01:53:15.372 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface SeckillOrderRepository.
 2020-03-11 01:53:15.372 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8ms. Found 0 repository interfaces.
 2020-03-11 01:53:15.608 remo [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=3c315356-5bfa-3252-a04a-aa9867bc2aa5
 2020-03-11 01:53:15.691 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6b046ebc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
@@ -1370,7 +1370,7 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2020-03-11 01:53:25.981 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8791"]
 2020-03-11 01:53:25.999 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8791 (http) with context path ''
 2020-03-11 01:53:26.000 remo [restartedMain] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8791
-2020-03-11 01:53:26.002 remo [restartedMain] INFO  com.remo.SeckillApplication - Started SeckillApplication in 14.627 seconds (JVM running for 15.354)
+2020-03-11 01:53:26.002 remo [restartedMain] INFO  SeckillApplication - Started SeckillApplication in 14.627 seconds (JVM running for 15.354)
 2020-03-11 01:53:55.961 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
 2020-03-11 01:53:55.962 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
 2020-03-11 01:53:55.962 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
@@ -1379,8 +1379,8 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2020-03-11 01:53:55.962 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
 2020-03-11 01:53:55.962 remo [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
 2020-03-11 01:54:00.003 remo [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_SECKILL/localhost:seckill:8791: registering service...
-2020-03-11 01:54:33.020 remo [restartedMain] INFO  com.remo.SeckillApplication - Starting SeckillApplication on vino with PID 8228 (D:\Space\Java\remo-blog\seckill\target\classes started by Administrator in D:\Space\Java\remo-blog)
-2020-03-11 01:54:33.022 remo [restartedMain] INFO  com.remo.SeckillApplication - The following profiles are active: dev
+2020-03-11 01:54:33.020 remo [restartedMain] INFO  SeckillApplication - Starting SeckillApplication on vino with PID 8228 (D:\Space\Java\remo-blog\seckill\target\classes started by Administrator in D:\Space\Java\remo-blog)
+2020-03-11 01:54:33.022 remo [restartedMain] INFO  SeckillApplication - The following profiles are active: dev
 2020-03-11 01:54:33.054 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
 2020-03-11 01:54:33.054 remo [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
 2020-03-11 01:54:33.602 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
@@ -1388,10 +1388,10 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2020-03-11 01:54:33.670 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 62ms. Found 4 repository interfaces.
 2020-03-11 01:54:33.680 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
 2020-03-11 01:54:33.681 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-03-11 01:54:33.693 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.GoodsRepository.
-2020-03-11 01:54:33.694 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.OrderRepository.
-2020-03-11 01:54:33.694 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.SeckillGoodsRepository.
-2020-03-11 01:54:33.695 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.remo.repository.SeckillOrderRepository.
+2020-03-11 01:54:33.693 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface GoodsRepository.
+2020-03-11 01:54:33.694 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface OrderRepository.
+2020-03-11 01:54:33.694 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface SeckillGoodsRepository.
+2020-03-11 01:54:33.695 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface SeckillOrderRepository.
 2020-03-11 01:54:33.695 remo [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8ms. Found 0 repository interfaces.
 2020-03-11 01:54:33.997 remo [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2cfca0fc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 2020-03-11 01:54:34.275 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8791 (http)
@@ -1414,4 +1414,4 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2020-03-11 01:54:36.519 remo [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
 2020-03-11 01:54:36.542 remo [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8791"]
 2020-03-11 01:54:36.558 remo [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8791 (http) with context path ''
-2020-03-11 01:54:36.560 remo [restartedMain] INFO  com.remo.SeckillApplication - Started SeckillApplication in 3.953 seconds (JVM running for 4.576)
+2020-03-11 01:54:36.560 remo [restartedMain] INFO  SeckillApplication - Started SeckillApplication in 3.953 seconds (JVM running for 4.576)
