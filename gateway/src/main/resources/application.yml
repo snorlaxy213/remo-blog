@@ -44,7 +44,7 @@ spring:
               args:
                 key-resolver: '#{@hostAddrKeyResolver}' # 用于限流的键的解析器的 Bean 对象的名字。它使用 SpEL 表达式根据#{@beanName}从 Spring 容器中获取 Bean 对象
                 redis-rate-limiter.replenishRate: 1 # 令牌桶每秒填充平均速率
-                redis-rate-limiter.burstCapacity: 1 # 令牌桶总容量
+                redis-rate-limiter.burstCapacity: 3 # 令牌桶总容量
 
 eureka:
   client:
