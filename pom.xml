@@ -21,6 +21,7 @@
         <module>batch</module>
         <module>config</module>
         <module>config-client</module>
+        <module>file</module>
     </modules>
 
     <properties>
