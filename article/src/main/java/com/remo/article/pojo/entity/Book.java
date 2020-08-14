@@ -29,6 +29,15 @@ public class Book extends Base implements Serializable {
     @TableField(value = "path")
     private String path;
 
+    /**
+     * 乐观锁
+     */
+    @TableField("version")
+    private Integer version;
+
+    public Book() {
+    }
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -57,18 +66,28 @@ public class Book extends Base implements Serializable {
         this.path = path;
     }
 
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Book book = (Book) o;
         return bookId.equals(book.bookId) &&
                 Objects.equals(description, book.description) &&
-                path.equals(book.path);
+                path.equals(book.path) &&
+                Objects.equals(version, book.version);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookId, description, path);
+        return Objects.hash(super.hashCode(), bookId, description, path, version);
     }
 }

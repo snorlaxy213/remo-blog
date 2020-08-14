@@ -98,19 +98,18 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     public boolean updateArticle(ArticleDto articleDto) {
         Article article = this.getById(articleDto.getId());
 
-        article.setArticleTitle(articleDto.getArticleTitle())
-                .setArticleContent(articleDto.getArticleContent())
-                .setArticleType(articleDto.getArticleType())
-                .setUpdateTime(LocalDateTime.now())
-                .setArticleTabloid(articleDto.getArticleTabloid())
-                .setVersion(articleDto.getVersion());
+        article.setArticleTitle(articleDto.getArticleTitle());
+        article.setArticleContent(articleDto.getArticleContent());
+        article.setArticleType(articleDto.getArticleType());
+        article.setUpdateTime(LocalDateTime.now());
+        article.setArticleTabloid(articleDto.getArticleTabloid());
+        article.setVersion(articleDto.getVersion());
 
         ServiceUtil.initEntity(article, false);
         boolean flag = this.updateById(article);
         if (flag) {
             log.info("Update successfully");
-        }
-        else {
+        } else {
             log.info("Update failed due to modified by others");
         }
 

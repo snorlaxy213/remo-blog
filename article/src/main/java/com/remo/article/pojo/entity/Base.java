@@ -42,12 +42,6 @@ public class Base implements Serializable {
     @TableField(value = "is_delete")
     private Integer isDelete;
 
-    /**
-     * 乐观锁
-     */
-    @TableField("version")
-    private Integer version;
-
     public LocalDateTime getCreateTime() {
         return createTime;
     }
@@ -88,14 +82,6 @@ public class Base implements Serializable {
         this.isDelete = isDelete;
     }
 
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -105,12 +91,11 @@ public class Base implements Serializable {
                 createUser.equals(base.createUser) &&
                 Objects.equals(updateTime, base.updateTime) &&
                 Objects.equals(updateUser, base.updateUser) &&
-                isDelete.equals(base.isDelete) &&
-                Objects.equals(version, base.version);
+                isDelete.equals(base.isDelete);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(createTime, createUser, updateTime, updateUser, isDelete, version);
+        return Objects.hash(createTime, createUser, updateTime, updateUser, isDelete);
     }
 }

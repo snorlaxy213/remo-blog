@@ -1,10 +1,9 @@
 package com.remo.article.common.utils;
 
+import com.remo.article.pojo.entity.Base;
 import lombok.extern.slf4j.Slf4j;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * common service function
@@ -15,26 +14,14 @@ import java.util.Date;
 @Slf4j
 public class ServiceUtil {
 
-    public static <T> void initEntity(T entity, boolean isNew) {
-        Class<?> entityClass = entity.getClass();
-
-        String userId = "vino";
-        Date now = new Date();
-        try {
-            if (isNew) {
-                Method setCreateTime = entityClass.getMethod("setCreateTime", Date.class);
-                Method setCreateUser = entityClass.getMethod("setCreateUser", String.class);
-                setCreateTime.invoke(entity, now);
-                setCreateUser.invoke(entity, userId);
-            }
-            else {
-                Method setUpdateTime = entityClass.getMethod("setUpdateTime", Date.class);
-                Method setUpdateUser = entityClass.getMethod("setUpdateUser", String.class);
-                setUpdateTime.invoke(entity, now);
-                setUpdateUser.invoke(entity, userId);
-            }
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            log.error("baseService initEntity error");
+    public static <T extends Base> void initEntity(T entity, boolean isNew) {
+        if (isNew) {
+            entity.setCreateTime(LocalDateTime.now());
+            entity.setCreateUser("VINO");
+            entity.setIsDelete(0);
+        } else {
+            entity.setUpdateTime(LocalDateTime.now());
+            entity.setUpdateUser("VINO");
         }
     }
 }
