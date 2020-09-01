@@ -23,7 +23,7 @@
 
         <dependency>
             <groupId>com.remo</groupId>
-            <artifactId>constants</artifactId>
+            <artifactId>basic</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- 系统内部module调用 -->
