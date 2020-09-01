@@ -1,17 +1,16 @@
 package com.remo.article.controller;
 
 
-import com.remo.article.common.exception.exception.BusinessException;
-import com.remo.article.common.exception.exception.ParamException;
-import com.remo.article.common.utils.ResponseUtil;
-import com.remo.article.common.validation.group.Insert;
-import com.remo.article.common.validation.group.Update;
+import com.remo.article.common.util.ResponseUtil;
+import com.remo.article.controller.exception.ParamException;
 import com.remo.article.pojo.dto.ArticleDto;
 import com.remo.article.pojo.dto.SimpleArticleDto;
 import com.remo.article.pojo.vo.ResponseVo;
 import com.remo.article.pojo.vo.query.ListArticleQuery;
 import com.remo.article.service.IArticleService;
-import com.remo.constants.annotation.RemoLog;
+import com.remo.basic.exception.BusinessException;
+import com.remo.basic.group.Insert;
+import com.remo.basic.group.Update;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -68,7 +67,7 @@ public class ArticleController {
         return ResponseUtil.initSuccessResponse(articles);
     }
 
-    @RemoLog("listSimpleArticles")
+    //    @RemoLog("listSimpleArticles")
     @ApiOperation(value = "listSimpleArticles")
     @GetMapping("listSimpleArticles")
     public ResponseVo listSimpleArticles() {

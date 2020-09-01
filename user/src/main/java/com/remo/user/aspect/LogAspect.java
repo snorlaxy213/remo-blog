@@ -1,6 +1,6 @@
 package com.remo.user.aspect;
 
-import com.remo.constants.annotation.RemoLog;
+import com.remo.basic.annotation.RemoLog;
 import com.remo.user.client.LogServiceClient;
 import com.remo.user.client.po.SysLog;
 import org.aspectj.lang.ProceedingJoinPoint;

@@ -1,7 +1,7 @@
 package com.remo.article.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.remo.article.common.utils.ServiceUtil;
+import com.remo.article.common.util.ServiceUtil;
 import com.remo.article.mapper.TagMapper;
 import com.remo.article.pojo.dto.TagDto;
 import com.remo.article.pojo.entity.Tag;

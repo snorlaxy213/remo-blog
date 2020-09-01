@@ -1,24 +1,14 @@
 package com.remo.article.pojo.dto;
 
-import com.remo.article.common.validation.group.Insert;
-import com.remo.article.common.validation.group.Update;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.experimental.Accessors;
+import com.remo.basic.group.Insert;
+import com.remo.basic.group.Update;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@Getter
-@Setter
-@Accessors(chain = true)
 public class TagDto {
 
-    /**
-     * articleDtos
-     */
-    List<ArticleDto> articleDtos;
     /**
      * Tag Id
      */
@@ -34,4 +24,41 @@ public class TagDto {
      */
     @NotNull(groups = Insert.class)
     private Integer orderNum;
+
+    /**
+     * articleDtos
+     */
+    List<ArticleDto> articleDtos;
+
+    public Long getTagId() {
+        return tagId;
+    }
+
+    public void setTagId(Long tagId) {
+        this.tagId = tagId;
+    }
+
+    public String getTagDescription() {
+        return tagDescription;
+    }
+
+    public void setTagDescription(String tagDescription) {
+        this.tagDescription = tagDescription;
+    }
+
+    public Integer getOrderNum() {
+        return orderNum;
+    }
+
+    public void setOrderNum(Integer orderNum) {
+        this.orderNum = orderNum;
+    }
+
+    public List<ArticleDto> getArticleDtos() {
+        return articleDtos;
+    }
+
+    public void setArticleDtos(List<ArticleDto> articleDtos) {
+        this.articleDtos = articleDtos;
+    }
 }

@@ -2,15 +2,16 @@ package com.remo.article.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.remo.article.common.utils.ServiceUtil;
+import com.remo.article.common.util.ServiceUtil;
 import com.remo.article.mapper.ArticleMapper;
 import com.remo.article.pojo.dto.ArticleDto;
 import com.remo.article.pojo.dto.SimpleArticleDto;
 import com.remo.article.pojo.entity.Article;
 import com.remo.article.pojo.vo.query.ListArticleQuery;
 import com.remo.article.service.IArticleService;
-import lombok.extern.slf4j.Slf4j;
 import org.dozer.DozerBeanMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -27,9 +28,10 @@ import java.util.List;
  * @author vino
  * @since 2019-08-26
  */
-@Slf4j
 @Service("articleServiceImpl")
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements IArticleService {
+
+    public static final Logger log = LoggerFactory.getLogger(ArticleServiceImpl.class);
 
     @Resource
     @Qualifier("dozerBeanMapper")

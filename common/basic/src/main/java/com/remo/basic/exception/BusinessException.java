@@ -1,4 +1,4 @@
-package com.remo.article.common.exception.exception;
+package com.remo.basic.exception;
 
 /**
  * 業務異常

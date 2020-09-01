@@ -1,9 +1,7 @@
 package com.remo.article.pojo.vo.query;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
 
-@Data
 public class ListArticleQuery {
 
     /**
@@ -29,4 +27,35 @@ public class ListArticleQuery {
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT-8")
     private String publishDate;
 
+    public String getArticleTags() {
+        return articleTags;
+    }
+
+    public void setArticleTags(String articleTags) {
+        this.articleTags = articleTags;
+    }
+
+    public String getArticleType() {
+        return articleType;
+    }
+
+    public void setArticleType(String articleType) {
+        this.articleType = articleType;
+    }
+
+    public String getArticleCategories() {
+        return articleCategories;
+    }
+
+    public void setArticleCategories(String articleCategories) {
+        this.articleCategories = articleCategories;
+    }
+
+    public String getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(String publishDate) {
+        this.publishDate = publishDate;
+    }
 }

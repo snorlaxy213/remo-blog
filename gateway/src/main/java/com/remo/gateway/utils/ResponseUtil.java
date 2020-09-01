@@ -1,6 +1,6 @@
 package com.remo.gateway.utils;
 
-import com.remo.constants.constant.RemoConstants;
+import com.remo.basic.constant.RemoConstants;
 import com.remo.gateway.pojo.vo.ResponseVo;
 
 /**

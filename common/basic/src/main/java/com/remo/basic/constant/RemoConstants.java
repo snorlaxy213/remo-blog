@@ -1,4 +1,4 @@
-package com.remo.constants.constant;
+package com.remo.basic.constant;
 
 /**
  * Remo common constant

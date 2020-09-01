@@ -18,7 +18,7 @@
         <!--- Reference other modules -->
         <dependency>
             <groupId>com.remo</groupId>
-            <artifactId>constants</artifactId>
+            <artifactId>basic</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!--- Reference other modules -->

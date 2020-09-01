@@ -1,11 +1,11 @@
 package com.remo.article.controller;
 
-import com.remo.article.common.utils.ResponseUtil;
-import com.remo.article.common.validation.group.Insert;
-import com.remo.article.common.validation.group.Update;
+import com.remo.article.common.util.ResponseUtil;
 import com.remo.article.pojo.dto.TagDto;
 import com.remo.article.pojo.vo.ResponseVo;
 import com.remo.article.service.ITagService;
+import com.remo.basic.group.Insert;
+import com.remo.basic.group.Update;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Qualifier;

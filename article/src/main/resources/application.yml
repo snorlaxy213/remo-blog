@@ -35,7 +35,7 @@ common:
   swagger-open: true
 
 eureka:
-  enabled: false
+  enabled: true
   client:
     service-url:
       #      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
@@ -45,4 +45,4 @@ eureka:
 
 feign:
   hystrix:
-    enabled: false
+    enabled: true

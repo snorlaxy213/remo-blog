@@ -1,6 +1,6 @@
 package com.remo.article.controller;
 
-import com.remo.article.common.utils.ResponseUtil;
+import com.remo.article.common.util.ResponseUtil;
 import com.remo.article.pojo.dto.BookDto;
 import com.remo.article.pojo.vo.ResponseVo;
 import com.remo.article.service.IBookService;

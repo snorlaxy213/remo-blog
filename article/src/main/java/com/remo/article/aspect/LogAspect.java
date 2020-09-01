@@ -2,7 +2,7 @@ package com.remo.article.aspect;
 
 import com.remo.article.client.LogServiceClient;
 import com.remo.article.client.po.SysLog;
-import com.remo.constants.annotation.RemoLog;
+import com.remo.basic.annotation.RemoLog;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -22,7 +22,7 @@ public class LogAspect {
     @Autowired
     private LogServiceClient logServiceClient;
 
-    @Pointcut("@annotation(com.remo.constants.annotation.RemoLog)")
+    @Pointcut("@annotation(com.remo.basic.annotation.RemoLog)")
     public void pointcut() {
     }
 

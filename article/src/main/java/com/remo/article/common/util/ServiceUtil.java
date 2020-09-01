@@ -1,7 +1,6 @@
-package com.remo.article.common.utils;
+package com.remo.article.common.util;
 
 import com.remo.article.pojo.entity.Base;
-import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
 
@@ -11,7 +10,6 @@ import java.time.LocalDateTime;
  * @author Jules
  * @date 2019/12/11
  */
-@Slf4j
 public class ServiceUtil {
 
     public static <T extends Base> void initEntity(T entity, boolean isNew) {

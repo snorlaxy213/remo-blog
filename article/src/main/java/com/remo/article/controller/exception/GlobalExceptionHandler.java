@@ -1,7 +1,6 @@
-package com.remo.article.common.exception;
+package com.remo.article.controller.exception;
 
-import com.remo.article.common.exception.exception.ParamException;
-import com.remo.article.common.utils.ResponseUtil;
+import com.remo.article.common.util.ResponseUtil;
 import com.remo.article.pojo.vo.ResponseVo;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

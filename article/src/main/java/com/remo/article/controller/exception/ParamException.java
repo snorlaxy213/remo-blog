@@ -1,4 +1,4 @@
-package com.remo.article.common.exception.exception;
+package com.remo.article.controller.exception;
 
 import com.remo.article.pojo.dto.FieldErrorDto;
 
