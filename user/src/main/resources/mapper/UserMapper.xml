@@ -25,12 +25,14 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        user_id, avatar , username , name , birthday , gender , email , phone , role_id  , brief , create_time , create_user , update_time , update_user , version
+        user_id, avatar , username , name , birthday , gender , email , phone , role_id , brief , create_time ,
+        create_user , update_time , update_user , version
     </sql>
 
     <sql id="Base_Column_List_With_Pwd">
-		user_id, avatar , username , password , name , birthday , gender , email , phone , role_id  , brief , create_time , create_user , update_time , update_user , version
-	</sql>
+        user_id, avatar , username , password , name , birthday , gender , email , phone , role_id , brief , create_time
+        , create_user , update_time , update_user , version
+    </sql>
 
     <select id="getByUsername" resultMap="BaseResultMap">
         select

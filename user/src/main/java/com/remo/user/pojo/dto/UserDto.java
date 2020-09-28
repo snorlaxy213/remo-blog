@@ -1,15 +1,10 @@
 package com.remo.user.pojo.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.google.common.base.Converter;
-import com.remo.user.pojo.po.User;
-import lombok.Data;
-import org.springframework.beans.BeanUtils;
 
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
-@Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDto implements Serializable {
     private static final long serialVersionUID = 2561862214725663483L;
@@ -27,32 +22,95 @@ public class UserDto implements Serializable {
     private String avatar;
     private Integer version;
 
-    public User convertToUser() {
-        UserDtoConvert userDtoConvert = new UserDtoConvert();
-        User convert = userDtoConvert.convert(this);
-        return convert;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
-    public UserDto convertFor(User user) {
-        UserDtoConvert userDtoConvert = new UserDtoConvert();
-        UserDto convert = userDtoConvert.reverse().convert(user);
-        return convert;
+    public Long getUserId() {
+        return userId;
     }
 
-    private static class UserDtoConvert extends Converter<UserDto, User> {
-        @Override
-        protected User doForward(UserDto userDto) {
-            User user = new User();
-            BeanUtils.copyProperties(userDto, user);
-            return user;
-        }
-
-        @Override
-        protected UserDto doBackward(User user) {
-            UserDto userDto = new UserDto();
-            BeanUtils.copyProperties(user, userDto);
-            return userDto;
-        }
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getBrief() {
+        return brief;
+    }
+
+    public void setBrief(String brief) {
+        this.brief = brief;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
 }

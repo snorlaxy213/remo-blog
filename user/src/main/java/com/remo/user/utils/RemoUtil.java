@@ -1,12 +1,14 @@
 package com.remo.user.utils;
 
 import com.remo.user.common.function.CacheSelector;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.function.Supplier;
 
-@Slf4j
 public class RemoUtil {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(RemoUtil.class);
 
     /**
      * 缓存查询模板
@@ -17,20 +19,19 @@ public class RemoUtil {
      */
     public static <T> T selectCacheByTemplate(CacheSelector<T> cacheSelector, Supplier<T> databaseSelector) {
         try {
-            log.debug("query data from redis ······");
+            LOGGER.debug("query data from redis ······");
             // 先查 Redis缓存
             T t = cacheSelector.select();
             if (t == null) {
                 // 没有记录再查询数据库
                 return databaseSelector.get();
-            }
-            else {
+            } else {
                 return t;
             }
         } catch (Exception e) {
             // 缓存查询出错，则去数据库查询
-            log.error("redis error：", e);
-            log.debug("query data from database ······");
+            LOGGER.error("redis error：", e);
+            LOGGER.debug("query data from database ······");
             return databaseSelector.get();
         }
     }

@@ -17,7 +17,8 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        r.role_id, r.role_name, r.description, r.sort, r.version, r.create_time, r.update_time, r.create_user, r.update_user
+        r.role_id, r.role_name, r.description, r.sort, r.version, r.create_time, r.update_time, r.create_user,
+        r.update_user
     </sql>
 
     <select id="listUserRoles" resultMap="BaseResultMap">

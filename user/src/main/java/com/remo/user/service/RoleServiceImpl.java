@@ -7,6 +7,8 @@ import com.remo.user.pojo.dto.RoleDto;
 import com.remo.user.pojo.po.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.dozer.DozerBeanMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,12 +21,14 @@ import java.util.List;
 @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(RoleServiceImpl.class); 
+    
     @Resource(name = "dozerBeanMapper")
     private DozerBeanMapper mapper;
 
     @Override
     public List<RoleDto> listUserRoles() {
-        log.info("<=============== listUserRoles() ===============>");
+        LOGGER.info("<=============== listUserRoles() ===============>");
         List<Role> roles = this.list();
         List<RoleDto> roleDtos = Lists.newArrayList();
         roles.forEach(role -> roleDtos.add(mapper.map(role, RoleDto.class)));
@@ -33,7 +37,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
 
     @Override
     public List<RoleDto> listUserRoles(String username) {
-        log.info("<=============== listUserRoles(String username) ===============>");
+        LOGGER.info("<=============== listUserRoles(String username) ===============>");
         List<Role> roles = this.getBaseMapper().listUserRoles(username);
         List<RoleDto> roleDtos = Lists.newArrayList();
         roles.forEach(role -> roleDtos.add(mapper.map(role, RoleDto.class)));
@@ -47,7 +51,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
 
     @Override
     public Long addRole(RoleDto roleDto) {
-        log.info("<=============== addRole ===============>");
+        LOGGER.info("<=============== addRole ===============>");
         Role role = mapper.map(roleDto, Role.class);
         this.save(role);
         return role.getRoleId();
@@ -55,7 +59,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
 
     @Override
     public Long updateRole(RoleDto roleDto) {
-        log.info("<=============== updateUser ===============>");
+        LOGGER.info("<=============== updateUser ===============>");
         Role role = mapper.map(roleDto, Role.class);
         this.saveOrUpdate(role);
         return role.getRoleId();

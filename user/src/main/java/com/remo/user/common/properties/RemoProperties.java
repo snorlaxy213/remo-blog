@@ -1,11 +1,9 @@
 package com.remo.user.common.properties;
 
-import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-@Data
 @Component("remoProperties")
 @Configuration
 @ConfigurationProperties(prefix = "remo")
@@ -16,4 +14,28 @@ public class RemoProperties {
     private SecurityProperties security = new SecurityProperties();
 
     private SwaggerProperties swagger = new SwaggerProperties();
+
+    public boolean isOpenAopLog() {
+        return openAopLog;
+    }
+
+    public void setOpenAopLog(boolean openAopLog) {
+        this.openAopLog = openAopLog;
+    }
+
+    public SecurityProperties getSecurity() {
+        return security;
+    }
+
+    public void setSecurity(SecurityProperties security) {
+        this.security = security;
+    }
+
+    public SwaggerProperties getSwagger() {
+        return swagger;
+    }
+
+    public void setSwagger(SwaggerProperties swagger) {
+        this.swagger = swagger;
+    }
 }
