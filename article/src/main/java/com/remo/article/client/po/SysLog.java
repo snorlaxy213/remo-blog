@@ -19,10 +19,6 @@ public class SysLog implements Serializable {
     private Date updateTime;
     private String updateUser;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     public Integer getId() {
         return id;
     }

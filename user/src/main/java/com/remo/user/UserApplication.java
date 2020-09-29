@@ -10,7 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@MapperScan("com.remo.mapper")
+@MapperScan("com.remo.user.mapper")
 @EnableSwagger2
 @EnableEurekaClient
 @EnableFeignClients

@@ -2,6 +2,7 @@ package com.remo.article.aspect;
 
 import com.remo.article.client.LogServiceClient;
 import com.remo.article.client.po.SysLog;
+import com.remo.article.common.util.IPUtil;
 import com.remo.basic.annotation.RemoLog;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -12,12 +13,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.util.Date;
 
 @Aspect
 @Component
 public class LogAspect {
+
+    @Autowired
+    HttpServletRequest request;
 
     @Autowired
     private LogServiceClient logServiceClient;
@@ -72,7 +77,7 @@ public class LogAspect {
         // 获取request
 //        HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
         // 设置IP地址
-//        sysLog.setIp(IPUtils.getIpAddr(request));
+        sysLog.setIp(IPUtil.getIpAddr(request));
         sysLog.setIp("localhost");
         // 模拟一个用户名
         sysLog.setUsername("remo");

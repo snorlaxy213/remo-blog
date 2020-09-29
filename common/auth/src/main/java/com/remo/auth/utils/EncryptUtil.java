@@ -1,8 +1,10 @@
 package com.remo.auth.utils;
 
 import javax.crypto.Cipher;
-import java.security.Key;
-import java.security.Security;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESKeySpec;
+import java.security.SecureRandom;
 
 public class EncryptUtil {
 
@@ -17,15 +19,26 @@ public class EncryptUtil {
         this(strDefaultKey);
     }
 
-    public EncryptUtil(String strKey) throws Exception {
-        Security.addProvider(new com.sun.crypto.provider.SunJCE());
-        Key key = getKey(strKey.getBytes());
+    public EncryptUtil(String key) throws Exception {
+        // 生成一个可信任的随机数源
+        SecureRandom sr = new SecureRandom();
 
+        // 从原始密钥数据创建DESKeySpec对象
+        DESKeySpec dks = new DESKeySpec(key.getBytes());
+
+        // 创建一个密钥工厂，然后用它把DESKeySpec转换成SecretKey对象
+        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+        SecretKey secureKey = keyFactory.generateSecret(dks);
+
+        // Cipher对象实际完成加密操作
         encryptCipher = Cipher.getInstance("DES");
-        encryptCipher.init(Cipher.ENCRYPT_MODE, key);
+        // 用密钥初始化Cipher对象
+        encryptCipher.init(Cipher.ENCRYPT_MODE, secureKey, sr);
 
+        // Cipher对象实际完成解密操作
         decryptCipher = Cipher.getInstance("DES");
-        decryptCipher.init(Cipher.DECRYPT_MODE, key);
+        // 用密钥初始化Cipher对象
+        decryptCipher.init(Cipher.DECRYPT_MODE, secureKey, sr);
     }
 
     private static String byteArr2HexStr(byte[] arrB) {
@@ -74,13 +87,5 @@ public class EncryptUtil {
         } catch (Exception e) {
             return "";
         }
-    }
-
-    private Key getKey(byte[] arrBTmp) {
-        byte[] arrB = new byte[8];
-        for (int i = 0; i < arrBTmp.length && i < arrB.length; i++) {
-            arrB[i] = arrBTmp[i];
-        }
-        return new javax.crypto.spec.SecretKeySpec(arrB, "DES");
     }
 }

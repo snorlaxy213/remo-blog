@@ -22,7 +22,7 @@ public class LogAspect {
     @Autowired
     private LogServiceClient logServiceClient;
 
-    @Pointcut("@annotation(com.remo.annotation.RemoLog)")
+    @Pointcut("@annotation(com.remo.basic.annotation.RemoLog)")
     public void pointcut() {
     }
 

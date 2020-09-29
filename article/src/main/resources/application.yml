@@ -35,8 +35,8 @@ common:
   swagger-open: true
 
 eureka:
-  enabled: true
   client:
+    enabled: false
     service-url:
       #      defaultZone: http://server-one:8761/eureka/,http://server-two:8762/eureka/
       defaultZone: http://root:root@localhost:8761/eureka/,http://root:root@localhost:8762/eureka/
