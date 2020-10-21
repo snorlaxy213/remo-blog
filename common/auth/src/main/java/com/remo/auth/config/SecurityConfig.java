@@ -3,12 +3,14 @@ package com.remo.auth.config;
 import com.remo.auth.exception.JWTAccessDeniedHandler;
 import com.remo.auth.exception.JWTAuthenticationEntryPoint;
 import com.remo.auth.filter.JWTAuthorizationFilter;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 
+@Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -19,8 +21,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 禁用 CSRF
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/user/**").authenticated()
-                .antMatchers("/userRole/**").authenticated()
+                .antMatchers("/swagger-ui.html").permitAll()
+                .antMatchers("/webjars/**").permitAll()
+                .antMatchers("/swagger-resources/**").permitAll()
+                .antMatchers("/v2/*").permitAll()
+                .antMatchers("/csrf").permitAll()
+                .antMatchers("/").permitAll()
+//                .antMatchers("/user/**").authenticated()
+//                .antMatchers("/userRole/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()))//添加自定义Filter

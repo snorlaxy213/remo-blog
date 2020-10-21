@@ -5,7 +5,8 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.util.StringUtils;
 
@@ -21,9 +22,9 @@ import java.util.stream.Collectors;
 /**
  * @author vino
  */
-@Slf4j
 public class JwtTokenUtils {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtils.class);
 
     /**
      * 生成足够的安全随机密钥，以适合符合规范的签名
@@ -90,7 +91,7 @@ public class JwtTokenUtils {
             EncryptUtil encryptUtil = new EncryptUtil(SecurityConstants.TOKEN_CACHE_PREFIX);
             return encryptUtil.encrypt(token);
         } catch (Exception e) {
-            log.info("token加密失败：", e);
+            LOGGER.info("token加密失败：", e);
             return null;
         }
     }
@@ -106,7 +107,7 @@ public class JwtTokenUtils {
             EncryptUtil encryptUtil = new EncryptUtil(SecurityConstants.TOKEN_CACHE_PREFIX);
             return encryptUtil.decrypt(encryptToken);
         } catch (Exception e) {
-            log.info("token解密失败：", e);
+            LOGGER.info("token解密失败：", e);
             return null;
         }
     }
