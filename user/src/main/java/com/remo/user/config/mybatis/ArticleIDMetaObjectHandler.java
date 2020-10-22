@@ -3,8 +3,9 @@ package com.remo.user.config.mybatis;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.remo.auth.utils.JwtTokenUtils;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,9 +15,10 @@ import java.time.LocalDateTime;
 /**
  * 字段自动填充
  */
-@Slf4j
 @Component
 public class ArticleIDMetaObjectHandler implements MetaObjectHandler {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ArticleIDMetaObjectHandler.class);
 
     @Autowired
     HttpServletRequest request;
@@ -28,7 +30,7 @@ public class ArticleIDMetaObjectHandler implements MetaObjectHandler {
      */
     @Override
     public void insertFill(MetaObject metaObject) {
-        log.info("start insert fill ....");
+        LOGGER.info("start insert fill ....");
         this.strictInsertFill(metaObject, "createTime", LocalDateTime.class, LocalDateTime.now());
         String username = JwtTokenUtils.getUsernameByToken(JwtTokenUtils.getJwtFromRequest(request));
         this.strictInsertFill(metaObject, "createUser", String.class, username);
@@ -41,7 +43,7 @@ public class ArticleIDMetaObjectHandler implements MetaObjectHandler {
      */
     @Override
     public void updateFill(MetaObject metaObject) {
-        log.info("start update fill ....");
+        LOGGER.info("start update fill ....");
         this.strictInsertFill(metaObject, "updateTime", LocalDateTime.class, LocalDateTime.now());
         String username = JwtTokenUtils.getUsernameByToken(JwtTokenUtils.getJwtFromRequest(request));
         this.strictInsertFill(metaObject, "updateUser", String.class, username);

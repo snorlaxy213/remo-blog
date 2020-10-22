@@ -21,22 +21,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 禁用 CSRF
                 .csrf().disable()
                 .authorizeRequests()
-                //allow anonymous access to /user/login endpoint
-                .antMatchers("/api/v1/login").permitAll()
-                .antMatchers("/swagger*//**").permitAll()
-                .antMatchers("/v2/api-docs",//swagger api json
-                        "/swagger-resources/configuration/ui",//用来获取支持的动作
-                        "/swagger-resources",//用来获取api-docs的URL
-                        "/swagger-resources/configuration/security",//安全选择
-                        "/swagger-ui.html"
-                ).permitAll()
-
-                // authenticate all other requests
-                .anyRequest().authenticated()
+//                .antMatchers(HttpMethod.POST, "/auth/login").permitAll()
 //                .antMatchers("/user/**").authenticated()
 //                .antMatchers("/userRole/**").authenticated()
+                // 其他都放行了
+                .anyRequest().permitAll()
                 .and()
-                .addFilter(new JWTAuthorizationFilter(authenticationManager()))//添加自定义Filter
+                //添加自定义Filter
+                .addFilter(new JWTAuthorizationFilter(authenticationManager()))
                 // 不需要session（不创建会话）
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 // 授权异常处理

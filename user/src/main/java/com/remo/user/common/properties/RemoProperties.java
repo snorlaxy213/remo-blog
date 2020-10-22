@@ -13,8 +13,6 @@ public class RemoProperties {
 
     private SecurityProperties security = new SecurityProperties();
 
-    private SwaggerProperties swagger = new SwaggerProperties();
-
     public boolean isOpenAopLog() {
         return openAopLog;
     }
@@ -29,13 +27,5 @@ public class RemoProperties {
 
     public void setSecurity(SecurityProperties security) {
         this.security = security;
-    }
-
-    public SwaggerProperties getSwagger() {
-        return swagger;
-    }
-
-    public void setSwagger(SwaggerProperties swagger) {
-        this.swagger = swagger;
     }
 }

@@ -19,8 +19,6 @@ import com.remo.user.utils.DateUtil;
 import com.remo.user.utils.IPUtil;
 import com.remo.user.utils.MD5Util;
 import com.remo.user.utils.ResponseUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,8 +34,7 @@ import java.util.Map;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/user")
-@Api(tags = "System security", value = "security api", protocols = "http")
+@RequestMapping("/auth")
 public class LoginController {
 
     @Resource(name = "userManager")
@@ -52,7 +49,6 @@ public class LoginController {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @ApiOperation(value = "login", notes = "check if userName and password is correct")
     @PostMapping("/login")
     @RemoLog
     public ResponseVo login(@RequestBody LoginQuery query, HttpServletRequest request) throws Exception {

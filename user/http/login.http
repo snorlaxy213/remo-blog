@@ -1,0 +1,16 @@
+### login
+POST {{user_host}}/auth/login
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json;charset=UTF-8
+
+{
+    "username": "admin",
+    "password": "admin"
+}
+
+### users
+GET {{user_host}}/user/users
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json;charset=UTF-8

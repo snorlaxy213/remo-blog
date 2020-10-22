@@ -3,21 +3,28 @@ package com.remo.user.aspect;
 import com.remo.basic.annotation.RemoLog;
 import com.remo.user.client.LogServiceClient;
 import com.remo.user.client.po.SysLog;
+import com.remo.user.utils.HttpContextUtil;
+import com.remo.user.utils.IPUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.util.Date;
 
 @Aspect
 @Component
 public class LogAspect {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(LogAspect.class);
 
     @Autowired
     private LogServiceClient logServiceClient;
@@ -28,13 +35,16 @@ public class LogAspect {
 
     @Around("pointcut()")
     public Object around(ProceedingJoinPoint point) {
+        MethodSignature signature = (MethodSignature) point.getSignature();
         Object result = null;
         long beginTime = System.currentTimeMillis();
         try {
             // 执行方法
             result = point.proceed();
         } catch (Throwable e) {
-            e.printStackTrace();
+            String className = point.getTarget().getClass().getName();
+            String methodName = signature.getName();
+            LOGGER.error(className + "." + methodName + "()记录日志错误");
         }
         // 执行时长(毫秒)
         long time = System.currentTimeMillis() - beginTime;
@@ -68,11 +78,10 @@ public class LogAspect {
             }
             sysLog.setParams(params);
         }
-        //todo 获取IP
-        // 获取request
-//        HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
+
+        HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
         // 设置IP地址
-//        sysLog.setIp(IPUtils.getIpAddr(request));
+        sysLog.setIp(IPUtil.getIpAddr(request));
         sysLog.setIp("localhost");
         // 模拟一个用户名
         sysLog.setUsername("remo");

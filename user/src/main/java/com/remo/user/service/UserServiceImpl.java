@@ -6,8 +6,9 @@ import com.google.common.collect.Lists;
 import com.remo.user.mapper.UserMapper;
 import com.remo.user.pojo.dto.UserDto;
 import com.remo.user.pojo.po.User;
-import lombok.extern.slf4j.Slf4j;
 import org.dozer.DozerBeanMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,17 +36,18 @@ import java.util.List;
  * 如果没有活动事务，则按REQUIRED属性执行。它使用了一个单独的事务，这个事务拥有多个可以回滚的保存点。内部事务的回滚不会对外部事务造成影响。
  * 它只对DataSourceTransactionManager事务管理器起效。
  */
-@Slf4j
 @Service(value = "userService")
 @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Resource(name = "dozerBeanMapper")
     private DozerBeanMapper mapper;
 
     @Override
     public List<UserDto> listUsers() {
-        log.info("<=============== findAll ===============>");
+        LOGGER.info("<=============== findAll ===============>");
         List<User> users = this.list();
         List<UserDto> userDtos = Lists.newArrayList();
         users.forEach(user -> userDtos.add(mapper.map(user, UserDto.class)));
@@ -54,13 +56,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public UserDto findById(Long id) {
-        log.info("<=============== findById ===============>");
+        LOGGER.info("<=============== findById ===============>");
         return mapper.map(this.getById(id), UserDto.class);
     }
 
     @Override
     public UserDto findByUsername(String username) {
-        log.info("<=============== findByUsername ===============>");
+        LOGGER.info("<=============== findByUsername ===============>");
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         return mapper.map(this.getOne(wrapper.eq("username", username)), UserDto.class);
     }
@@ -68,7 +70,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public Long addUser(UserDto userDto) {
-        log.info("<=============== addUser ===============>");
+        LOGGER.info("<=============== addUser ===============>");
         User user = mapper.map(userDto, User.class);
         this.save(user);
         return user.getUserId();
@@ -77,7 +79,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public Long updateUser(UserDto userDto) {
-        log.info("<=============== updateUser ===============>");
+        LOGGER.info("<=============== updateUser ===============>");
         User user = mapper.map(userDto, User.class);
         this.saveOrUpdate(user);
         return user.getUserId();

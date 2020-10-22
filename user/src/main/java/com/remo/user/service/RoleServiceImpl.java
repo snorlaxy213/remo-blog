@@ -5,7 +5,6 @@ import com.google.common.collect.Lists;
 import com.remo.user.mapper.RoleMapper;
 import com.remo.user.pojo.dto.RoleDto;
 import com.remo.user.pojo.po.Role;
-import lombok.extern.slf4j.Slf4j;
 import org.dozer.DozerBeanMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.List;
 
-@Slf4j
 @Service(value = "roleService")
 @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {

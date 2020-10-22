@@ -1,7 +1,6 @@
 package com.remo.user.common.exception.exception;
 
 import com.remo.user.pojo.dto.FieldErrorDto;
-import lombok.Data;
 
 import java.util.List;
 
@@ -11,7 +10,6 @@ import java.util.List;
  * @author Jules
  * @date 2019/6/25
  */
-@Data
 public class ParameterException extends RuntimeException {
     private boolean isFieldError;
     private List<FieldErrorDto> fieldErrorDtos;
@@ -27,6 +25,22 @@ public class ParameterException extends RuntimeException {
     public ParameterException(String message, boolean isFieldError, List<FieldErrorDto> fieldErrorDtos) {
         super(message);
         this.isFieldError = isFieldError;
+        this.fieldErrorDtos = fieldErrorDtos;
+    }
+
+    public boolean isFieldError() {
+        return isFieldError;
+    }
+
+    public void setFieldError(boolean fieldError) {
+        isFieldError = fieldError;
+    }
+
+    public List<FieldErrorDto> getFieldErrorDtos() {
+        return fieldErrorDtos;
+    }
+
+    public void setFieldErrorDtos(List<FieldErrorDto> fieldErrorDtos) {
         this.fieldErrorDtos = fieldErrorDtos;
     }
 }
