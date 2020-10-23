@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.List;
 
 @Service("cacheService")
@@ -53,7 +54,7 @@ public class CacheServiceImpl implements CacheService {
     public List<RoleDto> getRoles(String username) throws Exception {
         String roleListString = this.redisService.get(RemoConstant.USER_ROLE_CACHE_PREFIX + username);
         if (StringUtils.isBlank(roleListString)) {
-            throw new BusinessException(RemoConstant.ERROR_RESULT_CODE, ErrorMessageConstant.WRONG_INPUT);
+            return Collections.emptyList();
         } else {
             JavaType type = objectMapper.getTypeFactory().constructParametricType(List.class, RoleDto.class);
             return this.objectMapper.readValue(roleListString, type);
@@ -64,7 +65,7 @@ public class CacheServiceImpl implements CacheService {
     public List<PermissionDto> getPermissions(String username) throws Exception {
         String permissionListString = this.redisService.get(RemoConstant.USER_PERMISSION_CACHE_PREFIX + username);
         if (StringUtils.isBlank(permissionListString)) {
-            throw new Exception();
+            return Collections.emptyList();
         } else {
             JavaType type = objectMapper.getTypeFactory().constructParametricType(List.class, PermissionDto.class);
             return this.objectMapper.readValue(permissionListString, type);

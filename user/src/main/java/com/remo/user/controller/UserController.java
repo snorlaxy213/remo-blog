@@ -23,7 +23,6 @@ public class UserController {
         return ResponseUtil.initSuccessResultVO(userService.listUsers());
     }
 
-
     @GetMapping("/user/{id}")
     public ResponseVo findById(@PathVariable("id") Long id) {
         return ResponseUtil.initSuccessResultVO(userService.findById(id));

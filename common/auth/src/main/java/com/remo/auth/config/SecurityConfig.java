@@ -4,6 +4,7 @@ import com.remo.auth.exception.JWTAccessDeniedHandler;
 import com.remo.auth.exception.JWTAuthenticationEntryPoint;
 import com.remo.auth.filter.JWTAuthorizationFilter;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -21,9 +22,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 禁用 CSRF
                 .csrf().disable()
                 .authorizeRequests()
-//                .antMatchers(HttpMethod.POST, "/auth/login").permitAll()
-//                .antMatchers("/user/**").authenticated()
-//                .antMatchers("/userRole/**").authenticated()
+                .antMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                .antMatchers("/user/**").authenticated()
+                .antMatchers("/userRole/**").authenticated()
                 // 其他都放行了
                 .anyRequest().permitAll()
                 .and()

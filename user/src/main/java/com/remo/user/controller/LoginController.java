@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.remo.auth.entity.JWTToken;
 import com.remo.auth.utils.JwtTokenUtils;
-import com.remo.basic.annotation.RemoLog;
 import com.remo.user.common.constant.ErrorMessageConstant;
 import com.remo.user.common.constant.RemoConstant;
 import com.remo.user.common.domain.ActiveUser;
@@ -50,7 +49,6 @@ public class LoginController {
     private ObjectMapper objectMapper;
 
     @PostMapping("/login")
-    @RemoLog
     public ResponseVo login(@RequestBody LoginQuery query, HttpServletRequest request) throws Exception {
 
         String username = StringUtils.lowerCase(query.getUsername());
