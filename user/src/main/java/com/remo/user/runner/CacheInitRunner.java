@@ -15,9 +15,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.List;
 
-/**
- * 缓存初始化
- */
 //@Component
 public class CacheInitRunner implements ApplicationRunner {
 

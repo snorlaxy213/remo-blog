@@ -12,13 +12,6 @@
     <artifactId>seckill</artifactId>
 
     <dependencies>
-        <!-- 系统内部module调用 -->
-        <dependency>
-            <groupId>com.remo</groupId>
-            <artifactId>basic</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <!-- 系统内部module调用 -->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
