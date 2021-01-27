@@ -38,13 +38,12 @@ spring:
           predicates:
             - Path=/article/**
           filters:
-            # StripPrefix Filter 是一个请求路径截取的功能,StripPrefix=n,n代表截取路径的个数
-            - StripPrefix=1
+            - StripPrefix=1 # StripPrefix Filter 是一个请求路径截取的功能,StripPrefix=n,n代表截取路径的个数
             - name: RequestRateLimiter
               args:
                 key-resolver: '#{@hostAddrKeyResolver}' # 用于限流的键的解析器的 Bean 对象的名字。它使用 SpEL 表达式根据#{@beanName}从 Spring 容器中获取 Bean 对象
-                redis-rate-limiter.replenishRate: 1 # 令牌桶每秒填充平均速率
-                redis-rate-limiter.burstCapacity: 3 # 令牌桶总容量
+                redis-rate-limiter.replenishRate: 10 # 令牌桶每秒填充平均速率,即行等价于允许用户每秒处理多少个请求平均数
+                redis-rate-limiter.burstCapacity: 20 # 令牌桶总容量，允许在一秒钟内完成的最大请求数
 
 eureka:
   client:
