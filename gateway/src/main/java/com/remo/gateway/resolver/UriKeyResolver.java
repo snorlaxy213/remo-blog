@@ -1,13 +1,13 @@
-package com.remo.gateway.keyResolver;
+package com.remo.gateway.resolver;
 
 import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-public class HostAddrKeyResolver implements KeyResolver {
+public class UriKeyResolver implements KeyResolver {
 
     @Override
     public Mono<String> resolve(ServerWebExchange exchange) {
-        return Mono.just(exchange.getRequest().getRemoteAddress().getAddress().getHostAddress());
+        return Mono.just(exchange.getRequest().getURI().getPath());
     }
 }

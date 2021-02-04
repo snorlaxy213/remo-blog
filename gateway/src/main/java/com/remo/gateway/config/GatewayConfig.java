@@ -1,6 +1,6 @@
 package com.remo.gateway.config;
 
-import com.remo.gateway.keyResolver.HostAddrKeyResolver;
+import com.remo.gateway.resolver.HostAddrKeyResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
