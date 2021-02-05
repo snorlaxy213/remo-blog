@@ -1,45 +1,43 @@
 package com.remo.gateway.pojo.vo;
 
-/**
- * 视图默认返回对象
- */
 public class ResponseVo {
-    private Integer respCode;
+    /**
+     * 0 - success, 1 -fail
+     */
+    private int code;
+    private String message;
+    private Object content;
 
-    private String errMsg;
-
-    private Object data;
-
-    public Integer getRespCode() {
-        return respCode;
+    public ResponseVo() {
     }
 
-    public void setRespCode(Integer respCode) {
-        this.respCode = respCode;
+    public ResponseVo(int code, String message) {
+        this.code = code;
+        this.message = message;
     }
 
-    public String getErrMsg() {
-        return errMsg;
+    public int getCode() {
+        return code;
     }
 
-    public void setErrMsg(String errMsg) {
-        this.errMsg = errMsg;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public Object getData() {
-        return data;
+    public String getMessage() {
+        return message;
     }
 
-    public void setData(Object data) {
-        this.data = data;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return "ResponseVo{" +
-                "respCode=" + respCode +
-                ", errMsg='" + errMsg + '\'' +
-                ", data=" + data +
-                '}';
+    public Object getContent() {
+        return content;
     }
+
+    public void setContent(Object content) {
+        this.content = content;
+    }
+
 }

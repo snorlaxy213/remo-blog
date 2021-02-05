@@ -8,13 +8,12 @@ import org.springframework.cloud.gateway.support.ipresolver.RemoteAddressResolve
 import org.springframework.cloud.gateway.support.ipresolver.XForwardedRemoteAddressResolver;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 import java.net.InetSocketAddress;
 
-@Component
+//@Component
 public class IpBlackListFilter implements GlobalFilter, Ordered {
 
     public static final Logger log = LoggerFactory.getLogger(IpBlackListFilter.class);

@@ -5,6 +5,11 @@ spring:
   application:
     # 该服务的名称，同时也是注册到eureka上的应用名称
     name: gateway
+  datasource:
+    url: jdbc:mysql://localhost:3306/remo_gateway?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
     enabled: true # Redis switch / off by default
     database: 0 # Redis database index (default is 0)
@@ -47,7 +52,7 @@ spring:
 
 eureka:
   client:
-    enabled: true
+    enabled: false
     service-url:
       defaultZone: http://root:root@localhost:8761/eureka/,http://root:root@localhost:8762/eureka/
     instances:

@@ -1,5 +1,6 @@
-package com.remo.gateway.mapper.entity;
+package com.remo.gateway.mapper;
 
+import com.remo.gateway.mapper.entity.Blacklist;
 import org.apache.ibatis.annotations.Select;
 
 public interface BlacklistMapper {

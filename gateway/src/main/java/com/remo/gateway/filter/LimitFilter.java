@@ -37,7 +37,7 @@ public class LimitFilter implements GatewayFilter, Ordered {
 
     private byte[] generateBytes(String msg) {
         ResponseVo responseVo = new ResponseVo();
-        responseVo.setErrMsg(msg);
+        responseVo.setMessage(msg);
         return responseVo.toString().getBytes(StandardCharsets.UTF_8);
     }
 }

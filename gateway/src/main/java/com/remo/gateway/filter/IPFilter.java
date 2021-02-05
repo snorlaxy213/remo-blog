@@ -1,11 +1,13 @@
 package com.remo.gateway.filter;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.remo.gateway.build.GatewayDirector;
 import com.remo.gateway.pojo.vo.ResponseVo;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
+import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
@@ -21,14 +23,54 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * description: 网关拦截
- * create by: YangLinWei
- * create time: 2020/5/20 9:10 上午
  */
 @Component
-public class IPFilter implements GatewayFilter, Ordered {
+public class IPFilter implements GlobalFilter, Ordered {
 
     @Autowired
     private GatewayDirector gatewayDirector;
+
+    @Autowired
+    private ObjectMapper mapper;
+
+    @Override
+    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        ServerHttpRequest request = exchange.getRequest();
+        ServerHttpResponse response = exchange.getResponse();
+
+        String ipAddress = getIpAddress(request);
+        Boolean isBlockIp = gatewayDirector.director(ipAddress);
+        if (StringUtils.isNotEmpty(ipAddress) && !isBlockIp) {
+            return chain.filter(exchange);
+        } else if (isBlockIp) {
+            String errorMeg = "The ip address is block";
+//            byte[] bytes = errorMeg.getBytes(StandardCharsets.UTF_8);
+            response.setStatusCode(HttpStatus.FORBIDDEN);
+            DataBuffer buffer = null;
+            try {
+                buffer = exchange.getResponse().bufferFactory().wrap(generateBytes(errorMeg));
+            } catch (JsonProcessingException e) {
+                response.writeWith(Flux.just(buffer));
+            }
+            return response.writeWith(Flux.just(buffer));
+        } else {
+            String errorMeg = "Unable to get the ip address";
+//            byte[] bytes = errorMeg.getBytes(StandardCharsets.UTF_8);
+            response.setStatusCode(HttpStatus.FORBIDDEN);
+            DataBuffer buffer = null;
+            try {
+                buffer = exchange.getResponse().bufferFactory().wrap(generateBytes(errorMeg));
+            } catch (JsonProcessingException e) {
+                response.writeWith(Flux.just(buffer));
+            }
+            return response.writeWith(Flux.just(buffer));
+        }
+    }
+
+    @Override
+    public int getOrder() {
+        return 0;
+    }
 
     /**
      * 获取Ip地址
@@ -66,36 +108,11 @@ public class IPFilter implements GatewayFilter, Ordered {
         return ip;
     }
 
-    @Override
-    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        ServerHttpRequest request = exchange.getRequest();
-        ServerHttpResponse response = exchange.getResponse();
-
-        String ipAddress = getIpAddress(request);
-        if (StringUtils.isNotEmpty(ipAddress)) {
-            return chain.filter(exchange);
-        } else if (gatewayDirector.director(ipAddress)) {
-            byte[] bytes = generateBytes("The ip address is block");
-            response.setStatusCode(HttpStatus.TOO_MANY_REQUESTS);
-            DataBuffer buffer = exchange.getResponse().bufferFactory().wrap(bytes);
-            return response.writeWith(Flux.just(buffer));
-        } else {
-            byte[] bytes = generateBytes("Unable to get the ip address");
-            response.setStatusCode(HttpStatus.TOO_MANY_REQUESTS);
-            DataBuffer buffer = exchange.getResponse().bufferFactory().wrap(bytes);
-            return response.writeWith(Flux.just(buffer));
-        }
-    }
-
-    @Override
-    public int getOrder() {
-        return 0;
-    }
-
-    private byte[] generateBytes(String msg) {
+    private byte[] generateBytes(String msg) throws JsonProcessingException {
         ResponseVo responseVo = new ResponseVo();
-        responseVo.setErrMsg(msg);
-        return responseVo.toString().getBytes(StandardCharsets.UTF_8);
+        responseVo.setMessage(msg);
+        return mapper.writeValueAsString(responseVo).getBytes(StandardCharsets.UTF_8);
     }
+
 }
 

@@ -1,38 +1,36 @@
 package com.remo.gateway.utils;
 
-import com.remo.basic.constant.RemoConstants;
 import com.remo.gateway.pojo.vo.ResponseVo;
 
 /**
- * 视图对象工具类
+ * ResponseVo 工具类
  *
  * @author Jules
- * @date 2019/6/25
+ * @date 2019/8/28
  */
 public class ResponseUtil {
-    public static ResponseVo initSuccessResultVO() {
+
+    private static final int successCode = 0;
+    private static final int errorCode = 1;
+
+    public static ResponseVo initSuccessResponse(Object object) {
         ResponseVo responseVo = new ResponseVo();
-        responseVo.setRespCode(RemoConstants.SUCCESS_RESULT_CODE);
+        responseVo.setCode(successCode);
+        responseVo.setContent(object);
         return responseVo;
     }
 
-    public static ResponseVo initSuccessResultVO(Object data) {
+    public static ResponseVo initFailResponse(Object object) {
         ResponseVo responseVo = new ResponseVo();
-        responseVo.setRespCode(RemoConstants.SUCCESS_RESULT_CODE);
-        responseVo.setData(data);
+        responseVo.setCode(errorCode);
+        responseVo.setContent(object);
         return responseVo;
     }
 
-    public static ResponseVo initErrorResultVO() {
+    public static ResponseVo initFailResponse(String message) {
         ResponseVo responseVo = new ResponseVo();
-        responseVo.setRespCode(RemoConstants.ERROR_RESULT_CODE);
-        return responseVo;
-    }
-
-    public static ResponseVo initErrorResultVO(String msg) {
-        ResponseVo responseVo = new ResponseVo();
-        responseVo.setRespCode(RemoConstants.ERROR_RESULT_CODE);
-        responseVo.setErrMsg(msg);
+        responseVo.setCode(errorCode);
+        responseVo.setMessage(message);
         return responseVo;
     }
 }
