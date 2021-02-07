@@ -1,28 +1,30 @@
-package com.remo.article.controller.exception;
+package com.remo.article.controller.exception.exception;
 
 import com.remo.article.pojo.dto.FieldErrorDto;
 
 import java.util.List;
 
-public class ParamException extends RuntimeException {
+/**
+ * Parameter Exception
+ *
+ * @author Jules
+ * @date 2019/6/25
+ */
+public class ParameterException extends RuntimeException {
     private boolean isFieldError;
     private List<FieldErrorDto> fieldErrorDtos;
 
-    public ParamException() {
+    public ParameterException() {
         super();
     }
 
-    public ParamException(String message) {
+    public ParameterException(String message) {
         super(message);
     }
 
-    public ParamException(String message, boolean isFieldError, List<FieldErrorDto> fieldErrorDtos) {
+    public ParameterException(String message, boolean isFieldError, List<FieldErrorDto> fieldErrorDtos) {
         super(message);
         this.isFieldError = isFieldError;
-        this.fieldErrorDtos = fieldErrorDtos;
-    }
-
-    public ParamException(List<FieldErrorDto> fieldErrorDtos) {
         this.fieldErrorDtos = fieldErrorDtos;
     }
 

@@ -2,13 +2,14 @@ package com.remo.article.controller;
 
 
 import com.remo.article.common.util.ResponseUtil;
-import com.remo.article.controller.exception.ParamException;
+import com.remo.article.controller.exception.exception.BusinessException;
+import com.remo.article.controller.exception.exception.ParameterException;
 import com.remo.article.pojo.dto.ArticleDto;
 import com.remo.article.pojo.dto.SimpleArticleDto;
 import com.remo.article.pojo.vo.ResponseVo;
 import com.remo.article.pojo.vo.query.ListArticleQuery;
 import com.remo.article.service.IArticleService;
-import com.remo.basic.exception.BusinessException;
+import com.remo.basic.annotation.RemoLog;
 import com.remo.basic.group.Insert;
 import com.remo.basic.group.Update;
 import io.swagger.annotations.Api;
@@ -62,12 +63,12 @@ public class ArticleController {
 
     @ApiOperation(value = "listArticles")
     @PostMapping("listArticles")
-    public ResponseVo listArticles(@RequestBody ListArticleQuery query) throws ParamException, BusinessException {
+    public ResponseVo listArticles(@RequestBody ListArticleQuery query) throws ParameterException, BusinessException {
         List<ArticleDto> articles = articleService.listArticles(query);
         return ResponseUtil.initSuccessResponse(articles);
     }
 
-    //    @RemoLog("listSimpleArticles")
+    @RemoLog("listSimpleArticles")
     @ApiOperation(value = "listSimpleArticles")
     @GetMapping("listSimpleArticles")
     public ResponseVo listSimpleArticles() {
