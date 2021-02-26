@@ -10,6 +10,10 @@ import java.util.List;
 public class TagDto {
 
     /**
+     * articleDtos
+     */
+    List<ArticleDto> articleDtos;
+    /**
      * Tag Id
      */
     @NotNull(groups = Update.class)
@@ -24,11 +28,6 @@ public class TagDto {
      */
     @NotNull(groups = Insert.class)
     private Integer orderNum;
-
-    /**
-     * articleDtos
-     */
-    List<ArticleDto> articleDtos;
 
     public Long getTagId() {
         return tagId;

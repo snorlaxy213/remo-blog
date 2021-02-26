@@ -11,6 +11,10 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ArticleDto {
 
+    /**
+     * TagDtos
+     */
+    List<TagDto> tagDtos;
     @NotNull(groups = Update.class)
     private Integer id;
     /**
@@ -70,11 +74,6 @@ public class ArticleDto {
      */
     @NotNull(groups = Update.class)
     private Integer version;
-
-    /**
-     * TagDtos
-     */
-    List<TagDto> tagDtos;
 
     public Integer getId() {
         return id;

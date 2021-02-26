@@ -16,27 +16,20 @@ public class ToolUtil {
     public static boolean isEmpty(Object o) {
         if (o == null) {
             return true;
-        }
-        else {
+        } else {
             if (o instanceof String) {
                 return o.toString().trim().equals("");
-            }
-            else if (o instanceof List) {
+            } else if (o instanceof List) {
                 return ((List) o).size() == 0;
-            }
-            else if (o instanceof Map) {
+            } else if (o instanceof Map) {
                 return ((Map) o).size() == 0;
-            }
-            else if (o instanceof Set) {
+            } else if (o instanceof Set) {
                 return ((Set) o).size() == 0;
-            }
-            else if (o instanceof Object[]) {
+            } else if (o instanceof Object[]) {
                 return ((Object[]) o).length == 0;
-            }
-            else if (o instanceof int[]) {
+            } else if (o instanceof int[]) {
                 return ((int[]) o).length == 0;
-            }
-            else return o instanceof long[] && ((long[]) o).length == 0;
+            } else return o instanceof long[] && ((long[]) o).length == 0;
 
         }
     }

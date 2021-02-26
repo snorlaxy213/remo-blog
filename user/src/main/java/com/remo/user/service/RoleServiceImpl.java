@@ -19,8 +19,8 @@ import java.util.List;
 @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(RoleServiceImpl.class); 
-    
+    private static final Logger LOGGER = LoggerFactory.getLogger(RoleServiceImpl.class);
+
     @Resource(name = "dozerBeanMapper")
     private DozerBeanMapper mapper;
 

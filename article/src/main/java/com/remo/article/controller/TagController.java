@@ -40,8 +40,7 @@ public class TagController {
     public ResponseVo addTag(@Validated(Insert.class) @RequestBody TagDto tagDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResponseUtil.initFailResponse(bindingResult);
-        }
-        else {
+        } else {
             return ResponseUtil.initSuccessResponse(tagService.addTag(tagDto));
         }
     }
@@ -51,8 +50,7 @@ public class TagController {
     public ResponseVo updateTag(@Validated(Update.class) @RequestBody TagDto tagDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResponseUtil.initFailResponse(bindingResult);
-        }
-        else {
+        } else {
             return ResponseUtil.initSuccessResponse(tagService.updateTag(tagDto));
         }
     }

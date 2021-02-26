@@ -1,6 +1,7 @@
 ### 集成Feign
-Step1 ：
-引入Feign依赖
+
+Step1 ： 引入Feign依赖
+
 ````java
 <!-- 开启feign-->
 <dependency>
@@ -9,8 +10,8 @@ Step1 ：
 </dependency>
 ````
 
-Step2 ：
-创建Feign接口，并添加@FeignClient注解
+Step2 ： 创建Feign接口，并添加@FeignClient注解
+
 ````java
 @FeignClient(name = "log", configuration = FeignConfig.class)
 public interface LogServiceClient {
@@ -20,6 +21,7 @@ public interface LogServiceClient {
 
 }
 ````
+
 由于使用了eureka，@FeignClient的name会解析成对应eureka服务注册表中的服务；
 
 若没有使用eureka，可用service.ribbon.listOfServers属性配置服务器列表。
@@ -28,8 +30,7 @@ public interface LogServiceClient {
 
 tips：@FeignClient(configuration = FeignConfig.class)为自定义Feign配置
 
-Step3 ：
-使用Feign接口
+Step3 ： 使用Feign接口
 
 ````java
     @Autowired
@@ -40,6 +41,5 @@ Step3 ：
     }   
 ````
 
-Step4 ：
-启动类添加注解@EnableFeignClients
+Step4 ： 启动类添加注解@EnableFeignClients
 

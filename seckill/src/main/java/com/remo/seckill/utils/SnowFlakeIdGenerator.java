@@ -72,8 +72,7 @@ public class SnowFlakeIdGenerator {
             if (sequence == 0) {// sequence等于0说明毫秒内序列已经增长到最大值
                 timestamp = tilNextMillis(lastTimestamp); // 阻塞到下一个毫秒,获得新的时间戳
             }
-        }
-        else {// 时间戳改变，毫秒内序列重置
+        } else {// 时间戳改变，毫秒内序列重置
             sequence = 0L;
         }
 

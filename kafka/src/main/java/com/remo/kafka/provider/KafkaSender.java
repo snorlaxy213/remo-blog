@@ -15,10 +15,9 @@ import java.util.UUID;
 @Slf4j
 public class KafkaSender {
 
+    private final Gson gson = new GsonBuilder().create();
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
-
-    private final Gson gson = new GsonBuilder().create();
 
     //发送消息方法
     public void send() {
