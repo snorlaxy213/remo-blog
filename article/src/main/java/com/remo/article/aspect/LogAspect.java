@@ -73,12 +73,8 @@ public class LogAspect {
             }
             sysLog.setParams(params);
         }
-        //todo 获取IP
-        // 获取request
-//        HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
         // 设置IP地址
         sysLog.setIp(IPUtil.getIpAddr(request));
-        sysLog.setIp("localhost");
         // 模拟一个用户名
         sysLog.setUsername("remo");
         sysLog.setTime((int) time);

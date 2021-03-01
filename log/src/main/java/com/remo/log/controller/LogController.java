@@ -16,7 +16,6 @@ public class LogController {
 
     @PostMapping(value = "/saveLog")
     public void saveSysLog(@RequestBody SysLog sysLog) {
-        System.out.println("Local VM");
         logService.saveSysLog(sysLog);
     }
 

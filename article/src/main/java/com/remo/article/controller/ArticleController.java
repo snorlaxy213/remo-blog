@@ -59,6 +59,7 @@ public class ArticleController {
         return ResponseUtil.initSuccessResponse(articleDto);
     }
 
+    @RemoLog("listArticles")
     @ApiOperation(value = "listArticles")
     @PostMapping("listArticles")
     public ResponseVo listArticles(@RequestBody ListArticleQuery query) throws ParameterException, BusinessException {
