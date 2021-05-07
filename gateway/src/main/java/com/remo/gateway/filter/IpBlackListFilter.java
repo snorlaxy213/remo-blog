@@ -1,10 +1,13 @@
 package com.remo.gateway.filter;
 
 import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.remo.gateway.build.GatewayDirector;
+import com.remo.gateway.build.GatewayAttributesVerify;
+import com.remo.gateway.build.GatewayIPBlock;
 import com.remo.gateway.pojo.vo.ResponseVo;
 import com.remo.gateway.utils.GatewayUtil;
 
@@ -30,7 +33,10 @@ import reactor.core.publisher.Mono;
 public class IpBlackListFilter implements GlobalFilter, Ordered {
 
     @Autowired
-    private GatewayDirector gatewayDirector;
+    private GatewayAttributesVerify gatewayDirector;
+
+    @Autowired
+    private GatewayIPBlock gatewayIPBlock;
 
     @Autowired
     private ObjectMapper mapper;
@@ -39,10 +45,12 @@ public class IpBlackListFilter implements GlobalFilter, Ordered {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
         ServerHttpResponse response = exchange.getResponse();
+        Map<String, List<String>> attributes = exchange.getRequest().getQueryParams();
 
         String ipAddress = GatewayUtil.getIpAddress(request);
-        Boolean isBlockIp = gatewayDirector.director(ipAddress);
+        Boolean isBlockIp = gatewayIPBlock.action(ipAddress);
         if (StringUtils.isNotEmpty(ipAddress) && !isBlockIp) {
+            gatewayDirector.action(ipAddress, attributes);
             return chain.filter(exchange);
         } else if (isBlockIp) {
             String errorMeg = "The ip address is block";
