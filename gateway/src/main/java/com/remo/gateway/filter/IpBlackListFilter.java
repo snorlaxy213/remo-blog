@@ -1,49 +1,84 @@
 package com.remo.gateway.filter;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.nio.charset.StandardCharsets;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.remo.gateway.build.GatewayDirector;
+import com.remo.gateway.pojo.vo.ResponseVo;
+import com.remo.gateway.utils.GatewayUtil;
+
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
-import org.springframework.cloud.gateway.support.ipresolver.RemoteAddressResolver;
-import org.springframework.cloud.gateway.support.ipresolver.XForwardedRemoteAddressResolver;
 import org.springframework.core.Ordered;
+import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
+
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.net.InetSocketAddress;
-
-//@Component
+/**
+ * description: 网关拦截
+ */
+@Component
 public class IpBlackListFilter implements GlobalFilter, Ordered {
 
-    public static final Logger log = LoggerFactory.getLogger(IpBlackListFilter.class);
+    @Autowired
+    private GatewayDirector gatewayDirector;
 
-    private final RemoteAddressResolver remoteAddressResolver = XForwardedRemoteAddressResolver
-            .maxTrustedIndex(1);
+    @Autowired
+    private ObjectMapper mapper;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        try {
-            InetSocketAddress remoteAddress = remoteAddressResolver.resolve(exchange);
-            String clientIp = remoteAddress.getHostName();
-            // redisTemplate.hasKey(BLACKLIST_IP_KEY + StringConsts.COLON + clientIp)
-            if (true) {
-                log.info("intercept invalid request from forbidden ip {}", clientIp);
-                exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
-                return Mono.empty();
+        ServerHttpRequest request = exchange.getRequest();
+        ServerHttpResponse response = exchange.getResponse();
+
+        String ipAddress = GatewayUtil.getIpAddress(request);
+        Boolean isBlockIp = gatewayDirector.director(ipAddress);
+        if (StringUtils.isNotEmpty(ipAddress) && !isBlockIp) {
+            return chain.filter(exchange);
+        } else if (isBlockIp) {
+            String errorMeg = "The ip address is block";
+//            byte[] bytes = errorMeg.getBytes(StandardCharsets.UTF_8);
+            response.setStatusCode(HttpStatus.FORBIDDEN);
+            DataBuffer buffer = null;
+            try {
+                buffer = exchange.getResponse().bufferFactory().wrap(generateBytes(errorMeg));
+            } catch (JsonProcessingException e) {
+                response.writeWith(Flux.just(buffer));
             }
-        } catch (Exception e) {
-            log.error("IpBlackListFilter error", e);
+            return response.writeWith(Flux.just(buffer));
+        } else {
+            String errorMeg = "Unable to get the ip address";
+//            byte[] bytes = errorMeg.getBytes(StandardCharsets.UTF_8);
+            response.setStatusCode(HttpStatus.FORBIDDEN);
+            DataBuffer buffer = null;
+            try {
+                buffer = exchange.getResponse().bufferFactory().wrap(generateBytes(errorMeg));
+            } catch (JsonProcessingException e) {
+                response.writeWith(Flux.just(buffer));
+            }
+            return response.writeWith(Flux.just(buffer));
         }
-        return chain.filter(exchange);
     }
 
-    /**
-     * order的规则：order的值越小，优先级越高
-     * order如果不标注数字，默认最低优先级，因为其默认值是int最大值
-     */
     @Override
     public int getOrder() {
         return 0;
     }
+
+    private byte[] generateBytes(String msg) throws JsonProcessingException {
+        ResponseVo responseVo = new ResponseVo();
+        responseVo.setMessage(msg);
+        return mapper.writeValueAsString(responseVo).getBytes(StandardCharsets.UTF_8);
+    }
+
 }
+

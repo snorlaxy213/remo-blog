@@ -1,6 +1,7 @@
 package com.remo.gateway.config;
 
 import com.remo.gateway.resolver.HostAddrKeyResolver;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,10 +13,10 @@ public class GatewayConfig {
         return new HostAddrKeyResolver();
     }
 
-//    @Bean("uriKeyResolver")
-//    public UriKeyResolver uriKeyResolver() {
-//        return new UriKeyResolver();
-//    }
+    // @Bean("uriKeyResolver")
+    // public UriKeyResolver uriKeyResolver() {
+    // return new UriKeyResolver();
+    // }
 
     // Java写Route的方式, 可参考
 //    @Bean
