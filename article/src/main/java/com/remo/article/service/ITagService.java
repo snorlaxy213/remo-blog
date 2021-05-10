@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface ITagService extends IService<Tag> {
 
+    void testRedis();
+
     List<TagDto> listTags();
 
     TagDto getTag(Long tagId);

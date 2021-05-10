@@ -8,7 +8,9 @@ import com.remo.article.pojo.entity.Tag;
 import com.remo.article.service.ITagService;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +20,21 @@ import java.util.List;
 
 @Service("tagServiceImpl")
 public class TagServiceImpl extends ServiceImpl<TagMapper, Tag> implements ITagService {
+
+    @Autowired
+    @Qualifier("redisTemplate")
+    private RedisTemplate redisTemplate;
+
+    @Autowired
+    @Qualifier("secondaryRedisTemplate")
+    private RedisTemplate secondaryRedisTemplate;
+
+    @Override
+    @Transactional
+    public void testRedis() {
+        redisTemplate.opsForValue().set("masterKey", "testMasterKey");
+        System.out.println(secondaryRedisTemplate.opsForValue().get("slaveKey"));
+    }
 
     @Resource
     @Qualifier("dozerBeanMapper")
