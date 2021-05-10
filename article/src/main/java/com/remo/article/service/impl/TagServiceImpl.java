@@ -32,8 +32,8 @@ public class TagServiceImpl extends ServiceImpl<TagMapper, Tag> implements ITagS
     @Override
     @Transactional
     public void testRedis() {
-        redisTemplate.opsForValue().set("masterKey", "testMasterKey");
-        System.out.println(secondaryRedisTemplate.opsForValue().get("slaveKey"));
+//        redisTemplate.opsForValue().set("masterKey", "testMasterKey");
+        System.out.println(secondaryRedisTemplate.opsForValue().get("TEST"));
     }
 
     @Resource
