@@ -6,6 +6,7 @@ import com.remo.article.pojo.dto.SimpleArticleDto;
 import com.remo.article.pojo.entity.Article;
 import com.remo.article.pojo.vo.query.ListArticleQuery;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -19,6 +20,8 @@ public interface IArticleService extends IService<Article> {
     List<ArticleDto> listArticles(ListArticleQuery query);
 
     List<SimpleArticleDto> listSimpleArticles();
+
+    List<SimpleArticleDto> articleRanks(LocalDate from, LocalDate to);
 
     ArticleDto getArticle(Long id);
 

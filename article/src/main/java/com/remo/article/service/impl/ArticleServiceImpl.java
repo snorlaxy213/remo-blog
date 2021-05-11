@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +73,12 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         List<SimpleArticleDto> simpleArticleDtos = new ArrayList<>();
         articles.forEach(article -> simpleArticleDtos.add(dozerMapper.map(article, SimpleArticleDto.class)));
         return simpleArticleDtos;
+    }
+
+    @Override
+    public List<SimpleArticleDto> articleRanks(LocalDate from, LocalDate to) {
+
+        return null;
     }
 
     @Override
