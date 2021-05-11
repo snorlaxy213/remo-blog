@@ -22,8 +22,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
 
-@RestController(value = "/article")
 @Api(tags = "Article")
+@RestController(value = "/article")
+@RequestMapping("/article")
 public class ArticleController {
 
     @Resource

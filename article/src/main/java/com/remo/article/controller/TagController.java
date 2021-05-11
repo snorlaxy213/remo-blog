@@ -17,6 +17,7 @@ import javax.annotation.Resource;
 
 @Api(tags = "Tag")
 @RestController(value = "/tag")
+@RequestMapping("/tag")
 public class TagController {
 
     @Resource
