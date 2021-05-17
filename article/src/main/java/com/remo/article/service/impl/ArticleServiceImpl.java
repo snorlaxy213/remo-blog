@@ -13,11 +13,11 @@ import org.dozer.DozerBeanMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
     public static final Logger log = LoggerFactory.getLogger(ArticleServiceImpl.class);
 
-    @Resource
+    @Autowired
     @Qualifier("dozerBeanMapper")
     DozerBeanMapper dozerMapper;
 
@@ -45,7 +45,6 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
      * @return
      */
     @Override
-//    @DS("slave")
     public List<ArticleDto> listArticles(ListArticleQuery listArticleQuery) {
         QueryWrapper<Article> wrapper = new QueryWrapper<>();
         if (listArticleQuery.getArticleType() != null) {

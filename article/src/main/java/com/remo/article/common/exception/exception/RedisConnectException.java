@@ -1,4 +1,4 @@
-package com.remo.article.controller.exception.exception;
+package com.remo.article.common.util.exception.exception;
 
 /**
  * Redis 连接异常

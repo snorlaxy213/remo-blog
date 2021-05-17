@@ -2,8 +2,8 @@ package com.remo.article.controller;
 
 
 import com.remo.article.common.util.ResponseUtil;
-import com.remo.article.controller.exception.exception.BusinessException;
-import com.remo.article.controller.exception.exception.ParameterException;
+import com.remo.article.common.util.exception.exception.BusinessException;
+import com.remo.article.common.util.exception.exception.ParameterException;
 import com.remo.article.pojo.dto.ArticleDto;
 import com.remo.article.pojo.dto.SimpleArticleDto;
 import com.remo.article.pojo.vo.ResponseVo;

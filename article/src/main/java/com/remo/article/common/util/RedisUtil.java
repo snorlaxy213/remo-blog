@@ -1,4 +1,4 @@
-package com.remo.article.utils;
+package com.remo.article.common.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
