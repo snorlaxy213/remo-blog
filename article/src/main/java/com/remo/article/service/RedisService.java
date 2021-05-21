@@ -1,13 +1,14 @@
 package com.remo.article.service;
 
-import com.remo.article.pojo.dto.SimpleArticleDto;
-
-import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 public interface RedisService {
 
-    void articleLikes(String key);
+    void addCore(int id, int score);
 
-    List<SimpleArticleDto> articleRanks(LocalDate from, LocalDate to);
+    Set getTop(int top);
+
+    Set getTopWithScore(int top);
+
+    Set getTopWithScore(int start, int limit);
 }

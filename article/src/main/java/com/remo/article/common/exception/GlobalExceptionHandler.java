@@ -1,4 +1,4 @@
-package com.remo.article.common.util.exception;
+package com.remo.article.common.exception;
 
 import com.remo.article.common.util.ResponseUtil;
 import com.remo.article.common.util.exception.exception.ParameterException;
