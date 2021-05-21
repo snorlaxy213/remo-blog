@@ -15,13 +15,11 @@ import com.remo.basic.group.Update;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.time.LocalDate;
 import java.util.List;
 
 @Api(tags = "Article")
@@ -78,13 +76,5 @@ public class ArticleController {
         return ResponseUtil.initSuccessResponse(simpleArticleDtos);
     }
 
-    @RemoLog("articleRanks")
-    @ApiOperation(value = "articleRanks")
-    @GetMapping("articleRanks")
-    public ResponseVo articleRanks(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
-                                   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
-        List<SimpleArticleDto> simpleArticleDtos = articleService.listSimpleArticles();
-        return ResponseUtil.initSuccessResponse(simpleArticleDtos);
-    }
 
 }
