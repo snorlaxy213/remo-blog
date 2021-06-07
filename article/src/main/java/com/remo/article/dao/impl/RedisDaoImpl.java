@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * @author Vino
+ */
 @Repository("redisDao")
 public class RedisDaoImpl implements RedisDao {
 

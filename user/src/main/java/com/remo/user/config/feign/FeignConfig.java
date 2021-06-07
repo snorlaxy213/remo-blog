@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Feign Configuration
  *
- * @author Jules
+ * @author Vino
  * @date 2019/11/15
  */
 @Configuration

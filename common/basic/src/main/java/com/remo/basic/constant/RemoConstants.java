@@ -3,7 +3,7 @@ package com.remo.basic.constant;
 /**
  * Remo common constant
  *
- * @author Jules
+ * @author Vino
  * @date 2020/1/7
  */
 public class RemoConstants {

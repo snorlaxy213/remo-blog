@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 /**
  * 格式化及正则表达式常量
  *
- * @author Jules
+ * @author Vino
  * @date 2019/9/9
  */
 public class FormatConstant {

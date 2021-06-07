@@ -22,6 +22,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * @author Vino
+ */
 @Api(tags = "Article")
 @RestController(value = "/article")
 @RequestMapping("/article")
@@ -75,6 +78,5 @@ public class ArticleController {
         List<SimpleArticleDto> simpleArticleDtos = articleService.listSimpleArticles();
         return ResponseUtil.initSuccessResponse(simpleArticleDtos);
     }
-
 
 }

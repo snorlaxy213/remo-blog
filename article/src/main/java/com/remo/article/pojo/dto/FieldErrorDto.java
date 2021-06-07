@@ -3,7 +3,7 @@ package com.remo.article.pojo.dto;
 /**
  * 错误字段实体类
  *
- * @author jules
+ * @author Vino
  */
 public class FieldErrorDto {
 

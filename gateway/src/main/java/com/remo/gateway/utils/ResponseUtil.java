@@ -5,7 +5,7 @@ import com.remo.gateway.pojo.vo.ResponseVo;
 /**
  * ResponseVo 工具类
  *
- * @author Jules
+ * @author Vino
  * @date 2019/8/28
  */
 public class ResponseUtil {

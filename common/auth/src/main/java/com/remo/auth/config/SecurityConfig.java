@@ -34,6 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 // 授权异常处理
                 .exceptionHandling().authenticationEntryPoint(new JWTAuthenticationEntryPoint())
+                // 授权异常处理（2）
+//                .exceptionHandling().authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
                 .accessDeniedHandler(new JWTAccessDeniedHandler());
     }
 }

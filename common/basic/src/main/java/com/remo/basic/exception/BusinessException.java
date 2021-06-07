@@ -3,7 +3,7 @@ package com.remo.basic.exception;
 /**
  * 業務異常
  *
- * @author Jules
+ * @author Vino
  * @date 2019/9/16
  */
 public class BusinessException extends RuntimeException {

@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * ShiRoConfig
  *
- * @author Jules
+ * @author Vino
  * @date 2019/6/26
  */
 @Configuration
@@ -31,7 +31,7 @@ public class ShiroConfig {
      * perms：该资源必须得到权限才可以访问
      * roles：该资源必须得到角色权限才可以访问
      *
-     * @author Jules
+     * @author Vino
      * @date 2019/6/26
      */
     @Bean
@@ -73,7 +73,7 @@ public class ShiroConfig {
     /**
      * User Get AuthorizationInfo and Get AuthenticationInfo
      *
-     * @author Jules
+     * @author Vino
      * @date 2019/6/26
      */
     @Bean("shiroRealm")

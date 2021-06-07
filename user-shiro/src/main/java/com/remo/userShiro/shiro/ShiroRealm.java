@@ -24,7 +24,7 @@ import java.util.Set;
 /**
  * User Get AuthorizationInfo and Get AuthenticationInfo
  *
- * @author Jules
+ * @author Vino
  * @date 2019/6/26
  */
 public class ShiroRealm extends AuthorizingRealm {
