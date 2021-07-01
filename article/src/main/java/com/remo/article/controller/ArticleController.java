@@ -1,9 +1,13 @@
 package com.remo.article.controller;
 
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import com.remo.article.common.exception.exception.BusinessException;
+import com.remo.article.common.exception.exception.ParameterException;
 import com.remo.article.common.util.ResponseUtil;
-import com.remo.article.common.util.exception.exception.BusinessException;
-import com.remo.article.common.util.exception.exception.ParameterException;
 import com.remo.article.pojo.dto.ArticleDto;
 import com.remo.article.pojo.dto.SimpleArticleDto;
 import com.remo.article.pojo.vo.ResponseVo;
@@ -12,15 +16,19 @@ import com.remo.article.service.IArticleService;
 import com.remo.basic.annotation.RemoLog;
 import com.remo.basic.group.Insert;
 import com.remo.basic.group.Update;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
-import java.util.List;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * @author Vino
