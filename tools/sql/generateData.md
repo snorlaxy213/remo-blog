@@ -1,4 +1,25 @@
 ````sql
+--  Drop table
+
+--  DROP TABLE MillionData.`User`;
+
+CREATE TABLE MillionData.`User` (
+	user_id INTEGER NULL,
+	username varchar(100) NOT NULL,
+	name varchar(100) NULL,
+	password varchar(100) NOT NULL,
+	gender varchar(1) NOT NULL,
+	birthday DATE NULL,
+	create_time DATETIME NOT NULL,
+	create_user varchar(10) NULL,
+	CONSTRAINT User_PK PRIMARY KEY (user_id)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8
+COLLATE=utf8_general_ci
+COMMENT='Million User';
+
+
 set global log_bin_trust_function_creators=TRUE;
 
 # 随机产生字符串
