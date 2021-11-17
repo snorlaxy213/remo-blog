@@ -18,10 +18,8 @@
         <module>kafka</module>
         <module>user-shiro</module>
         <module>seckill</module>
-        <module>batch</module>
         <module>config</module>
         <module>config-client</module>
-        <module>uaa-service</module>
     </modules>
 
     <properties>
