@@ -17,7 +17,6 @@
         <module>gateway</module>
         <module>kafka</module>
         <module>user-shiro</module>
-        <module>seckill</module>
         <module>config</module>
         <module>config-client</module>
     </modules>
