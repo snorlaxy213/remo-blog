@@ -23,6 +23,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 /**
  * 文章服务实现
  *
@@ -34,7 +36,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
     public static final Logger log = LoggerFactory.getLogger(ArticleServiceImpl.class);
 
-    @Autowired
+    @Resource
     @Qualifier("dozerBeanMapper")
     DozerBeanMapper dozerMapper;
 
