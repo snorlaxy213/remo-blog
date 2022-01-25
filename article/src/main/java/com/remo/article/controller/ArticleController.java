@@ -33,7 +33,7 @@ import io.swagger.annotations.ApiOperation;
 /**
  * @author Vino
  */
-@Api(tags = "Article")
+@Api(tags = "Article", value = "文章服务管理")
 @RestController(value = "/article")
 @RequestMapping("/article")
 public class ArticleController {
@@ -42,7 +42,13 @@ public class ArticleController {
     @Qualifier("articleServiceImpl")
     private IArticleService articleService;
 
-    @ApiOperation(value = "insertArticle")
+    /**
+     * 新增文章
+     * @param articleDto 文章数据
+     * @param bindingResult JSR303校验参数
+     * @return 新增成功/失败
+     */
+    @ApiOperation(value = "新增文章")
     @PostMapping("insertArticle")
     public ResponseVo insertArticle(@Validated(Insert.class) @RequestBody ArticleDto articleDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -53,7 +59,13 @@ public class ArticleController {
         }
     }
 
-    @ApiOperation(value = "updateArticle")
+    /**
+     * 修改文章
+     * @param articleDto 文章数据
+     * @param bindingResult JSR303校验参数
+     * @return 修改成功/失败
+     */
+    @ApiOperation(value = "修改文章")
     @PostMapping("updateArticle")
     public ResponseVo updateArticle(@Validated(Update.class) @RequestBody ArticleDto articleDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -64,21 +76,37 @@ public class ArticleController {
         }
     }
 
-    @ApiOperation(value = "getArticle")
-    @GetMapping("getArticle/{id}")
-    public ResponseVo getArticle(@PathVariable(value = "id") Long id) {
-        ArticleDto articleDto = articleService.getArticle(id);
+    /**
+     * 根据ID获取单篇文章
+     * @param articleId 文章ID
+     * @return 单篇文章
+     */
+    @ApiOperation(value = "根据ID获取单篇文章")
+    @GetMapping("getArticle/{articleId}")
+    public ResponseVo getArticle(@PathVariable(value = "articleId") Long articleId) {
+        ArticleDto articleDto = articleService.getArticle(articleId);
         return ResponseUtil.initSuccessResponse(articleDto);
     }
 
+    /**
+     * 展示文章列表数据,支持分页（TODO）
+     * @param query 查询参数
+     * @return 多篇文章
+     * @throws ParameterException 参数校验异常
+     * @throws BusinessException 业务校验异常
+     */
     @RemoLog("listArticles")
-    @ApiOperation(value = "listArticles")
+    @ApiOperation(value = "展示文章列表数据")
     @PostMapping("listArticles")
     public ResponseVo listArticles(@RequestBody ListArticleQuery query) throws ParameterException, BusinessException {
         List<ArticleDto> articles = articleService.listArticles(query);
         return ResponseUtil.initSuccessResponse(articles);
     }
 
+    /**
+     * 展示多条文章及其相关简介
+     * @return 文章及其相关简介
+     */
     @RemoLog("listSimpleArticles")
     @ApiOperation(value = "listSimpleArticles")
     @GetMapping("listSimpleArticles")

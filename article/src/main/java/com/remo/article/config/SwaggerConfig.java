@@ -36,8 +36,10 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                //这里采用包含注解的方式来确定要显示的接口
-                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+                //为有@Api注解的Controller生成API文档
+//                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
+                //为有@ApiOperation注解的方法生成API文档
+               .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 //这里采用包扫描的方式来确定要显示的接口
 //                .apis(RequestHandlerSelectors.basePackage("com.article.controller"))
                 // 错误路径不监控
@@ -49,8 +51,8 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Article")
-                .description("Article document")
-                .contact(new Contact("vino", "https://xxx/remo/article", ""))
+                .description("Article DevelopMent Document")
+                .contact(new Contact("vino", "https://xxx/remo/article", "iso2ez4vino@outlook.com"))
                 .version("1.0")
                 .build();
     }

@@ -3,6 +3,8 @@ package com.remo.article.pojo.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.remo.basic.group.Update;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -12,68 +14,85 @@ import java.util.List;
 public class ArticleDto {
 
     /**
-     * TagDtos
+     * 数据库ID
      */
-    List<TagDto> tagDtos;
+    @ApiModelProperty("数据库ID")
     @NotNull(groups = Update.class)
     private Integer id;
     /**
      * 文章id
      */
+    @ApiModelProperty("文章id")
     private Long articleId;
     /**
      * 作者
      */
+    @ApiModelProperty("作者")
     @NotEmpty
     private String author;
     /**
      * 文章原作者
      */
+    @ApiModelProperty("文章原作者")
     private String originalAuthor;
     /**
      * 文章标题
      */
+    @ApiModelProperty("文章标题")
     @NotBlank
     private String articleTitle;
     /**
      * 文章内容
      */
+    @ApiModelProperty("文章内容")
     @NotBlank
     private String articleContent;
     /**
      * 文章类型
      */
+    @ApiModelProperty("文章类型")
     @NotBlank
     private String articleType;
     /**
      * 文章分类
      */
+    @ApiModelProperty("文章分类")
     private String articleCategories;
     /**
      * 文章url
      */
+    @ApiModelProperty("文章url")
     private String articleUrl;
     /**
      * 文章摘要
      */
+    @ApiModelProperty("文章摘要")
     private String articleTabloid;
     /**
      * 文章喜欢数
      */
+    @ApiModelProperty("文章喜欢数")
     private Integer likes;
     /**
      * 上一篇文章id
      */
+    @ApiModelProperty("上一篇文章id")
     private Long lastArticleId;
     /**
      * 下一篇文章id
      */
+    @ApiModelProperty("下一篇文章id")
     private Long nextArticleId;
     /**
      * 乐观锁
      */
+    @ApiModelProperty("乐观锁")
     @NotNull(groups = Update.class)
     private Integer version;
+    /**
+     * TagDtos
+     */
+    List<TagDto> tagDtos;
 
     public Integer getId() {
         return id;
