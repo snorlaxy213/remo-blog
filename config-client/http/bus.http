@@ -1,5 +1,0 @@
-### BUS REFRESH
-POST http://localhost:8771/actuator/bus-refresh
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json;charset=UTF-8
