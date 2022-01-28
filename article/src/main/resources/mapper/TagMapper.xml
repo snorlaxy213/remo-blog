@@ -2,11 +2,5 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.remo.article.mapper.TagMapper">
 
-    <!-- 开启二级缓存 -->
-    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
-
-    <!--    <delete id="deleteResolutionByTagId">-->
-    <!--        delete from article_tag where tagId = #{tagId}-->
-    <!--    </delete>-->
 
 </mapper>
