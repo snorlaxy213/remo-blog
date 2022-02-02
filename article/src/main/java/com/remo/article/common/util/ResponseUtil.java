@@ -22,14 +22,14 @@ public class ResponseUtil {
     public static ResponseVo initSuccessResponse(Object object) {
         ResponseVo responseVo = new ResponseVo();
         responseVo.setCode(successCode);
-        responseVo.setContent(object);
+        responseVo.setData(object);
         return responseVo;
     }
 
     public static ResponseVo initFailResponse(Object object) {
         ResponseVo responseVo = new ResponseVo();
         responseVo.setCode(errorCode);
-        responseVo.setContent(object);
+        responseVo.setData(object);
         return responseVo;
     }
 
@@ -51,7 +51,7 @@ public class ResponseUtil {
             dto.setErrMsg(error.getDefaultMessage());
             list.add(dto);
         });
-        responseVo.setContent(list);
+        responseVo.setData(list);
         return responseVo;
     }
 }

@@ -89,13 +89,12 @@ public class ArticleController {
     }
 
     /**
-     * 展示文章列表数据,支持分页（TODO）
+     * 展示文章列表数据,支持分页
      * @param query 查询参数
      * @return 多篇文章
      * @throws ParameterException 参数校验异常
      * @throws BusinessException 业务校验异常
      */
-    @RemoLog("listArticles")
     @ApiOperation(value = "展示文章列表数据")
     @PostMapping("listArticles")
     public ResponseVo listArticles(@RequestBody ListArticleQuery query) throws ParameterException, BusinessException {

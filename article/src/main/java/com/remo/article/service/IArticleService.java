@@ -19,6 +19,10 @@ public interface IArticleService extends IService<Article> {
 
     List<ArticleDto> listArticles(ListArticleQuery query);
 
+    /**
+     * 展示多条文章及其相关简介
+     * @return 文章及其相关简介
+     */
     List<SimpleArticleDto> listSimpleArticles();
 
     List<SimpleArticleDto> articleRanks(LocalDate from, LocalDate to);

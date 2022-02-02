@@ -1,8 +1,9 @@
 package com.remo.article.pojo.vo.query;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.remo.article.pojo.common.PageInfoProperties;
 
-public class ListArticleQuery {
+public class ListArticleQuery extends PageInfoProperties {
 
     /**
      * 文章标签

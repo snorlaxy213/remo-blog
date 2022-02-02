@@ -1,6 +1,8 @@
 package com.remo.article.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.remo.article.common.util.ServiceUtil;
 import com.remo.article.mapper.ArticleMapper;
@@ -62,12 +64,19 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
             wrapper.eq("publishDate", listArticleQuery.getPublishDate());
         }
 
-        List<Article> articles = this.list(wrapper);
+        //组装Page条件
+        IPage<Article> page = new Page<>(listArticleQuery.getCurrentPage(), listArticleQuery.getPageSize()); 
+        IPage<Article> articlesPage = this.page(page, wrapper);
+        List<Article> articles = articlesPage.getRecords();
         List<ArticleDto> articleDtos = new ArrayList<>();
         articles.forEach(article -> articleDtos.add(dozerMapper.map(article, ArticleDto.class)));
         return articleDtos;
     }
 
+    /**
+     * 展示多条文章及其相关简介
+     * @return 文章及其相关简介
+     */
     @Override
     public List<SimpleArticleDto> listSimpleArticles() {
         List<Article> articles = this.list();

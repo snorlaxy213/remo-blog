@@ -6,7 +6,7 @@ public class ResponseVo {
      */
     private int code;
     private String message;
-    private Object content;
+    private Object data;
 
     public ResponseVo() {
     }
@@ -32,11 +32,12 @@ public class ResponseVo {
         this.message = message;
     }
 
-    public Object getContent() {
-        return content;
+    public Object getData() {
+        return data;
     }
 
-    public void setContent(Object content) {
-        this.content = content;
+    public void setData(Object data) {
+        this.data = data;
     }
+    
 }
