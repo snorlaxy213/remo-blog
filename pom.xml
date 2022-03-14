@@ -12,13 +12,8 @@
         <module>article</module>
         <module>user</module>
         <module>common</module>
-        <module>log</module>
-        <module>eureka</module>
         <module>gateway</module>
-        <module>kafka</module>
-        <module>user-shiro</module>
-        <module>config</module>
-        <module>config-client</module>
+        <module>import</module>
     </modules>
 
     <properties>
@@ -27,6 +22,7 @@
         <java.version>1.8</java.version>
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
+        <spring-cloud-alibaba.version>2.1.4.RELEASE</spring-cloud-alibaba.version>
     </properties>
 
     <!--  dependencies与dependencyManagement的区别：
@@ -47,6 +43,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
