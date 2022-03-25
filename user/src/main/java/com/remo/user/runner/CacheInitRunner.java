@@ -12,10 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-//@Component
+/**
+ * 启动初始化
+ */
+@Component
 public class CacheInitRunner implements ApplicationRunner {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CacheInitRunner.class);
@@ -54,7 +58,7 @@ public class CacheInitRunner implements ApplicationRunner {
             if (e instanceof RedisConnectException) {
                 LOGGER.error("Redis连接异常，请检查Redis连接配置并确保Redis服务已启动");
             }
-            // 关闭 Remo
+            //关闭程序
             context.close();
         }
     }

@@ -78,6 +78,14 @@ public class LoginController {
         return ResponseUtil.initSuccessResultVO(userInfo);
     }
 
+    /**
+     * 把token保存进Redis
+     * @param user 用户
+     * @param token token
+     * @param request
+     * @return 用户id
+     * @throws Exception
+     */
     private String saveTokenToRedis(UserDto user, JWTToken token, HttpServletRequest request) throws Exception {
         String ip = IPUtil.getIpAddr(request);
 
@@ -102,7 +110,7 @@ public class LoginController {
      *
      * @param token   token
      * @param userDto 用户信息
-     * @return UserInfo
+     * @return token、token过期时间、用户信息、角色
      */
     private Map<String, Object> generateUserInfo(JWTToken token, UserDto userDto) {
         String username = userDto.getUsername();
