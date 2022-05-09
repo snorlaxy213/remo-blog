@@ -8,7 +8,7 @@ spring:
       primary: master
       datasource:
         master:
-          url: jdbc:mysql://gz-cynosdbmysql-grp-18rg22ad.sql.tencentcdb.com:27005/remo_article?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+          url: jdbc:mysql://119.91.60.86:3306/remo_article?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
           username: root
           password: ROOTadmin!
           driver-class-name: com.mysql.cj.jdbc.Driver
