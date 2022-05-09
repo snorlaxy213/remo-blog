@@ -10,8 +10,10 @@ import com.remo.user.service.RoleService;
 import com.remo.user.service.UserService;
 import com.remo.user.utils.RemoUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -50,10 +52,19 @@ public class UserManager {
      * @return 角色集合
      */
     public Set<String> getUserRoles(String username) {
-        List<RoleDto> roleList = RemoUtil.selectCacheByTemplate(
+        Set<String> roleNames = new HashSet<>();
+        //根据用户名查询角色
+        List<RoleDto> roles = RemoUtil.selectCacheByTemplate(
                 () -> this.cacheService.getRoles(username),
                 () -> this.roleService.listUserRoles(username));
-        return roleList.stream().map(RoleDto::getName).collect(Collectors.toSet());
+        if (CollectionUtils.isEmpty(roles)) {
+            roleNames.add("1");
+        } else {
+            roleNames = roles.stream()
+                    .map(RoleDto::getName)
+                    .collect(Collectors.toSet());
+        }
+        return roleNames;
     }
 
     /**
@@ -63,10 +74,20 @@ public class UserManager {
      * @return 权限集合
      */
     public Set<String> getUserPermissions(String username) {
-        List<PermissionDto> roleList = RemoUtil.selectCacheByTemplate(
+        Set<String> permissionNames = new HashSet<>();
+        //根据用户名查询权限
+        List<PermissionDto> permissions = RemoUtil.selectCacheByTemplate(
                 () -> this.cacheService.getPermissions(username),
                 () -> this.permissionService.listUserPermissions(username));
-        return roleList.stream().map(PermissionDto::getPermissionName).collect(Collectors.toSet());
+        //如果角色为空，添加默认角色
+        if (CollectionUtils.isEmpty(permissions)) {
+            permissionNames.add("1");
+        } else {
+            permissionNames = permissions.stream()
+                    .map(PermissionDto::getPermissionName)
+                    .collect(Collectors.toSet());
+        }
+        return permissionNames;
     }
 
     /**

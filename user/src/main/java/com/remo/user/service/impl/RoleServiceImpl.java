@@ -1,10 +1,11 @@
-package com.remo.user.service;
+package com.remo.user.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
 import com.remo.user.dao.RoleDao;
 import com.remo.user.pojo.dto.RoleDto;
 import com.remo.user.pojo.po.Role;
+import com.remo.user.service.RoleService;
 import org.dozer.DozerBeanMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
