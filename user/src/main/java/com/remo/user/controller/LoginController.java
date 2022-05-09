@@ -52,7 +52,8 @@ public class LoginController {
     public ResponseVo login(@RequestBody LoginQuery query, HttpServletRequest request) throws Exception {
 
         String username = StringUtils.lowerCase(query.getUsername());
-        String password = MD5Util.encrypt(query.getPassword());
+//        String password = MD5Util.encrypt(query.getPassword());
+        String password = query.getPassword();
 
         UserDto userDto = this.userManager.getUser(username);
 
@@ -63,8 +64,16 @@ public class LoginController {
             throw new BusinessException(RemoConstant.ERROR_RESULT_CODE, ErrorMessageConstant.PASSWORD_ERROR);
         }
 
+        //添加默认角色
         Set<String> roles = this.userManager.getUserRoles(username);
+        if (roles.size() == 0) {
+            roles.add("1");
+        }
+        //添加默认权限
         Set<String> permissions = this.userManager.getUserPermissions(username);
+        if (permissions.size() == 0) {
+            permissions.add("1");
+        }
 
         String token = JwtTokenUtils.encryptToken(JwtTokenUtils.createToken(username, roles, permissions));
         LocalDateTime expireTime = LocalDateTime.now().plusSeconds(properties.getSecurity().getJwtTimeOut());
@@ -82,9 +91,9 @@ public class LoginController {
      * 把token保存进Redis
      * @param user 用户
      * @param token token
-     * @param request
+     * @param request http request
      * @return 用户id
-     * @throws Exception
+     * @throws Exception JSON解析异常、Redis连接异常
      */
     private String saveTokenToRedis(UserDto user, JWTToken token, HttpServletRequest request) throws Exception {
         String ip = IPUtil.getIpAddr(request);

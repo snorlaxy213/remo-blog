@@ -2,7 +2,7 @@ package com.remo.user.service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
-import com.remo.user.mapper.RoleMapper;
+import com.remo.user.dao.RoleDao;
 import com.remo.user.pojo.dto.RoleDto;
 import com.remo.user.pojo.po.Role;
 import org.dozer.DozerBeanMapper;
@@ -17,7 +17,7 @@ import java.util.List;
 
 @Service(value = "roleService")
 @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
-public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
+public class RoleServiceImpl extends ServiceImpl<RoleDao, Role> implements RoleService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RoleServiceImpl.class);
 

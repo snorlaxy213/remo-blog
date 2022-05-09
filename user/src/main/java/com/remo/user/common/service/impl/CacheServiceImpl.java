@@ -44,7 +44,7 @@ public class CacheServiceImpl implements CacheService {
     public UserDto getUser(String username) throws Exception {
         String userString = this.redisService.get(RemoConstant.USER_CACHE_PREFIX + username);
         if (StringUtils.isBlank(userString)) {
-            throw new BusinessException(RemoConstant.ERROR_RESULT_CODE, ErrorMessageConstant.WRONG_INPUT);
+            return null;
         } else {
             return this.objectMapper.readValue(userString, UserDto.class);
         }

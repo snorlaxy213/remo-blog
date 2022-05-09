@@ -2,6 +2,10 @@ package com.remo.user.pojo.dto;
 
 import java.io.Serializable;
 
+/**
+ * 用户角色类
+ * @author Grio Vino
+ */
 public class RoleDto implements Serializable {
 
     private static final long serialVersionUID = -3378970538289758172L;

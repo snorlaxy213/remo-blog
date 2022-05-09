@@ -4,14 +4,18 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 
+/**
+ * 启动类
+ * @author Grio Vino
+ */
 @SpringBootApplication
-@MapperScan("com.remo.user.mapper")
-@EnableEurekaClient
+@MapperScan("com.remo.user.dao")
+@EnableDiscoveryClient
 @EnableFeignClients
 @EnableHystrix
 @ComponentScan

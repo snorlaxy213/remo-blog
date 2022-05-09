@@ -1,0 +1,69 @@
+server:
+  port: 9101
+spring:
+  application:
+    name: user
+  spring:
+    profiles: dev
+  datasource:
+    # 是否开启 SQL日志输出，生产环境建议关闭，有性能损耗
+    p6spy: true
+    # 配置hikari连接池
+    hikari:
+      # 连接池名称
+      pool-name: RemoHikariCP
+      # 最小空闲连接数量
+      minimum-idle: 5
+      # 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 1800000
+      # 连接池最大连接数，默认是10
+      maximum-pool-size: 15
+      # 数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 30000
+      # 数据库连接超时测试
+      connection-test-query: SELECT 1
+    url: jdbc:p6spy:mysql://gz-cynosdbmysql-grp-18rg22ad.sql.tencentcdb.com:27005/remo_user?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: ROOTadmin!
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+  redis:
+    host: 119.91.60.86
+    port: 6379
+    password:
+    jedis:
+      pool:
+        #连接池中的最小空闲连接
+        min-idle: 8
+        #连接池中的最大空闲连接，默认值是8
+        max-idle: 500
+        #连接池最大连接数（负值表示没有限制）
+        max-active: 2000
+        #连接池最大阻塞等待时间（负值表示没有限制）
+        max-wait: 10000
+    #Redis服务器连接超时的时间（0代表不超时）
+    timeout: 0
+  #nacos
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        service: user #给当前的服务命名，默认${spring.application.name}
+        server-addr: 127.0.0.1:8848 #Nacos Server 启动监听的ip地址和端口
+        group: dev #设置服务所处的分组,默认DEFAULT_GROUP
+#        namespace: dev #常用场景之一是不同环境的注册的区分隔离，例如开发测试环境和生产环境的资源（如配置、服务）隔离等。
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.remo.user.pojo.po
+  configuration:
+    #开启DB驼峰命名
+    map-underscore-to-camel-case: true
+  global-config:
+    banner: false
+feign:
+  hystrix:
+    enabled: true
+remo:
+  security:
+    # token有效期，单位秒
+    jwtTimeOut: 3600
+

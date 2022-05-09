@@ -2,6 +2,10 @@ package com.remo.user.pojo.dto;
 
 import java.io.Serializable;
 
+/**
+ * 角色权限类
+ * @author Grio Vino
+ */
 public class PermissionDto implements Serializable {
 
     private static final long serialVersionUID = 7187628714679791771L;

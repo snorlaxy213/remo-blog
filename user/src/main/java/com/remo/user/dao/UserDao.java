@@ -1,4 +1,4 @@
-package com.remo.user.mapper;
+package com.remo.user.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.remo.user.pojo.po.User;
@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
-public interface UserMapper extends BaseMapper<User> {
+public interface UserDao extends BaseMapper<User> {
 
     @Select("select * from sys_user")
     List<User> findAll();

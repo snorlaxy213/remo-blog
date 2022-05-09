@@ -3,7 +3,7 @@ package com.remo.user.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
-import com.remo.user.mapper.UserMapper;
+import com.remo.user.dao.UserDao;
 import com.remo.user.pojo.dto.UserDto;
 import com.remo.user.pojo.po.User;
 import org.dozer.DozerBeanMapper;
@@ -38,7 +38,7 @@ import java.util.List;
  */
 @Service(value = "userService")
 @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
@@ -64,7 +64,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public UserDto findByUsername(String username) {
         LOGGER.info("<=============== findByUsername ===============>");
         QueryWrapper<User> wrapper = new QueryWrapper<>();
-        return mapper.map(this.getOne(wrapper.eq("username", username)), UserDto.class);
+        User user = this.getOne(wrapper.eq("username", username));
+        return user == null ? null : mapper.map(user, UserDto.class);
     }
 
     @Override

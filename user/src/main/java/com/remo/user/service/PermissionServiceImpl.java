@@ -1,7 +1,7 @@
 package com.remo.user.service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.remo.user.mapper.PermissionMapper;
+import com.remo.user.dao.PermissionDao;
 import com.remo.user.pojo.dto.PermissionDto;
 import com.remo.user.pojo.po.Permission;
 import org.dozer.DozerBeanMapper;
@@ -14,10 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service("permissionService")
 @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
-public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permission> implements PermissionService {
+public class PermissionServiceImpl extends ServiceImpl<PermissionDao, Permission> implements PermissionService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PermissionServiceImpl.class);
 
@@ -38,7 +39,9 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         LOGGER.info("<=============== findUserPermissions ===============>");
         List<Permission> permissions = this.getBaseMapper().findUserPermissions(username);
         List<PermissionDto> permissionDtos = new ArrayList<>();
-        permissions.forEach(permission -> permissionDtos.add(dozerBeanMapper.map(permission, PermissionDto.class)));
+        permissions.stream()
+                .filter(Objects::nonNull)
+                .forEach(permission -> permissionDtos.add(dozerBeanMapper.map(permission, PermissionDto.class)));
         return permissionDtos;
     }
 }

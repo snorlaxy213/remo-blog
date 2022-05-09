@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 
 /**
  * 用户登录以及用户管理
+ * @author Grio Vino
  */
 @RestController
 @RequestMapping("/user")
@@ -18,22 +19,22 @@ public class UserController {
     @Resource(name = "userService")
     UserService userService;
 
-    @GetMapping("/users")
+    @GetMapping
     public ResponseVo listUsers() {
         return ResponseUtil.initSuccessResultVO(userService.listUsers());
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/{id}")
     public ResponseVo findById(@PathVariable("id") Long id) {
         return ResponseUtil.initSuccessResultVO(userService.findById(id));
     }
 
-    @PostMapping("/user")
+    @PostMapping
     public ResponseVo addUser(@RequestBody UserDto userDto) {
         return ResponseUtil.initSuccessResultVO(userService.addUser(userDto));
     }
 
-    @PutMapping("/user")
+    @PutMapping
     public ResponseVo updateUser(@RequestBody UserDto userDto) {
         return ResponseUtil.initSuccessResultVO(userService.updateUser(userDto));
     }
