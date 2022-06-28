@@ -29,13 +29,6 @@ public class TagServiceImpl extends ServiceImpl<TagMapper, Tag> implements ITagS
     @Qualifier("secondaryRedisTemplate")
     private RedisTemplate secondaryRedisTemplate;
 
-    @Override
-    @Transactional
-    public void testRedis() {
-        redisTemplate.opsForValue().set("masterKey", "testMasterKey");
-        System.out.println(secondaryRedisTemplate.opsForValue().get("TEST"));
-    }
-
     @Resource
     @Qualifier("dozerBeanMapper")
     DozerBeanMapper dozerMapper;

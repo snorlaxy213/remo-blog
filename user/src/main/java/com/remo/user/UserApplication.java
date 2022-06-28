@@ -5,8 +5,6 @@ import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.hystrix.EnableHystrix;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -16,8 +14,6 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @MapperScan("com.remo.user.dao")
 @EnableDiscoveryClient
-@EnableFeignClients
-@EnableHystrix
 @ComponentScan
 @ComponentScan(basePackages = "com.remo.auth.config")
 public class UserApplication {

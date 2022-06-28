@@ -27,7 +27,6 @@ public class TagController {
     @ApiOperation(value = "listTags")
     @GetMapping(value = "/listTags")
     public ResponseVo listTags() {
-        tagService.testRedis();
         return ResponseUtil.initSuccessResponse(tagService.listTags());
     }
 
