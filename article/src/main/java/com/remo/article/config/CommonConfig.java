@@ -1,8 +1,10 @@
 package com.remo.article.config;
 
 import org.dozer.DozerBeanMapper;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,6 +29,12 @@ public class CommonConfig {
         DozerBeanMapper dozerBeanMapper = new DozerBeanMapper();
         dozerBeanMapper.setMappingFiles(mappingFiles);
         return dozerBeanMapper;
+    }
+
+    @Bean("restTemplate")
+    @LoadBalanced
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
 }

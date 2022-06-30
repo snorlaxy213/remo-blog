@@ -6,6 +6,14 @@ spring:
   cloud:
     nacos:
       config:
-        enabled: false
+        enabled: false #完全关闭 Spring Cloud Nacos Config
         server-addr: 127.0.0.1:8848
-        file-extension: yaml
+        file-extension: yml
+        group: dev #设置服务所处的分组,默认DEFAULT_GROUP
+        namespace: b76c6d4a-bd7b-4203-aae9-abea3b145944 #常用场景之一是不同环境的注册的区分隔离，例如开发测试环境和生产环境的资源（如配置、服务）隔离等。
+        name: user #先取 prefix，再取 name，最后取 spring.application.name
+        prefix: user #${prefix}-${spring.profiles.active}.${file-extension}, prefix 默认为 spring.application.name 的值
+        timeout: 3000 #客户端获取配置的超时时间（毫秒）
+#        endpoint: xxx #地域的某个服务的入口域名，通过此域名可以动态地拿到服务端地址
+#        contextPath: xxx #Nacos Server 对外暴露的 context path
+#        clusterName: xxx #配置成Nacos集群名称

@@ -47,11 +47,6 @@ mybatis-plus:
     map-underscore-to-camel-case: true
   global-config:
     banner: false
-
-feign:
-  hystrix:
-    enabled: true
-
 remo:
   security:
     # token有效期，单位秒

@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * 启动初始化
  */
-@Component
+//@Component
 public class CacheInitRunner implements ApplicationRunner {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CacheInitRunner.class);
